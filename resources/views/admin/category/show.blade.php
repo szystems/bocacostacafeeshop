@@ -53,18 +53,6 @@
                                 <label class="form-check-label" for="flexSwitchCheckDefault"><strong>Popular</strong></label>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-3">
-                            <label for=""><strong>Meta Title</strong></label>
-                            <p>{{ $category->meta_title }}</p>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <label for=""><strong>Meta Keywords</strong></label>
-                            <textarea rows="3" class="form-control border px-2" readonly>{{ $category->meta_keywords }}</textarea>
-                        </div>
-                        <div class="col-md-12 mb-3">
-                            <label for=""><strong>Meta Description</strong></label>
-                            <textarea rows="3" class="form-control border px-2" readonly>{{ $category->meta_descrip }}</textarea>
-                        </div>
                         @if ($category->image)
                             <div class="col-md-12 mb-3">
                                 <img class="border-radius-md w-25"

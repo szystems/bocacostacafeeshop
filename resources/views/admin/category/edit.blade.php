@@ -76,39 +76,6 @@
                                     <label class="form-check-label" for="flexSwitchCheckDefault">Popular</label>
                                 </div>
                             </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Title</label>
-                                <input type="text" class="form-control border px-2" name="meta_title" value="{{ $category->meta_title }}">
-                                @if ($errors->has('meta_title'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="red">{{ $errors->first('meta_title') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Keywords</label>
-                                <textarea name="meta_keywords" rows="3" class="form-control border px-2">{{ $category->meta_keywords }}</textarea>
-                                @if ($errors->has('meta_keywords'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="red">{{ $errors->first('meta_keywords') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Description</label>
-                                <textarea name="meta_descrip" rows="3" class="form-control border px-2">{{ $category->meta_descrip }}</textarea>
-                                @if ($errors->has('meta_descrip'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="red">{{ $errors->first('meta_descrip') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
                             @if ($category->image)
                             <div class="col-md-12 mb-3">
                                 <img class="border-radius-md w-25" src="{{ asset('assets/uploads/category/'.$category->image) }}" alt="Category Image">
@@ -119,7 +86,7 @@
                                 <input type="file" name="image" class="form-control border">
                             </div>
                             <div class="col-md-12 mb-3" >
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
                         </div>
                     </form>

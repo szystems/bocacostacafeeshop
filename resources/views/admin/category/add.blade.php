@@ -77,39 +77,6 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="">Meta Title</label>
-                                <input type="text" class="form-control border px-2" name="meta_title" value="{{ old('meta_title') }}" >
-                                @if ($errors->has('meta_title'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="Red">{{ $errors->first('meta_title') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Keywords</label>
-                                <textarea name="meta_keywords" rows="3" class="form-control border px-2" >{{ old('meta_keywords') }}</textarea>
-                                @if ($errors->has('meta_keywords'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="Red">{{ $errors->first('meta_keywords') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="">Meta Description</label>
-                                <textarea name="meta_descrip" rows="3" class="form-control border px-2" >{{ old('meta_descrip') }}</textarea>
-                                @if ($errors->has('meta_descrip'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="Red">{{ $errors->first('meta_descrip') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-12 mb-3">
                                 <label for="">Imagen</label>
                                 <input type="file" name="image" class="form-control border">
                             </div>

@@ -27,9 +27,6 @@ class CategoriaFormRequest extends FormRequest
             'name'=>'required|max:191',
             'slug'=>'required|max:191',
             'description'=>'required|max:191',
-            'meta_keywords'=>'required|max:191',
-            'meta_title'=>'required|max:191',
-            'meta_descrip'=>'required|max:191',
             'image'=>'mimes:jpg,jpeg,bmp,png|max:10000'
         ];
     }
