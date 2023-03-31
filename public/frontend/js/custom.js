@@ -54,10 +54,10 @@ $(document).ready(function () {
             },
             success: function (response) {
                 loadcart();
-
+                loadwish();
                 swal(response.status)
                 .then((value) => {
-                    window.location.reload();
+                    // window.location.reload();
                   });
 
 

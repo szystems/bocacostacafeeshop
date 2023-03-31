@@ -41,6 +41,12 @@ Route::get('category/{cate_slug}/{prod_slug}', [FrontendController::class, 'prod
 
 Route::get('product-list', [FrontendController::class, 'productlistAjax']);
 Route::post('buscarproducto', [FrontendController::class, 'buscarProducto']);
+//vistas
+Route::get('history', [FrontendController::class, 'history']);
+Route::get('contact', [FrontendController::class, 'contact']);
+Route::get('wholesale', [FrontendController::class, 'wholesale']);
+Route::get('social-impact', [FrontendController::class, 'socialImpact']);
+
 
 
 Auth::routes();

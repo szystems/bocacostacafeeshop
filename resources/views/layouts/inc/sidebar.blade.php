@@ -6,7 +6,7 @@
             target="_blank">
             <img src="{{ asset('dashtemplate/assets/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="E-Shop">
             {{-- <i class="material-icons opacity-10">storefront</i> --}}
-            <span class="ms-1 font-weight-bold text-white">E-Shop</span>
+            <span class="ms-1 font-weight-bold text-white">Bocacosta Coffee</span>
         </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">

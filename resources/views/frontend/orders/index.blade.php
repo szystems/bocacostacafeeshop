@@ -1,102 +1,89 @@
 @extends('layouts.frontend')
-{{-- Trending products --}}
+{{-- Account Orders --}}
 @section('content')
-    <div class="page-header text-center" style="background-image: url({{ asset('fronttemplate/assets/images/page-header-bg.jpg') }})">
-        <div class="container">
-            <h1 class="page-title">My Account<span>Orders</span></h1>
-        </div><!-- End .container -->
-    </div><!-- End .page-header -->
-    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('my-account') }}">My Account</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('my-orders') }}">Orders</a></li>
-            </ol>
-        </div><!-- End .container -->
-    </nav><!-- End .breadcrumb-nav -->
 
-    <div class="page-content">
-        <div class="dashboard">
-            <div class="container">
-                <div class="row">
-                    <aside class="col-md-2 col-lg-2">
-                        <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link"  href="{{ url('my-account') }}">Welcome</a>
-                            </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link"  href="{{ url('cart') }}">Cart</a>
-                            </li> --}}
-                            <li class="nav-item">
-                                <a class="nav-link active"  href="{{ url('my-orders') }}">Orders</a>
-                            </li>
-                            {{-- <li class="nav-item">
-                                <a class="nav-link"  href="#">Adresses</a>
-                            </li> --}}
-                            <li class="nav-item">
-                                <a class="nav-link"  href="{{ url('user-details/'.Auth::id()) }}">Account Details</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+
+                @php
+                    $usuario = Auth::user()->name; $nombre = explode(' ',trim($usuario));
+                    $names =str_word_count($usuario);
+                @endphp
+
+                <div class="col-md-3 sidebar ftco-animate">
+                    <div class="sidebar-box ftco-animate">
+                        <div class="categories">
+                            <h3>{{ ucwords($nombre[0]) }}'s <a href="{{ url('my-account') }}">Dashboard</a></h3>
+                            <li><a href="{{ url('my-orders') }}"><font color="c70017">-> Orders<strong></strong></font><!--<span>(12)</span>--></a></li>
+                            <li><a href="{{ url('user-details/'.Auth::id()) }}">- Account Details <!--<span>(12)</span>--></a></li>
+                            <li><a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- LOGOUT</font>  </a>
+                                <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </li>
-                        </ul>
-                    </aside><!-- End .col-lg-3 -->
-
-                    <div class="col-md-10 col-lg-10">
-                        <div class="tab-content">
-
-                            <div class="tab-pane fade show active">
-                                {{-- <p>Hello <span class="font-weight-normal text-dark">User</span> (not <span class="font-weight-normal text-dark">User</span>? <a href="#">Log out</a>)
-                                <br>
-                                From your account dashboard you can view your <a href="#tab-orders" class="tab-trigger-link link-underline">recent orders</a>, manage your <a href="#tab-address" class="tab-trigger-link">shipping and billing addresses</a>, and <a href="#tab-account" class="tab-trigger-link">edit your password and account details</a>.</p> --}}
-                                <table class="table table-cart table-mobile">
-									<thead>
-										<tr>
-                                            <th>Order Date <small>({{ Auth::user()->timezone }})</small></th>
-											<th>Tracking Number</th>
-											<th>Total</th>
-                                            <th>Status</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-
-									<tbody>
-
-                                        @foreach ($orders as $item)
-                                            <tr>
-                                                @php
-                                                    $date = new DateTime($item->created_at, new DateTimeZone(date_default_timezone_get()));
-                                                    $date->setTimezone(new DateTimeZone(Auth::user()->timezone));
-                                                @endphp
-                                                <td>{{ $date->format('d-m-Y') }}</td>
-                                                <td class="product-col">
-                                                    <div class="product">
-                                                        <h3 class="product-title">
-                                                            <a href="#">{{ $item->tracking_no }}</a>
-                                                        </h3><!-- End .product-title -->
-                                                    </div><!-- End .product -->
-                                                </td>
-                                                <td class="total-col">{{ $config->currency_simbol }}{{ number_format($item->total_price,2, '.', ',') }}</td>
-                                                <td class="quantity-col">{{ $item->status == '0' ?'Pending' : 'Completed' }}
-                                                <td class="remove-col">
-                                                    <a href="{{ url('view-order/'.$item->id) }}" class="btn btn-outline-primary-2"><i class="icon-eye"></i><span>View</span></a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-
-									</tbody>
-								</table><!-- End .table table-wishlist -->
-                            </div><!-- .End .tab-pane -->
-
                         </div>
-                    </div><!-- End .col-lg-9 -->
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-        </div><!-- End .dashboard -->
-    </div><!-- End .page-content -->
+                    </div>
+                </div>
+
+                <div class="col-md-9 ftco-animate">
+                    <div class="cart-list">
+                        <table class="table">
+                            @php
+                                $total = 0;
+                            @endphp
+                            @if ($orders->count() > 0)
+                                <thead class="thead-primary">
+                                    <tr class="text-center">
+                                        <th>Order Date <small>({{ Auth::user()->timezone }})</small></th>
+                                        <th>Tracking Number</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($orders as $item)
+                                        <tr class="text-center product_data">
+                                            @php
+                                                $date = new DateTime($item->created_at, new DateTimeZone(date_default_timezone_get()));
+                                                $date->setTimezone(new DateTimeZone(Auth::user()->timezone));
+                                            @endphp
+                                            <td class="price">{{ $date->format('d-m-Y') }}</td>
+
+                                            <td class="price">
+                                                <a href="#">{{ $item->tracking_no }}</a>
+                                            </td>
+                                            <td class="price">{{ $config->currency_simbol }}{{ number_format($item->total_price,2, '.', ',') }}</td>
+
+                                            <td class="price">
+                                                {{ $item->status == '0' ?'Pending' : 'Completed' }}
+                                            </td>
+
+                                            <td class="total">
+                                                <p>
+                                                    <a href="{{ url('view-order/'.$item->id) }}" class="btn btn-primary py-3 px-4 btn-block"><span>View order</span></a>
+                                                </p>
+
+                                            </td>
+                                        </tr><!-- END TR-->
+                                    @endforeach
+
+                                </tbody>
+                            @else
+                            <span class="help-block opacity-7">
+                                <strong>
+                                    <font color="red">Orders list is empty.</font>
+                                </strong>
+                            </span>
+                            <a href="{{ url('category') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span> <i class="icon-refresh"></i></a>
+                            @endif
+                        </table>
+                    </div>
+
+            </div>
+        </div>
+    </section> <!-- .section -->
+
 @endsection
 

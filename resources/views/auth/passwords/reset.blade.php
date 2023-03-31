@@ -1,93 +1,74 @@
 @extends('layouts.frontend')
-{{-- Trending products --}}
+{{-- Register --}}
 @section('content')
-
-
-    {{-- Login --}}
-
-    <div class="mb-6"></div><!-- End .mb-6 -->
-
-    <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+    <section class="ftco-section">
         <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Reset Password') }}</li>
-            </ol>
-        </div><!-- End .container -->
-    </nav><!-- End .breadcrumb-nav -->
+            <div class="row">
 
-    <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url({{asset('fronttemplate/assets/images/backgrounds/login-bg.jpg')}})">
-        <div class="container">
-            <div class="form-box">
-                <div class="form-tab">
-                    <ul class="nav nav-pills nav-fill" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="true">{{ __('Reset Password') }}</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-                            <form method="POST" action="{{ route('password.update') }}">
-                                @csrf
+                <div class="col-xl-3 sidebar ftco-animate">
 
-                                <input type="hidden" name="token" value="{{ $token }}">
+                </div>
 
+                <div class="col-xl-6 ftco-animate">
+                    <form method="POST" action="{{ route('password.update') }}" class="billing-form ftco-bg-dark p-3 p-md-5">
+                        @csrf
+                        <input type="hidden" name="token" value="{{ $token }}">
+                        <h3 class="mb-4 billing-heading">Reset Password</h3>
+                        <div class="row align-items-end">
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="register-email-2">{{ __('Email Address') }} *</label>
+                                    <label for="firstname">{{ __('Email Address') }}</label>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div><!-- End .form-group -->
-
+                                </div>
+                            </div>
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="register-password-2">{{ __('Password') }} *</label>
+                                    <label for="lastname">{{ __('Password') }}</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div><!-- End .form-group -->
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="lastname">{{  __('Confirm Password') }}</label>
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                </div>
+                            </div>
+
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
 
                                 <div class="form-group">
-                                    <label for="confirm-password-2">{{ __('Confirm Password') }} *</label>
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                </div><!-- End .form-group -->
 
-                                <div class="form-footer">
-                                    <button type="submit" class="btn btn-outline-primary-2">
-                                        <span>{{ __('Reset Password') }}</span>
-                                        <i class="icon-long-arrow-right"></i>
-                                    </button>
-                                </div><!-- End .form-footer -->
+                                    <p><button type="submit" class="btn btn-primary py-3 px-4 w-100">
+                                            <font color="white"><strong>Reset Password</strong></font>
+                                        </button></p>
+                                </div>
 
-                            </form>
-                            {{-- <div class="form-choice">
-                                <p class="text-center">or sign in with</p>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <a href="#" class="btn btn-login btn-g">
-                                            <i class="icon-google"></i>
-                                            Login With Google
-                                        </a>
-                                    </div><!-- End .col-6 -->
-                                    <div class="col-sm-6">
-                                        <a href="#" class="btn btn-login btn-f">
-                                            <i class="icon-facebook-f"></i>
-                                            Login With Facebook
-                                        </a>
-                                    </div><!-- End .col-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .form-choice --> --}}
-                        </div><!-- .End .tab-pane -->
-                    </div><!-- End .tab-content -->
-                </div><!-- End .form-tab -->
-            </div><!-- End .form-box -->
-        </div><!-- End .container -->
-    </div><!-- End .login-page section-bg -->
+                            </div>
 
 
+                        </div>
+                    </form><!-- END -->
+                </div> <!-- .col-md-6 -->
+
+
+
+
+                <div class="col-xl-3 sidebar ftco-animate">
+
+                </div>
+
+            </div>
+        </div>
+    </section> <!-- .section -->
 @endsection

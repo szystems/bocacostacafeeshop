@@ -25,7 +25,9 @@ class FrontendController extends Controller
     public function category()
     {
         $categories = Category::where('status','1')->orderby('name','asc')->get();
-        return view('frontend.category', compact('categories'));
+
+        $config = Config::first();
+        return view('frontend.category', compact('categories','config'));
     }
 
     public function viewcategory($slug)
@@ -110,5 +112,27 @@ class FrontendController extends Controller
         }else {
             return redirect()->back();
         }
+    }
+
+
+    // Views
+    public function history()
+    {
+        return view('frontend.history');
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
+
+    public function wholesale()
+    {
+        return view('frontend.wholesale');
+    }
+
+    public function socialImpact()
+    {
+        return view('frontend.social-impact');
     }
 }

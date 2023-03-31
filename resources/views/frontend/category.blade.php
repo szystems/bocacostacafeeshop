@@ -1,98 +1,136 @@
 @extends('layouts.frontend')
-{{-- Trending products --}}
+{{-- OurCoffee Categories --}}
 @section('content')
-    <div class="page-header text-center" style="background-image: url({{asset('fronttemplate/assets/images/page-header-bg.jpg')}})">
+    <section class="ftco-menu mb-5 pb-5">
         <div class="container">
-            <h1 class="page-title">Category<span>Shop</span></h1>
-        </div><!-- End .container -->
-    </div><!-- End .page-header -->
+            <div class="row d-md-flex">
+                <div class="col-lg-12 ftco-animate p-md-5">
+                    <div class="row">
+                        <div class="heading-section ftco-animate">
+                            <!-- <span class="subheading" align="center">Discover</span> -->
+                            <h2 class="mb-4" align="center">Our Coffee</h2>
+                            <p class="mb-4">Our coffee comes from countries recognized for having one of the world's best
+                                and most unique coffees high altitude coffee, which you can feel the high quality and the
+                                best flavor in each cup.</p>
+                        </div>
+                        <div>
+                            <h3>Choose your type of flavor:</h3>
+                        </div>
+                        <div class="col-md-12 nav-link-wrap mb-5">
+                            <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
+                                aria-orientation="vertical">
 
-    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('category') }}">Category</a></li>
-            </ol>
-        </div><!-- End .container -->
-    </nav><!-- End .breadcrumb-nav -->
+                                @foreach ($categories as $cat)
+                                    <a class="nav-link" id="v-pills-{{ $cat->id }}-tab" data-toggle="pill" href="#v-pills-{{ $cat->id }}" role="tab" aria-controls="v-pills-{{ $cat->id }}" aria-selected="true">
+                                        {{ $cat->name }}
+                                        @if ($cat->popular == "1")
+                                            <span class="badge badge-info">{{ $cat->popular == '1'? 'Popular':''}}</span>
+                                        @endif
+                                    </a>
 
-    {{-- Categories --}}
+                                @endforeach
 
-    <div class="mb-6"></div><!-- End .mb-6 -->
+                            </div>
+                        </div>
+                        <div class="col-md-12 d-flex align-items-center">
+                            <div class="tab-content ftco-animate" id="v-pills-tabContent">
 
-    <div class="container">
-        <div class="heading heading-center mb-3">
-            <h2 class="title-lg">Category</h2><!-- End .title -->
+                                @foreach ($categories as $cat)
+                                <div class="tab-pane fade show " id="v-pills-{{ $cat->id }}" role="tabpanel" aria-labelledby="v-pills-0-tab">
+                                    <div class="row">
+                                            @php
+                                                $products=DB::table('products')
+                                                ->where('status','=',1)
+                                                ->where('cate_id', '=', $cat->id)
+                                                ->orderBy('name','asc')
+                                                ->get();
 
-            <ul class="nav nav-pills justify-content-center" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="trendy-all-link" data-toggle="tab" href="#trendy-all-tab" role="tab"
-                        aria-controls="trendy-all-tab" aria-selected="true">All</a>
-                </li>
+                                                $numProds = $products->count();
+                                                if ($numProds > 4) {
+                                                    $numProds = 3;
+                                                }else {
+                                                    $numProds = 12/$numProds;
+                                                }
+                                            @endphp
+                                            @foreach ($products as $prod)
+                                            <div class="col-md-{{ $numProds }} product_data">
+                                                <input type="hidden" value="{{ $prod->id }}" class="prod_id">
+                                                <input type="hidden" value="1" class="qty-input">
+                                                <div class="menu-entry">
+                                                    <div class="text text-center pt-4">
+                                                        <h3><a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}">
+                                                            {{ $prod->name }}
+                                                        </a></h3>
+                                                            @if ($prod->trending == "1")
+                                                                <span class="badge badge-info">{{ $prod->trending == '1'? 'Trending':''}}</span>
+                                                            @endif
+                                                    </div>
+                                                    <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="img" style="background-image: url({{ asset('assets/uploads/product/'.$prod->image) }});"></a>
+                                                    <div class="text text-center pt-4">
+                                                        <p>{{ $prod->description }}</p>
 
-            </ul>
-        </div><!-- End .heading -->
+                                                            @if ($prod->discount == "1")
+                                                                <p class="price">
+                                                                    <span>{{ $config->currency_simbol }}{{ number_format($prod->selling_price,2, '.', ',') }}</span>
+                                                                    <span><strike><font color="c70017">{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</font></strike></span>
+                                                                    @if ($prod->discount == "1")
+                                                                        <span class="badge badge-warning">{{ $prod->discount == '1'? '% Off':''}}</span>
+                                                                    @endif
+                                                                </p>
+                                                            @else
+                                                                <p class="price">
+                                                                    <span>{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</span>
+                                                                    @if ($prod->discount == "1")
+                                                                        <span class="badge badge-warning">{{ $prod->discount == '1'? '% Off':''}}</span>
+                                                                    @endif
+                                                                </p>
+                                                            @endif
 
-        <div class="tab-content tab-content-carousel">
-            <div class="tab-pane p-0 fade show active" id="trendy-all-tab" role="tabpanel"
-                aria-labelledby="trendy-all-link">
-                <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
-                    data-owl-options='{
-                        "nav": false,
-                        "dots": true,
-                        "margin": 20,
-                        "loop": false,
-                        "responsive": {
-                            "0": {
-                                "items":2
-                            },
-                            "480": {
-                                "items":2
-                            },
-                            "768": {
-                                "items":3
-                            },
-                            "992": {
-                                "items":4
-                            },
-                            "1200": {
-                                "items":4,
-                                "nav": true,
-                                "dots": false
-                            }
-                        }
-                    }'>
-                    @foreach ($categories as $cat)
-                        <div class="product product-11 text-center">
-                            <figure class="product-media">
-                                @if ($cat->popular == '1')
-                                <span class="product-label label-new"><font color="white">Popular</font></span>
-                                @endif
 
-                                <a href="{{ url('view-category/'.$cat->slug) }}">
-                                    <img src="{{ asset('assets/uploads/category/'.$cat->image) }}" alt="{{ $cat->name }}"
-                                        class="product-image">
-                                    <img src="{{ asset('assets/uploads/category/'.$cat->image) }}" alt="{{ $cat->name }}"
-                                        class="product-image-hover">
-                                </a>
+                                                        <p>
+                                                            @if (Auth::guest())
+                                                                <div class="product-action-vertical">
+                                                                    <a href="{{ route('login') }}" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
+                                                                </div><!-- End .product-action-vertical -->
+                                                            @else
+                                                                <div class="product-action-vertical">
+                                                                    <a href="#" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
+                                                                </div><!-- End .product-action-vertical -->
+                                                            @endif
 
-                                {{-- <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical --> --}}
-                            </figure><!-- End .product-media -->
+                                                            @if ($prod->qty > 0)
+                                                                @if (Auth::guest())
+                                                                    <a href="{{ url('login') }}" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                                                @else
+                                                                    <a href="#" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                                                @endif
+                                                            @else
+                                                                <div class="product-action">
+                                                                    <a href="{{ url('category/'.$prod->category->slug.'/'.$prod->slug) }}" class="btn-product"><i class="icon-search"></i><span> View Details...</span></a>
+                                                                </div><!-- End .product-action -->
+                                                                <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="btn btn-primary btn-outline-primary">View Product...</a>
+                                                            @endif
+                                                            <br>
+                                                            @if($prod->qty > 0)
+                                                                <span class="badge badge-success">In stock</span>
+                                                            @else
+                                                                <span class="badge badge-danger">out of stock</span>
+                                                            @endif
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @endforeach
 
-                            <div class="product-body">
-                                <h3 class="product-title"><a href="{{ url('view-category/'.$cat->slug) }}">{{ $cat->name }}</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    <p>{{ $cat->description }}</p>
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-                    @endforeach
+                                    </div>
+                                </div>
+                                @endforeach
 
-                </div><!-- End .owl-carousel -->
-            </div><!-- .End .tab-pane -->
-        </div><!-- End .tab-content -->
-    </div><!-- End .container -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

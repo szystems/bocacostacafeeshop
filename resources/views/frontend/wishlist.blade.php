@@ -1,106 +1,93 @@
 @extends('layouts.frontend')
-{{-- Trending products --}}
+{{-- Wishlist --}}
 @section('content')
-    <div class="page-header text-center" style="background-image: url({{ asset('fronttemplate/assets/images/page-header-bg.jpg') }})">
+    <section class="ftco-section ftco-cart">
         <div class="container">
-            <h1 class="page-title">Wishlist<span>Shop</span></h1>
-        </div><!-- End .container -->
-    </div><!-- End .page-header -->
-    <nav aria-label="breadcrumb" class="breadcrumb-nav">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item"><a href="{{ url('wishlist') }}">Wishlist</a></li>
-            </ol>
-        </div><!-- End .container -->
-    </nav><!-- End .breadcrumb-nav -->
+            <div class="row">
+                <div class="col-md-12 ftco-animate">
+                    <h2 class="mb-4">My Wishlist</h2>
+                    <div class="cart-list">
+                        <table class="table">
+                            @if ($wishlist->count() > 0)
+                                <thead class="thead-primary">
+                                    <tr class="text-center">
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($wishlist as $prod)
+                                        @php
+                                            if ($prod->discount == "1") {
+                                                $price = $prod->selling_price;
+                                            }else {
+                                                $price = $prod->original_price;
+                                            }
+                                        @endphp
+                                        <tr class="text-center product_data">
+                                            <td class="product-remove remove-wishlist-item"><a><span class="icon-close"></span></a></td>
 
-    <div class="page-content">
-        <div class="container">
+                                            <td class="image-prod">
+                                                <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">
+                                                    <div class="img" style="background-image:url({{ asset('assets/uploads/product/'.$prod->image) }});"></div>
+                                                </a>
+                                            </td>
 
-            <table class="table table-wishlist table-mobile">
-                @if ($wishlist->count() > 0)
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Stock Status</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                                            <td class="product-name">
+                                                <h3><a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">{{ $prod->Product }}</a></h3>
+                                                <p>{{ $prod->small_description }}</p>
+                                            </td>
 
-                    <tbody>
-                        @foreach ($wishlist as $prod)
-                            @php
-                                if ($prod->discount == "1") {
-                                    $price = $prod->selling_price;
-                                }else {
-                                    $price = $prod->original_price;
-                                }
-                            @endphp
-                            <tr class="product_data">
-                                <td class="product-col">
-                                    <div class="product">
-                                        <figure class="product-media">
-                                            <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">
-                                                <img src="{{ asset('assets/uploads/product/'.$prod->image) }}" alt="{{ $prod->Product }}">
-                                            </a>
-                                        </figure>
+                                            @if ($prod->discount == "1")
+                                                    <td class="price">{{ $config->currency_simbol }}{{ number_format($prod->selling_price,2, '.', ',') }} <br> <strike><font color="c70017">{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</font></strike></td>
+                                            @else
+                                                <td class="price">{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</td>
+                                            @endif
 
-                                        <h3 class="product-title">
-                                            <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">{{ $prod->Product }}</a>
-                                        </h3><!-- End .product-title -->
-                                    </div><!-- End .product -->
-                                </td>
-                                @if ($prod->discount == "1")
-                                    <td class="price-col">
-                                        <font color="ef837b">{{ $config->currency_simbol }}{{ number_format($prod->selling_price,2, '.', ',') }}</font>
-                                        <font color="cccccc"><strike>{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</strike></font>
-                                    </td>
-                                @else
-                                    <td class="price-col"><font color="ef837b">{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</font></td>
-                                @endif
-                                @if ($prod->qty == 0)
-                                    <td class="stock-col"><span class="out-of-stock">Out of stock</span></td>
-                                @else
-                                    <td class="stock-col">
-                                        <input type="number" name="quantity" class="form-control qty-input" value="1" min="1" max="10" step="1" data-decimals="0" required>
-                                        <span class="in-stock">In stock:</span> {{ $prod->qty }}
-                                    </td>
-                                @endif
-                                @if ($prod->qty == 0)
-                                    <td class="action-col">
-                                        <button disabled class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button>
-                                    </td>
-                                @else
-                                    <td class="action-col" align="center">
-                                        <input type="hidden" class="prod_id" value="{{ $prod->ProdID }}">
-                                        {{-- <input type="hidden" value="1" class="qty-input"> --}}
-                                        <button class="btn  addToCartBtn btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button>
-                                    </td>
-                                @endif
-                                <td class="remove-col remove-wishlist-item"><button class="btn-remove"><i class="icon-close"></i></button></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                @else
-                    <h3>Wishlist is empty</h3>
-                    <a href="{{ url('category') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
-                @endif
+                                            @if ($prod->qty == 0)
+                                                <td class="stock-col"><span class="out-of-stock">Out of stock</span></td>
+                                            @else
+                                                <td class="stock-col">
+                                                    <input type="number" name="quantity" class="form-control qty-input" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                                    @if ($prod->qty > 10)
+                                                        <span class="in-stock">In stock:</span><font color="white"> <strong>10 +</strong></font>
+                                                    @else
+                                                        <span class="in-stock">In stock:</span><font color="white"> <strong>{{ $prod->qty }}</strong></font>
+                                                    @endif
+                                                </td>
+                                            @endif
 
-            </table><!-- End .table table-wishlist -->
-            <div class="wishlist-share">
-                <div class="social-icons social-icons-sm mb-2">
-                    <label class="social-label">Share on:</label>
-                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                    <a href="#" class="social-icon" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-                    <a href="#" class="social-icon" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                </div><!-- End .soial-icons -->
-            </div><!-- End .wishlist-share -->
-        </div><!-- End .container -->
-    </div><!-- End .page-content -->
+                                            @if ($prod->qty == 0)
+                                                <td class="action-col">
+                                                    <button disabled class="btn btn-block btn-outline-primary-2"><i class="icon-cart-plus"></i>Add to Cart</button>
+                                                </td>
+                                            @else
+                                                <td class="action-col" align="center">
+                                                    <input type="hidden" class="prod_id" value="{{ $prod->ProdID }}">
+                                                    {{-- <input type="hidden" value="1" class="qty-input"> --}}
+                                                    <a href="#" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                                </td>
+                                            @endif
+                                        </tr><!-- END TR-->
+                                    @endforeach
+                                </tbody>
+                            @else
+                                <span class="help-block opacity-7">
+                                    <strong>
+                                        <font color="red">Wishlist is empty</font>
+                                    </strong>
+                                </span>
+                                <a href="{{ url('category') }}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span> <i class="icon-refresh"></i></a>
+                            @endif
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
 @endsection
-

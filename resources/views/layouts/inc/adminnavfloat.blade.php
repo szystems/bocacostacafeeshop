@@ -5,8 +5,9 @@
     <div class="card shadow-lg">
         <div class="card-header pb-0 pt-3">
             <div class="float-start">
-                <h5 class="mt-3 mb-0">E-Shop Settings</h5>
-                <p>Dashboard options.</p>
+
+                <h5 class="mt-3 mb-0">Bocacosta Coffee E-Shop</h5>
+                <p>Settings</p>
             </div>
             <div class="float-end mt-4">
                 <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
@@ -90,6 +91,8 @@
                     class="btn btn-dark mb-0 me-2" target="_blank">
                     <i class="fa fa-globe" aria-hidden="true"></i>
                 </a>
+                <br><br><br>
+                <img src="{{ asset('dashtemplate/assets/img/logo-ct.png') }}" class="navbar-brand-img h-100" alt="E-Shop" width="200">
             </div>
         </div>
     </div>

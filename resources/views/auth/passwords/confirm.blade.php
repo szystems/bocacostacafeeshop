@@ -1,82 +1,62 @@
 @extends('layouts.frontend')
-{{-- Trending products --}}
+{{-- Confirm --}}
 @section('content')
-
-
-    {{-- Login --}}
-
-    <div class="mb-6"></div><!-- End .mb-6 -->
-
-    <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
+    <section class="ftco-section">
         <div class="container">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ __('Confirm Password') }}</li>
-            </ol>
-        </div><!-- End .container -->
-    </nav><!-- End .breadcrumb-nav -->
+            <div class="row">
 
-    <div class="login-page bg-image pt-8 pb-8 pt-md-12 pb-md-12 pt-lg-17 pb-lg-17" style="background-image: url({{asset('fronttemplate/assets/images/backgrounds/login-bg.jpg')}})">
-        <div class="container">
-            <div class="form-box">
-                <div class="form-tab">
-                    <ul class="nav nav-pills nav-fill" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="signin-tab-2" data-toggle="tab" href="#signin-2" role="tab" aria-controls="signin-2" aria-selected="true">{{ __('Confirm Password') }}</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="signin-2" role="tabpanel" aria-labelledby="signin-tab-2">
-                            <form method="POST" action="{{ route('password.confirm') }}">
-                                @csrf
-                                {{ __('Please confirm your password before continuing.') }}
+                <div class="col-xl-3 sidebar ftco-animate">
+
+                </div>
+
+                <div class="col-xl-6 ftco-animate">
+                    <form  method="POST" action="{{ route('password.confirm') }}" class="billing-form ftco-bg-dark p-3 p-md-5">
+                        @csrf
+                        <h3 class="mb-4 billing-heading"> Forgot Your Password?</h3>
+
+                        <div class="row align-items-end">
+                            {{ __('Please confirm your password before continuing.') }}
+                            <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="password">{{ __('Password') }} *</label>
+                                    <label for="firstname">{{ __('Password') }}</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                @enderror
-                                </div><!-- End .form-group -->
+                                    @enderror
+                                </div>
+                            </div>
 
-                                <div class="form-footer">
-                                    <button type="submit" class="btn btn-outline-primary-2">
-                                        <span>{{ __('Confirm Password') }}</span>
-                                        <i class="icon-long-arrow-right"></i>
-                                    </button>
+                            <div class="w-100"></div>
+                            <div class="col-md-12">
 
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
-                                </div><!-- End .form-footer -->
+                                <div class="form-group">
+                                    <p><button type="submit" class="btn btn-primary py-3 px-4 w-100">
+                                            <font color="white"><strong>Confirm Password</strong></font>
+                                        </button></p>
+                                </div>
+                                @if (Route::has('password.request'))
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
 
-                            </form>
-                            {{-- <div class="form-choice">
-                                <p class="text-center">or sign in with</p>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <a href="#" class="btn btn-login btn-g">
-                                            <i class="icon-google"></i>
-                                            Login With Google
-                                        </a>
-                                    </div><!-- End .col-6 -->
-                                    <div class="col-sm-6">
-                                        <a href="#" class="btn btn-login btn-f">
-                                            <i class="icon-facebook-f"></i>
-                                            Login With Facebook
-                                        </a>
-                                    </div><!-- End .col-6 -->
-                                </div><!-- End .row -->
-                            </div><!-- End .form-choice --> --}}
-                        </div><!-- .End .tab-pane -->
-                    </div><!-- End .tab-content -->
-                </div><!-- End .form-tab -->
-            </div><!-- End .form-box -->
-        </div><!-- End .container -->
-    </div><!-- End .login-page section-bg -->
+                            </div>
 
 
+                        </div>
+                    </form><!-- END -->
+                </div> <!-- .col-md-6 -->
+
+
+
+
+                <div class="col-xl-3 sidebar ftco-animate">
+
+                </div>
+
+            </div>
+        </div>
+    </section> <!-- .section -->
 @endsection

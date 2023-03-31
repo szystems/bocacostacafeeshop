@@ -1,41 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- molla/index-2.html') }}  22 Nov 2019 09:55:32 GMT -->
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T0MFC9H1N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6T0MFC9H1N');
+    </script>
 
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>E-Shop</title>
-    <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="E-Shop">
+    <title>Bocacosta Coffee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <meta name="keywords" content="coffee, bocacosta, Guatemala, shop">
+    <meta name="description" content="Bocacosta Coffee Shop">
     <meta name="author" content="Szystems">
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('fronttemplate/assets/images/icons/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('fronttemplate/assets/images/icons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('fronttemplate/assets/images/icons/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('fronttemplate/assets/images/icons/site.html') }}">
-    <link rel="mask-icon" href="{{ asset('fronttemplate/assets/images/icons/safari-pinned-tab.svg') }}" color="#666666">
-    <link rel="shortcut icon" href="{{ asset('fronttemplate/assets/images/icons/favicon.ico') }}">
-    <meta name="apple-mobile-web-app-title" content="Molla">
-    <meta name="application-name" content="Molla">
-    <meta name="msapplication-TileColor" content="#cc9966">
-    <meta name="msapplication-config" content="{{ asset('fronttemplate/assets/images/icons/browserconfig.xml') }}">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Plugins CSS File -->
-    <link rel="stylesheet" href="{{ asset('fronttemplate/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('fronttemplate/assets/css/plugins/owl-carousel/owl.carousel.css') }}">
-    <link rel="stylesheet" href="{{ asset('fronttemplate/assets/css/plugins/magnific-popup/magnific-popup.css') }}">
+    <link rel="icon" href="{{ asset('bocacostacafeweb/images/logos/favico.ico') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/animate.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/magnific-popup.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/aos.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/ionicons.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/jquery.timepicker.css') }}">
+
+
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/style.css') }}">
+
+    {{-- material icons --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <!-- Main CSS File -->
-    <link rel="stylesheet" href="{{ asset('fronttemplate/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('fronttemplate/assets/css/plugins/nouislider/nouislider.css') }}">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    {{-- whatsapp --}}
     <style>
         .whatsapp-chat{
             bottom: 10px;
@@ -43,375 +62,248 @@
             position: fixed;
         }
     </style>
-
-    {{-- <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet"> --}}
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}">
+                <img src="{{ asset('bocacostacafeweb/images/logos/logorojo.png') }}" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item {{ Request::is('/') ? 'active bg-gradient-info':''  }}"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
 
-
-            <div class="header-middle sticky-header">
-                <div class="container">
-                    <div class="header-left">
-                        <button class="mobile-menu-toggler">
-                            <span class="sr-only">Toggle mobile menu</span>
-                            <i class="icon-bars"></i>
-                        </button>
-
-                        <a href="index.html') }}" class="logo">
-                            <img src="{{ asset('fronttemplate/assets/images/logo.png') }}" alt="Molla Logo" width="105" height="25">
-                        </a>
-
-                        <nav class="main-nav">
-                            <ul class="menu sf-arrows">
-                                <li class="">
-                                    <a href="{{ url('/') }}">Home</a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('category') }}" class="sf-with-ul">Category</a>
-                                    @php
-                                        $categories=DB::table('categories')
-                                        ->where('status','=','1')
-                                        ->orderBy('name','asc')
-                                        ->get();
-                                    @endphp
-                                    <ul>
-                                        @foreach ($categories as $cat)
-                                            <li><a href="{{ url('view-category/'.$cat->slug) }}">{{ $cat->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            </ul><!-- End .menu -->
-                        </nav><!-- End .main-nav -->
-                    </div><!-- End .header-left -->
-
-                    <div class="header-right">
-                        <div class="header-search">
-                            <form action="{{ url('buscarproducto') }}" method="POST">
-                                {{ csrf_field() }}
-                                <a  class="search-toggle active" role="button" title="Search"><i class="icon-search"></i></a>
-                                <div class="header-search-wrapper show">
-                                    <label class="sr-only">Search</label>
-                                    <input type="search" class="form-control" name="product_name" id="search_product" placeholder="Search Products..." required>
-                                </div><!-- End .header-search-wrapper -->
-                            </form>
-
-                        </div><!-- End .header-search -->
-                        @if (Auth::guest())
-                            <div class="dropdown cart-dropdown">
-                                <a href="" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                                    <i class="icon-shopping-cart"></i>
-                                    <span class="cart-count cart-count-pill">0</span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    {{-- <div class="dropdown-cart-products">
-                                        <div class="product">
-                                            <div class="product-cart-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html') }}">Beige knitted elastic runner shoes</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span>
-                                                    x $84.00
-                                                </span>
-                                            </div><!-- End .product-cart-details -->r e
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html') }}" class="product-image">
-                                                    <img src="{{ asset('fronttemplate/assets/images/products/cart/product-1.jpg') }}" alt="product">
-                                                </a>
-                                            </figure>
-                                            <a href="" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        </div><!-- End .product -->
-
-                                        <div class="product">
-                                            <div class="product-cart-details">
-                                                <h4 class="product-title">
-                                                    <a href="product.html') }}">Blue utility pinafore denim dress</a>
-                                                </h4>
-
-                                                <span class="cart-product-info">
-                                                    <span class="cart-product-qty">1</span>
-                                                    x $76.00
-                                                </span>
-                                            </div><!-- End .product-cart-details -->
-
-                                            <figure class="product-image-container">
-                                                <a href="product.html') }}" class="product-image">
-                                                    <img src="{{ asset('fronttemplate/assets/images/products/cart/product-2.jpg') }}" alt="product">
-                                                </a>
-                                            </figure>
-                                            <a href="" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                        </div><!-- End .product -->
-                                    </div><!-- End .cart-product -->
-
-                                    <div class="dropdown-cart-total">
-                                        <span>Total</span>
-
-                                        <span class="cart-total-price">$160.00</span>
-                                    </div><!-- End .dropdown-cart-total --> --}}
-
-                                    <div class="dropdown-cart-action">
-                                        <a href="{{ route('login') }}" class="btn btn-primary">Login <span class="material-symbols-outlined">login</span></a>
-                                        <a href="{{ route('register') }}" class="btn btn-outline-primary-2"><span>Register</span><span class="material-symbols-outlined">app_registration</span></a>
-                                    </div><!-- End .dropdown-cart-total -->
-                                </div><!-- End .dropdown-menu -->
-                            </div><!-- End .cart-dropdown -->
-                        @else
-                            <div class="cart-dropdown">
-                                <a href="{{ url('wishlist') }}" class="dropdown-toggle"  aria-haspopup="true" aria-expanded="false" data-display="static">
-                                    <i class="icon-heart-o"></i>
-                                    {{-- @php
-                                        $wishNum=DB::table('wishlists')
-                                        ->where('user_id','=',Auth::id())
-                                        ->get();
-                                    @endphp --}}
-                                    {{-- <span class="wish-count">0</span> --}}
-                                    <h6><span class="position-absolute badge badge-pill bg-secondary wish-count top-20 ">0</span></h6>
-                                </a>
-                            </div><!-- End .cart-dropdown -->
-                            <div class="dropdown cart-dropdown">
-                                <a href="" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                                    <i class="icon-shopping-cart"></i>
-                                    {{-- @php
-                                        $cartNum=DB::table('carts')
-                                        ->where('user_id','=',Auth::id())
-                                        ->get();
-                                    @endphp --}}
-                                    <span class="cart-count cart-count-pill">0</span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    @php
-                                    $totalCart = 0;
-                                        $cartitems = DB::table('carts as c')
-                                        ->join('products as p','c.prod_id','=','p.id')
-                                        ->join('categories as cat','p.cate_id','cat.id')
-                                        ->where('c.user_id',Auth::id())
-                                        ->select('c.id','c.user_id','c.prod_id as ProdID','c.prod_qty','p.name as Product','p.slug as ProdSlug','p.small_description','p.description','p.original_price','p.selling_price','p.image','p.qty','p.tax','p.status','p.trending','p.discount','p.cate_id','cat.name as Category','cat.slug as CatSlug')
-                                        ->orderBy('p.name','asc')
-                                        ->get();
-                                    @endphp
-                                    <div class="dropdown-cart-products">
-                                        @if ($cartitems->count() > 0)
-                                            @foreach ($cartitems as $prod)
-                                                @php
-                                                    if ($prod->discount == "1") {
-                                                        $price = $prod->selling_price;
-                                                    }else {
-                                                        $price = $prod->original_price;
-                                                    }
-                                                @endphp
-                                                <div class="product product_data">
-                                                    <div class="product-cart-details">
-                                                        <h4 class="product-title">
-                                                            <input type="hidden" class="prod_id" value="{{ $prod->ProdID }}">
-                                                            <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">{{ $prod->Product }}</a>
-                                                        </h4>
-
-                                                        <span class="cart-product-info">
-                                                            <span class="cart-product-qty">{{ $prod->prod_qty }}</span>
-                                                            x @if ($prod->discount == "1")
-                                                                {{ number_format($prod->selling_price,2, '.', ',') }} <strike>{{ number_format($prod->original_price,2, '.', ',') }}</strike>
-                                                            @else
-                                                                {{ number_format($prod->original_price,2, '.', ',') }}
-                                                            @endif
-                                                        </span>
-                                                    </div><!-- End .product-cart-details -->
-
-                                                    <figure class="product-image-container">
-                                                        <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}" class="product-image">
-                                                            <img src="{{ asset('assets/uploads/product/'.$prod->image) }}" alt="{{ $prod->Product }}">
-                                                        </a>
-                                                    </figure>
-                                                    <button class="btn-remove delete-cart-item"><i class="icon-close"></i></button>
-                                                </div><!-- End .product -->
-                                                @php
-                                                    $totalCart +=  $price * $prod->prod_qty;
-                                                @endphp
-                                            @endforeach
-                                        @else
-                                            <div>Cart is empty.</div>
-                                        @endif
-
-                                    </div><!-- End .cart-product -->
-
-                                    <div class="dropdown-cart-total">
-                                        <span>Total</span>
-
-                                        <span class="cart-total-price">{{ number_format($totalCart,2, '.', ',') }}</span>
-                                    </div><!-- End .dropdown-cart-total -->
-
-                                    <div class="dropdown-cart-action">
-                                        <a href="{{ url('cart') }}" class="btn btn-primary">View Cart</a>
-                                        @php
-                                            $outofstock = 0;
-                                            foreach($cartitems as $item)
-                                            {
-                                                if ($item->qty < $item->prod_qty) {
-                                                    $outofstock++;
-                                                }
-                                            }
-                                        @endphp
-
-                                        @if ($cartitems->count() > 0)
-                                            @if ($outofstock > 0)
-                                                <a href="{{ url('checkout') }}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
-                                                <br>
-                                            @else
-                                                <a href="{{ url('checkout') }}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
-                                            @endif
-
-                                        @endif
-
-                                    </div><!-- End .dropdown-cart-total -->
-                                    @if ($outofstock > 0)
-                                        <div class="alert alert-danger" role="alert">
-                                            You have <strong>{{ $outofstock }}</strong> item(s) out of stock, if you proceed it will be removed from your <a href="{{ url('cart') }}">cart</a>.
-                                        </div>
+                    <li class="nav-item dropdown {{ Request::is('history') ? 'active bg-gradient-info':''  }}">
+                        <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">About</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="{{ url('history') }}">History</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown {{ Request::is('category','ourcoffee') ? 'active bg-gradient-info':''  }}">
+                        <a class="nav-link dropdown-toggle" href="{{ url('category') }}" id="dropdown03" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Our Coffee</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                            <a class="dropdown-item" href="{{ url('category') }}">Choose your type of flavor</a>
+                            @php
+                                $categories=DB::table('categories')
+                                ->where('status','=','1')
+                                ->orderBy('name','asc')
+                                ->get();
+                            @endphp
+                            @foreach ($categories as $cat)
+                                <a class="dropdown-item" href="{{ url('view-category/'.$cat->slug) }}">
+                                    {{ $cat->name }}
+                                    @if ($cat->popular == "1")
+                                        <span class="badge badge-info">{{ $cat->popular == '1'? 'Popular':''}}</span>
                                     @endif
+                                </a>
+                            @endforeach
+                        </div>
+                    </li>
+                    <li class="nav-item {{ Request::is('contact') ? 'active bg-gradient-info':''  }}"><a href="{{ url('contact') }}" class="nav-link">Contact</a></li>
+                    <li class="nav-item {{ Request::is('wholesale') ? 'active bg-gradient-info':''  }}"><a href="{{ url('wholesale') }}" class="nav-link">Wholesale</a></li>
+                    <!-- <li class="nav-item"><a href="socialimpact.html" class="nav-link">Social Impact</a></li>
+                    <li class="nav-item"><a href="coffeebenefits.html" class="nav-link">Coffee Benefits</a></li> -->
+                    <!-- <li class="nav-item"><a href="" class="nav-link">Coffee Quiz</a></li> -->
 
-                                </div><!-- End .dropdown-menu -->
-                            </div><!-- End .cart-dropdown -->
 
-                        @endif
 
-                        <div class="dropdown cart-dropdown">
-                            <a href="" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                                <i class="icon-user"></i>
+
+                    @if (Auth::guest())
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                My Account
                             </a>
-
-                            <div class="dropdown-menu dropdown-menu-right">
-                                {{-- <div class="dropdown-cart-products">
-
-
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h5><a href="product.html') }}"><span class="material-symbols-outlined">login</span> Login</a></h5>
-                                        </div><!-- End .product-cart-details -->
-                                    </div><!-- End .product -->
-
-                                </div><!-- End .cart-product -->
-
-                                <div class="dropdown-cart-total">
-                                    <span>Total</span>
-
-                                    <span class="cart-total-price">$160.00</span>
-                                </div><!-- End .dropdown-cart-total --> --}}
-                                @if (Auth::guest())
-                                    <div class="dropdown-cart-action">
-                                        <a href="{{ route('login') }}" class="btn btn-primary">Login <span class="material-symbols-outlined">login</span></a>
-                                        <a href="{{ route('register') }}" class="btn btn-outline-primary-2"><span>Register</span><span class="material-symbols-outlined">app_registration</span></a>
-                                    </div><!-- End .dropdown-cart-total -->
-                                @else
-                                    <div class="dropdown">
-                                        <ul>
-                                            <li>
-                                                <p><a href="{{ url('my-account') }}"><i class="icon-user"></i><font color="black"> My Account</font></a></p>
-                                            </li>
-                                            <li>
-                                                <p><a href="{{ url('wishlist') }}"><i class="icon-heart-o"></i><font color="black"> Whishlist <span class="badge badge-secondary wish-count"></span> </font></a></p>
-                                            </li>
-                                            <li>
-                                                <p><a href="{{ url('cart') }}"><i class="icon-shopping-cart"></i><font color="black"> Cart <span class="badge badge-secondary cart-count-pill"></span></font></a></p>
-                                            </li>
-                                            <li>
-                                                <p><a href="{{ url('my-orders') }}"><i class="icon-bars"></i><font color="black"> Orders </font></a></p>
-                                            </li>
-                                            @if (Auth::user()->role_as == "1")
-                                                <li>
-                                                    <p><a href="{{ url('dashboard') }}"><i class="icon-laptop"></i><font color="black"> Admin Dashboard </font></a></p>
-                                                </li>
-                                            @endif
-
-                                        </ul>
-                                    </div><!-- End .dropdown-cart-total -->
-                                    <div class="dropdown-cart-action">
-                                        <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="btn btn-primary">logout <span class="material-symbols-outlined">logout</span></a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div><!-- End .dropdown-cart-total -->
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                <a class="dropdown-item" href="{{ route('login') }}">Sign In</a>
+                                <a class="dropdown-item" href="{{ route('register') }}">Register</a>
+                                <a class="dropdown-item" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                            </div>
+                        </li>
+                    @else
+                        <li class="nav-item dropdown">
+                            @php
+                                $usuario = Auth::user()->name; $nombre = explode(' ',trim($usuario));
+                            @endphp
+                            <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ ucwords($nombre[0]) }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown02">
+                                <a class="dropdown-item" href="{{ url('my-account') }}">- My Account</a>
+                                <a class="dropdown-item" href="{{ url('whislist') }}">- Wishlist</a>
+                                <a class="dropdown-item" href="{{ url('cart') }}">- Cart</a>
+                                <a class="dropdown-item" href="{{ url('my-orders') }}">- Orders</a>
+                                @if (Auth::user()->role_as == "1")
+                                <a class="dropdown-item" href="{{ url('dashboard') }}">- Admin Dashboard</a>
                                 @endif
-                            </div><!-- End .dropdown-menu -->
-                        </div><!-- End .user-dropdown -->
-                    </div><!-- End .header-right -->
-                </div><!-- End .container -->
-            </div><!-- End .header-middle -->
-        </header><!-- End .header -->
+                                <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- LOGOUT</font>  </a>
+                                <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endif
+                    <li class="nav-item cart">
+                        @if (Auth::guest())
+                            <a href="{{ route('login') }}" class="nav-link">
+                                <span class="icon icon-shopping_cart"></span>
+                                <span class="bag d-flex justify-content-center align-items-center font-weight-bold text-white"><small>0</small></span>
+                            </a>
+                        @else
+                            <a href="{{ url('cart') }}" class="nav-link">
+                                <span class="icon icon-shopping_cart"></span>
+                                <span class="bag d-flex justify-content-center align-items-center cart-count-pill font-weight-bold text-white"><small>0</small></span>
+                            </a>
+                        @endif
+                    </li>
+                    <li class="nav-item cart">
+                        @if (Auth::guest())
+                            <a href="{{ route('login') }}" class="nav-link">
+                                <span class="material-symbols-outlined">favorite</span>
+                                <span class="bag d-flex justify-content-center align-items-center font-weight-bold text-white"><small>0</small></span>
+                            </a>
+                        @else
+                        <a href="{{ url('wishlist') }}" class="nav-link">
+                            <span class="material-symbols-outlined">favorite</span>
+                            <span class="bag d-flex justify-content-center align-items-center wish-count font-weight-bold text-white"><small>0</small></span>
+                        </a>
+                        @endif
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END nav -->
 
-        <main class="main">
-            @yield('content')
-        </main><!-- End .main -->
+    @yield('content')
 
-        @include('layouts.incfront.frontfooter')
-
-    </div><!-- End .page-wrapper -->
-    <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
-
-    @include('layouts.incfront.mobilmenu')
-
-    @include('layouts.incfront.loginmodal')
-
-    {{-- <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
-        <div class="row justify-content-center">
-            <div class="col-10">
-                <div class="row no-gutters bg-white newsletter-popup-content">
-                    <div class="col-xl-3-5col col-lg-7 banner-content-wrap">
-                        <div class="banner-content text-center">
-                            <img src="{{ asset('fronttemplate/assets/images/popup/newsletter/logo.png') }}" class="logo" alt="logo" width="60" height="15">
-                            <h2 class="banner-title">get <span>25<light>%</light></span> off</h2>
-                            <p>Subscribe to the Molla eCommerce newsletter to receive timely updates from your favorite products.</p>
-                            <form action="#">
-                                <div class="input-group input-group-round">
-                                    <input type="email" class="form-control form-control-white" placeholder="Your Email Address" aria-label="Email Adress" required>
-                                    <div class="input-group-append">
-                                        <button class="btn" type="submit"><span>go</span></button>
-                                    </div><!-- .End .input-group-append -->
-                                </div><!-- .End .input-group -->
-                            </form>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
-                                <label class="custom-control-label" for="register-policy-2">Do not show this popup again</label>
-                            </div><!-- End .custom-checkbox -->
+    <footer class="ftco-footer ftco-section img">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">About Us</h2>
+                        <p>The flavors of our coffee are spectacular. But, unfortunately, they are nowhere to be found.
+                        </p>
+                        <p><strong>ONLY IN BOCACOSTA COFFEE</strong></p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li> -->
+                            <li class="ftco-animate"><a href="https://www.instagram.com/bocacostacoffeeus/"><span
+                                        class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-4 col-md-6 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Recent Blog</h2>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_1.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a>
+                                </h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(images/image_2.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a>
+                                </h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="icon-calendar"></span> Sept 15, 2018</a></div>
+                                    <div><a href="#"><span class="icon-person"></span> Admin</a></div>
+                                    <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-2-5col col-lg-5 ">
-                        <img src="{{ asset('fronttemplate/assets/images/popup/newsletter/img-1.jpg') }}" class="newsletter-img" alt="newsletter">
+                </div> -->
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Links</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="{{ url('/') }}" class="py-2 d-block">Home</a></li>
+                            <li><a href="ourcoffee.html" class="py-2 d-block">Our Coffee</a></li>
+                            <!-- <li><a href="wholesale.html" class="py-2 d-block">Wholesale</a></li> -->
+                            <li><a href="{{ url('social-impact') }}" class="py-2 d-block">Social Impact</a></li>
+                            <!-- <li><a href="coffeebenefits.html" class="py-2 d-block">Coffee Benefits</a></li> -->
+                            <li><a href="{{ url('contact') }}" class="py-2 d-block">Contact</a></li>
+                            <!-- <li><a href="faq.html" class="py-2 d-block">FAQ</a></li> -->
+                        </ul>
                     </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script>
+                        All rights reserved
+                        | <a href="https://szystems.com" target="_blank">Szystems</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
                 </div>
             </div>
         </div>
-    </div> --}}
-    <!-- Plugins JS File -->
+    </footer>
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4"
+                stroke-miterlimit="10" stroke="#c70017" />
+        </svg></div>
+
+    <!-- Plugins JS whatsapp File -->
     <div class="whatsapp-chat">
         <a href="https://wa.me/50242153288?text=I'm%20interested%20in%20your%20car%20for%20sale" target="_blank">
-            <img src="{{ asset('assets/imgs/logow.png') }}" alt="whatsapp-chat" height="100px" width="100px">
+            <img src="{{ asset('assets/imgs/logow.png') }}" alt="whatsapp-chat" height="75px" width="75px">
         </a>
     </div>
-    <script src="{{ asset('fronttemplate/assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/jquery.hoverIntent.min.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/superfish.min.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/bootstrap-input-spinner.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/jquery.elevateZoom.min.js') }}"></script>
-    <script src="{{ asset('fronttemplate/assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/popper.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/aos.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery.animateNumber.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/scrollax.min.js') }}"></script>
+    <script src="{{ asset('bocacostacafeweb/js/main.js') }}"></script>
+    {{-- Custom --}}
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     {{-- <script src="{{ asset('frontend/css/custom.css') }}"></script> --}}
     <script src="{{ asset('frontend/js/checkout.js') }}"></script>
-    <!-- Main JS File -->
-    <script src="{{ asset('fronttemplate/assets/js/main.js') }}"></script>
+
+    {{-- sweet alert --}}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -453,8 +345,7 @@
     </script>
     @endif
     @yield('scripts')
+
 </body>
 
-
-<!-- molla/index-2.html') }}  22 Nov 2019 09:55:42 GMT -->
 </html>
