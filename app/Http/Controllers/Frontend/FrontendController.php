@@ -15,11 +15,11 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $trending = Product::where('trending','1')->where('status','1')->take(15)->orderby('name','asc')->get();
-        $popular = Category::where('popular','1')->where('status','1')->take(15)->orderby('name','asc')->get();
-        $discount = Product::where('discount','1')->where('status','1')->take(15)->orderby('name','asc')->get();
+        // $trending = Product::where('trending','1')->where('status','1')->take(15)->orderby('name','asc')->get();
+        $categories = Category::where('status','1')->take(15)->orderby('name','asc')->get();
+        // $discount = Product::where('discount','1')->where('status','1')->take(15)->orderby('name','asc')->get();
         $config = Config::first();
-        return view('frontend.index', compact('trending','popular','discount','config'));
+        return view('frontend.index', compact('categories','config'));
     }
 
     public function category()
