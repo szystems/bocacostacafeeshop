@@ -246,6 +246,42 @@
         </div>
     </section>
 
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section ftco-animate text-center">
+          	{{-- <span class="subheading">Discover</span> --}}
+            <h2 class="mb-4">Categories</h2>
+            <p>Choose one of our categories and buy the best coffee</p>
+          </div>
+        </div>
+        <div class="row">
+            @php
+                $numCats = $categories->count();
+                if ($numCats > 4) {
+                    $numCats = 3;
+                }else {
+                    $numCats = 12/$numCats;
+                }
+            @endphp
+            @foreach ($categories as $cat)
+                <div class="col-md-{{ $numCats }}">
+                    <div class="menu-entry">
+                        <a href="{{ url('view-category/'.$cat->slug) }}" class="img" style="background-image: url({{ asset('assets/uploads/category/'.$cat->image) }});"></a>
+                        <div class="text text-center pt-4">
+                            <h3><a href="{{ url('view-category/'.$cat->slug) }}">{{ $cat->name }}</a></h3>
+                            <p>{{ $cat->description }}</p>
+                            @if ($cat->popular == "1")
+                                <span class="badge badge-info">{{ $cat->popular == '1'? 'Popular':''}}</span>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    	</div>
+    </section>
+
     <section class="ftco-counter ftco-bg-dark img" id="section-counter"
         style="background-image: url({{ asset('bocacostacafeweb/images/varias/12.jpg') }});" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
