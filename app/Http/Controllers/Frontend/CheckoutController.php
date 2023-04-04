@@ -11,6 +11,8 @@ use App\Models\OrderItem;
 use App\Models\User;
 use App\Models\Config;
 use App\Http\Requests\OrderFormRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmation;
 use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
@@ -103,11 +105,21 @@ class CheckoutController extends Controller
 
         $cartProducts = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartProducts);
+        $config = Config::first();
 
         if ($request->input('payment_mode') == "Paid by Razorpay" || $request->input('payment_mode')== "Paid by Paypal" ) {
+            $this->sendOrderConfirmation($order,$config,$user);
             return response()->json(['status'=> "Order placed Sussesfully"]);
         }
+        $this->sendOrderConfirmation($order,$config,$user);
         return redirect('/my-orders')->with('status', "Order placed Sussesfully");
+    }
+
+    public function sendOrderConfirmation($order,$config,$user)
+    {
+        $config = Config::first();
+        Mail::to($order->email)->send(new OrderConfirmation($order,$config,$user));
+        Mail::to($config->email)->send(new OrderConfirmation($order,$config,$user));
     }
 
     public function razorpaycheck(Request $request)

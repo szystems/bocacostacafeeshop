@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Config;
 use DB;
 use PDF;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\StatusUpdate;
 use Carbon\Carbon;
 use DateTime;
 use DateTimeZone;
@@ -113,7 +115,16 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = $request->input('order_status');
         $order->update();
+        $config = Config::first();
+        $user = User::where('id', $order->user_id)->first();
+        $this->sendOrderUpdate($order,$config,$user);
         return redirect('orders')->with('status', "Order Updated Successfully");
+    }
+
+    public function sendOrderUpdate($order,$config,$user)
+    {
+        $config = Config::first();
+        Mail::to($order->email)->send(new StatusUpdate($order,$config,$user));
     }
 
     public function orderhistory()

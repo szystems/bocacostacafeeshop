@@ -89,6 +89,7 @@
                                 <select class="form-select" name="order_status" aria-label="Floating label select example">
                                     <option {{ $order->status == '0'? 'Selected':'' }} value="0">Pending</option>
                                     <option {{ $order->status == '1'? 'Selected':'' }} value="1">Completed</option>
+                                    <option {{ $order->status == '2'? 'Selected':'' }} value="2">Cancelled</option>
                                 </select>
                                 <button type="submit" class="btn btn-warning px-7">Update</button>
                             </form>

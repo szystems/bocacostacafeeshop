@@ -36,12 +36,15 @@
                                 @if ($queryStatus != null)
                                     @if ($queryStatus == '0')
                                         <option selected value="0">Pending</option>
-                                    @else
+                                    @elseif ($queryStatus == '1')
                                         <option selected value="1">Completed</option>
+                                    @elseif ($queryStatus == '2')
+                                        <option selected value="2">Cancelled</option>
                                     @endif
                                 @endif
                                 <option value="0">Pending</option>
                                 <option value="1">Completed</option>
+                                <option value="2">Cancelled</option>
                             </select>
                         </div>
 

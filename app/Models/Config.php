@@ -18,6 +18,7 @@ class Config extends Model
         'tax',
         'paypal',
         'dbt',
-        'shipping_description'
+        'shipping_description',
+        'email'
     ];
 }

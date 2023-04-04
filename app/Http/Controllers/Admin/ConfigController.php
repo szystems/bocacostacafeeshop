@@ -43,6 +43,7 @@ class ConfigController extends Controller
         $config->paypal = $request->input('paypal') == TRUE ? '1':'0';
         $config->dbt = $request->input('dbt') == TRUE ? '1':'0';
         $config->shipping_description = $request->input('shipping_description');
+        $config->email = $request->input('email');
         $config->update();
 
         $request->session()->flash('alert-success', 'Settings updated correctly.');

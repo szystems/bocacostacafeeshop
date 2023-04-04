@@ -79,7 +79,14 @@
                                                     {{ $config->currency_simbol }}{{ number_format($order->total_price, 2, '.', ',') }}
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
-                                                    {{ $order->status == '0' ? 'Pending' : 'Completed' }}</td>
+                                                    @if ($order->status == '0')
+                                                        <span class="badge bg-gradient-warning">Pending</span>
+                                                    @elseif ($order->status == '1')
+                                                        <span class="badge bg-gradient-success">Completed</span>
+                                                    @elseif ($order->status == '2')
+                                                        <span class="badge bg-gradient-danger">Cancelled</span>
+                                                    @endif
+                                                </td>
                                                 <td class="align-middle text-center text-sm">{{ $order->payment_mode }}
                                                     @if ($order->payment_id != null)
                                                         ({{ $order->payment_id }})
@@ -123,6 +130,7 @@
                                     $total = 0;
                                     $totaltax = 0;
                                     $completeorders = 0;
+                                    $cancelledorders = 0;
                                     $desde = date("d-m-Y", strtotime($desde));
                                     $hasta = date("d-m-Y", strtotime($hasta));
                                     $totalorders = $ordersResume->count();
@@ -130,9 +138,14 @@
                                 @endphp
                                 @foreach ($ordersResume as $resume)
                                     @php
-                                        $total += $resume->total_price;
-                                        $totaltax += $resume->total_tax;
-                                        $completeorders += $resume->status;
+                                        if ($resume->status == "2") {
+                                            $cancelledorders = $resume->total_price;
+                                        }else {
+                                            $total += $resume->total_price;
+                                            $totaltax += $resume->total_tax;
+                                            $completeorders += $resume->status;
+                                        }
+
                                     @endphp
                                 @endforeach
                                 <div class="card-body px-0 pb-2">
@@ -145,6 +158,7 @@
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">SubTotal</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total Tax</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total Cancelled</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -178,12 +192,16 @@
 
                                                     </td>
                                                     <td class="align-middle" align="center">
-                                                        <font color="red"><strong>{{ $config->currency_simbol }}{{ number_format($totaltax, 2, '.', ',') }}</strong></font>
+                                                        <font color="warning"><strong>{{ $config->currency_simbol }}{{ number_format($totaltax, 2, '.', ',') }}</strong></font>
 
                                                     </td>
 
                                                     <td class="align-middle" align="center">
                                                         <font color="blue"><strong>{{ $config->currency_simbol }}{{ number_format($total, 2, '.', ',') }}</strong></font>
+
+                                                    </td>
+                                                    <td class="align-middle" align="center">
+                                                        <font color="red"><strong>{{ $config->currency_simbol }}{{ number_format($cancelledorders, 2, '.', ',') }}</strong></font>
 
                                                     </td>
                                                 </tr>

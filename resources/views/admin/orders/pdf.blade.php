@@ -47,7 +47,13 @@
         <font size="1">Status: </font>
         <font size="1" color="blue">
             @if ($queryStatus != null)
-                {{ $queryStatus == '0' ? 'Pending' : 'Completed' }}
+                @if ($queryStatus == '0')
+                    Pending
+                @elseif ($queryStatus == '1')
+                    Completed
+                @elseif ($queryStatus == '2')
+                    Cancelled
+                @endif
             @else
                 All
             @endif
@@ -81,6 +87,9 @@
                 <th>
                     <font size="1">Total</font>
                 </th>
+                <th>
+                    <font size="1">Cancelled Orders</font>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -88,6 +97,7 @@
                 $total = 0;
                 $totaltax = 0;
                 $completeorders = 0;
+                $cancelledorders = 0;
                 $desde = date("d-m-Y", strtotime($desde));
                 $hasta = date("d-m-Y", strtotime($hasta));
                 $totalorders = $ordersResume->count();
@@ -95,9 +105,13 @@
             @endphp
             @foreach ($ordersResume as $resume)
                 @php
-                    $total += $resume->total_price;
-                    $totaltax += $resume->total_tax;
-                    $completeorders += $resume->status;
+                    if ($resume->status == "2") {
+                        $cancelledorders = $resume->total_price;
+                    }else {
+                        $total += $resume->total_price;
+                        $totaltax += $resume->total_tax;
+                        $completeorders += $resume->status;
+                    }
                 @endphp
             @endforeach
                 <tr>
@@ -108,13 +122,16 @@
                         <font size="1">({{ $completeorders }}/{{ $totalorders }})</font>
                     </td>
                     <td align="right">
-                        <font size="1">{{ $config->currency_simbol }}{{ number_format($total-$totaltax, 2, '.', ',') }}</font>
+                        <font size="1" color="limegreen">{{ $config->currency_simbol }}{{ number_format($total-$totaltax, 2, '.', ',') }}</font>
                     </td>
                     <td align="center">
-                        <font size="1">{{ $config->currency_simbol }}{{ number_format($totaltax, 2, '.', ',') }}</font>
+                        <font size="1" color="orange">{{ $config->currency_simbol }}{{ number_format($totaltax, 2, '.', ',') }}</font>
                     </td>
                     <td align="center">
-                        <font size="1"><strong>{{ $config->currency_simbol }}{{ number_format($total, 2, '.', ',') }}</strong></font>
+                        <font size="1" color="blue"><strong>{{ $config->currency_simbol }}{{ number_format($total, 2, '.', ',') }}</strong></font>
+                    </td>
+                    <td align="center">
+                        <font size="1" color="red"><strong>{{ $config->currency_simbol }}{{ number_format($cancelledorders, 2, '.', ',') }}</strong></font>
                     </td>
                 </tr>
         </tbody>
@@ -159,7 +176,16 @@
                             {{ $config->currency_simbol }}{{ number_format($order->total_price, 2, '.', ',') }}</font>
                     </td>
                     <td align="center">
-                        <font size="1">{{ $order->status == '0' ? 'Pending' : 'Completed' }}
+                        <font size="1">
+
+                            @if ($order->status == '0')
+                                <font color="orange">Pending</font>
+                            @elseif ($order->status == '1')
+                                <font color="limegreen">Completed</font>
+                            @elseif ($order->status == '2')
+                                <font color="red">Cancelled</font>
+                            @endif
+                        </font>
                     </td>
                     <td align="center">
                         <font size="1">{{ $order->payment_mode }} @if ($order->payment_id != null)
