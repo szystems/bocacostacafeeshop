@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Products</h4>
+                        <h4 class="mb-0">{{ __('Products') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>Show Product</u></h4>
+                    <h4><u>{{ __('Show') }} {{ __('Product') }}</u></h4>
                     <div>
                         <form action="{{ url('pdf-showproduct') }}" method="GET" target="_blank">
                             <input type="hidden" name="rproduct" value="{{ $product->id }}">
@@ -33,35 +33,35 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Category</strong></label>
+                            <label for=""><strong>{{ __('Category') }}</strong></label>
                             <p>{{ $product->category->name }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Code</strong></label>
+                            <label for=""><strong>{{ __('Code') }}</strong></label>
                             <p>{{ $product->code }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Name</strong></label>
+                            <label for=""><strong>{{ __('Name') }}</strong></label>
                             <p>{{ $product->name }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Slug</strong></label>
+                            <label for=""><strong>{{ __('Slug') }}</strong></label>
                             <p>{{ $product->slug }}</p>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for=""><strong>Small Description</strong></label>
+                            <label for=""><strong>{{ __('Small Description') }}</strong></label>
                             <textarea rows="3" class="form-control border px-2" readonly>{{ $product->small_description }}</textarea>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for=""><strong>Description</strong></label>
+                            <label for=""><strong>{{ __('Description') }}</strong></label>
                             <textarea rows="3" class="form-control border px-2" readonly>{{ $product->description }}</textarea>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for=""><strong>Price</strong></label>
+                            <label for=""><strong>{{ __('Price') }}</strong></label>
                             <p>{{ $config->currency_simbol }}{{ number_format($product->original_price,2, '.', ',') }}</p>
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for=""><strong>Discount Price</strong></label>
+                            <label for=""><strong>{{ __('Discount Price') }}</strong></label>
                             <p>{{ $config->currency_simbol }}{{ number_format($product->selling_price,2, '.', ',') }}</p>
                         </div>
                         <div class="col-md-4 mb-3">
@@ -76,25 +76,25 @@
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" name="status"
                                     {{ $product->status == 1 ? 'checked' : '' }} disabled>
-                                <label class="form-check-label" for="flexSwitchCheckDefault"><strong>Status</strong></label>
+                                <label class="form-check-label" for="flexSwitchCheckDefault"><strong>{{ __('Status') }}</strong></label>
                             </div>
-                            <label><font color="orange">Enable in store</font></label>
+                            <label><font color="orange">{{ __('Enable in store') }}</font></label>
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" name="popular"
                                     {{ $product->trending == 1 ? 'checked' : '' }} disabled>
-                                <label class="form-check-label" for="flexSwitchCheckDefault"><strong>Trending</strong></label>
+                                <label class="form-check-label" for="flexSwitchCheckDefault"><strong>{{ __('Trending') }}</strong></label>
                             </div>
-                            <label><font color="orange">Enable to trending</font></label>
+                            <label><font color="orange">{{ __('Enable') }} {{ __('Trending') }}</font></label>
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" name="discount"
                                     {{ $product->discount == 1 ? 'checked' : '' }} disabled>
-                                <label class="form-check-label" for="flexSwitchCheckDefault"><strong>Discount</strong></label>
+                                <label class="form-check-label" for="flexSwitchCheckDefault"><strong>{{ __('Discount') }}</strong></label>
                             </div>
-                            <label><font color="orange">Enable discount</font></label>
+                            <label><font color="orange">{{ __('Enable') }} {{ __('Discount') }}</font></label>
                         </div>
                         @if ($product->image)
                             <div class="col-md-12 mb-3">

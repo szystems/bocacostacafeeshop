@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Users</h4>
+                        <h4 class="mb-0">{{ __('Users') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>Show User</u></h4>
+                    <h4><u>{{ __('Show') }} {{ __('User') }}</u></h4>
                     <div>
                         <form action="{{ url('pdf-user') }}" method="GET" target="_blank">
                             <input type="hidden" name="ruser" value="{{ $user->id }}">
@@ -40,11 +40,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Role</strong></label>
+                            <label for=""><strong>{{ __('Role') }}</strong></label>
                             <p>{{ $user->role_as == '0' ?'User' : 'Admin' }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Name</strong></label>
+                            <label for=""><strong>{{ __('Name') }}</strong></label>
                             <p>{{ $user->name }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -52,35 +52,35 @@
                             <p>{{ $user->email }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Phone</strong></label>
+                            <label for=""><strong>{{ __('Phone') }}</strong></label>
                             <p>{{ $user->phone }}</p>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for=""><strong>Address 1</strong></label>
+                            <label for=""><strong>{{ __('Address') }} 1</strong></label>
                             <p>{{ $user->address1 }}</p>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for=""><strong>Address 2</strong></label>
+                            <label for=""><strong>{{ __('Address') }} 2</strong></label>
                             <p>{{ $user->address2 }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>City</strong></label>
+                            <label for=""><strong>{{ __('City') }}</strong></label>
                             <p>{{ $user->city }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>State</strong></label>
+                            <label for=""><strong>{{ (__('State/Province')) }}</strong></label>
                             <p>{{ $user->state }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Country</strong></label>
+                            <label for=""><strong>{{ __('Country') }}</strong></label>
                             <p>{{ $user->country }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Zipcode</strong></label>
+                            <label for=""><strong>{{ __('Zip / Postal Code') }}</strong></label>
                             <p>{{ $user->zipcode }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Timezone</strong></label>
+                            <label for=""><strong>{{ __('Timezone') }}</strong></label>
                             <p>{{ $user->timezone }}</p>
                         </div>
                     </div>

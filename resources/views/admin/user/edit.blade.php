@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Users</h4>
+                        <h4 class="mb-0">{{ __('Users') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>Edit User</u></h4>
+                    <h4><u>{{ __('Edit') }} {{ __('User') }}</u></h4>
                     @if (count($errors)>0)
                         <div class="alert alert-danger text-white" role="alert">
                             <ul>
@@ -33,7 +33,7 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="">Role</label>
+                                <label for="">{{ __('Role') }}</label>
                                 <input readonly type="text" class="form-control border px-2 " name="role_as" value="{{ $user->role_as == '0' ?'User' : 'Admin' }}" >
                                 @if ($errors->has('role_as'))
                                     <span class="help-block opacity-7">
@@ -44,7 +44,7 @@
                                 @endif
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">Name</label>
+                                <label for="">{{ __('Name') }}</label>
                                 <input type="text" class="form-control border px-2 " name="name" value="{{ $user->name }}" >
                                 @if ($errors->has('name'))
                                     <span class="help-block opacity-7">
@@ -66,7 +66,7 @@
                                 @endif
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">Phone</label>
+                                <label for="">{{ __('Phone') }}</label>
                                 <input type="text" class="form-control border px-2 " name="phone" value="{{ $user->phone }}" >
                                 @if ($errors->has('phone'))
                                     <span class="help-block opacity-7">
@@ -77,7 +77,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Address1</label>
+                                <label for="">{{ __('Address') }} 1</label>
                                 <input type="text" class="form-control border px-2 " name="address1" value="{{ $user->address1 }}" >
                                 @if ($errors->has('address1'))
                                     <span class="help-block opacity-7">
@@ -88,7 +88,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Address2</label>
+                                <label for="">{{ __('Address') }} 2</label>
                                 <input type="text" class="form-control border px-2 " name="address2" value="{{ $user->address2 }}" >
                                 @if ($errors->has('address2'))
                                     <span class="help-block opacity-7">
@@ -99,7 +99,7 @@
                                 @endif
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">City</label>
+                                <label for="">{{ __('City') }}</label>
                                 <input type="text" class="form-control border px-2 " name="city" value="{{ $user->city }}" >
                                 @if ($errors->has('city'))
                                     <span class="help-block opacity-7">
@@ -110,7 +110,7 @@
                                 @endif
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">State</label>
+                                <label for="">{{ __('State/Province') }}</label>
                                 <input type="text" class="form-control border px-2 " name="state" value="{{ $user->state }}" >
                                 @if ($errors->has('state'))
                                     <span class="help-block opacity-7">
@@ -121,7 +121,7 @@
                                 @endif
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">Country</label>
+                                <label for="">{{ __('Country') }}</label>
                                 <input type="text" class="form-control border px-2 " name="country" value="{{ $user->country }}" >
                                 @if ($errors->has('country'))
                                     <span class="help-block opacity-7">
@@ -132,7 +132,7 @@
                                 @endif
                             </div>
                             <div class="col-md-3 mb-3">
-                                <label for="">Zip Code</label>
+                                <label for="">{{ __('Zip / Postal Code') }}</label>
                                 <input type="text" class="form-control border px-2 " name="zipcode" value="{{ $user->zipcode }}" >
                                 @if ($errors->has('zipcode'))
                                     <span class="help-block opacity-7">
@@ -144,7 +144,7 @@
                             </div>
 
                             <div class="col-md-3 mb-3">
-                                <label for="">User Timezone</label>
+                                <label for="">{{ __('Timezone') }}</label>
                                 <select class="form-select px-2" aria-label="Default select example" name="timezone" id="timezone">
                                     <option selected value="{{ $user->timezone }}">{{ $user->timezone }}</option>
                                     @foreach(Helpers::getTimeZoneList() as $timezone => $timezone_gmt_diff)
@@ -156,7 +156,7 @@
                             </div>
 
                             <div class="col-md-12 mb-3" >
-                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> Save</button>
+                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> {{ __('Save') }}</button>
                             </div>
                         </div>
                     </form>

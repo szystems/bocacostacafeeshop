@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Orders</h4>
+                        <h4 class="mb-0">{{ __('Orders') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>Order Details</u></h4>
+                    <h4><u>{{ __('Order Details') }}</u></h4>
                     <div>
                         <form action="{{ url('pdf-showorder') }}" method="GET" target="_blank">
                             <input type="hidden" name="rorderid" value="{{ $order->id }}">
@@ -33,11 +33,11 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>First Name</strong></label>
+                            <label for=""><strong>{{ __('First Name') }}</strong></label>
                             <p>{{ $order->fname }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Last Name</strong></label>
+                            <label for=""><strong>{{ __('Last Name') }}</strong></label>
                             <p>{{ $order->lname }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -45,11 +45,11 @@
                             <p>{{ $order->email }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Phone</strong></label>
+                            <label for=""><strong>{{ __('Phone') }}</strong></label>
                             <p>{{ $order->phone }}</p>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <label for=""><strong>Shipping Address</strong></label>
+                            <label for=""><strong>{{ __('Shipping Address') }}</strong></label>
                             <p>
                                 {{ $order->address1 }},
                                 @if ($order->address2 != null)
@@ -61,16 +61,16 @@
                             </p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Zip Code</strong></label>
+                            <label for=""><strong>{{ __('Zip / Postal Code') }}</strong></label>
                             <p>{{ $order->zipcode }}</p>
                         </div>
 
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Tracking No.</strong></label>
+                            <label for=""><strong>{{ __('Tracking Number') }}</strong></label>
                             <p>{{ $order->tracking_no }}</p>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Order Date</strong></label>
+                            <label for=""><strong>{{ __('Order Date') }}</strong></label>
                             @php
                                 $date = new DateTime($order->created_at, new DateTimeZone(date_default_timezone_get()));
                                 $date->setTimezone(new DateTimeZone(Auth::user()->timezone));
@@ -85,22 +85,22 @@
                             <form action="{{ url('update-order/'.$order->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <label for=""><strong>Order Status:</strong></label>
+                                <label for=""><strong>{{ __('Order Status') }}:</strong></label>
                                 <select class="form-select" name="order_status" aria-label="Floating label select example">
-                                    <option {{ $order->status == '0'? 'Selected':'' }} value="0">Pending</option>
-                                    <option {{ $order->status == '1'? 'Selected':'' }} value="1">Completed</option>
-                                    <option {{ $order->status == '2'? 'Selected':'' }} value="2">Cancelled</option>
+                                    <option {{ $order->status == '0'? 'Selected':'' }} value="0">{{ __('Pending') }}</option>
+                                    <option {{ $order->status == '1'? 'Selected':'' }} value="1">{{ __('Completed') }}</option>
+                                    <option {{ $order->status == '2'? 'Selected':'' }} value="2">{{ __('Cancelled') }}</option>
                                 </select>
-                                <button type="submit" class="btn btn-warning px-7">Update</button>
+                                <button type="submit" class="btn btn-warning px-7">{{ __('Update') }}</button>
                             </form>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for=""><strong>Payment Mode</strong></label>
+                            <label for=""><strong>{{ __('Payment Mode') }}</strong></label>
                             <p>{{ $order->payment_mode }}</p>
                         </div>
                         @if ($order->payment_id != null)
                             <div class="col-md-3 mb-3">
-                                <label for=""><strong>Payment ID</strong></label>
+                                <label for=""><strong>{{ __('Pyment ID') }}</strong></label>
                                 <p>{{ $order->payment_id }}</p>
                             </div>
                         @endif
@@ -109,14 +109,14 @@
                         </div>
                         @if ($order->note != null)
                             <div class="col-md-12 mb-3">
-                                <label for=""><strong>Note</strong></label>
+                                <label for=""><strong>{{ __('Note') }}</strong></label>
                                 <p>{{ $order->note }}</p>
                             </div>
                         @endif
 
                     </div>
                     <div class="row">
-                        <h4><u>Order Products</u></h4>
+                        <h4><u>{{ __('Order Products') }}</u></h4>
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
                                 @php
@@ -124,9 +124,9 @@
                                 @endphp
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('Product') }}</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('Price') }}</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('Quantity') }}</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SubTotal</th>
                                         {{-- <th class="text-secondary opacity-7">Action</th> --}}
                                     </tr>
@@ -189,15 +189,15 @@
                                             @endphp
                                             <td></td>
                                             <td></td>
-                                            <td class="align-middle text-center"></td>
-                                            <td class="align-middle text-center"><h8> Tax: <strong>{{ $config->currency_simbol }}{{ number_format($tax_total,2, '.', ',') }}</strong></h8></td>
+                                            <td class="align-middle text-right"><h8>{{ __('Total Tax') }}:</h8></td>
+                                            <td class="align-middle text-center"><h8><strong>{{ $config->currency_simbol }}{{ number_format($tax_total,2, '.', ',') }}</strong></h8></td>
                                         </tr>
                                     @endif
                                     <tr>
                                         <td></td>
                                         <td></td>
-                                        <td class="align-middle text-center"></td>
-                                        <td class="align-middle text-center"><h4>Total: <strong>{{ $config->currency_simbol }}{{ number_format($total,2, '.', ',') }}</strong></h4></td>
+                                        <td class="align-middle text-right"><h4>Total:</h4></td>
+                                        <td class="align-middle text-center"><h4><strong>{{ $config->currency_simbol }}{{ number_format($total,2, '.', ',') }}</strong></h4></td>
                                     </tr>
                                 </tfoot>
                             </table>

@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Categories</h4>
+                        <h4 class="mb-0">{{ __('Categories') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>Add Category</u></h4>
+                    <h4><u>{{ __('Add') }} {{ __('Category') }}</u></h4>
                     @if (count($errors)>0)
                         <div class="alert alert-danger text-white" role="alert">
                             <ul>
@@ -32,7 +32,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label for="">Name</label>
+                                <label for="">{{ __('Name') }}</label>
                                 <input type="text" class="form-control border px-2 " name="name" value="{{ old('name') }}" >
                                 @if ($errors->has('name'))
                                     <span class="help-block opacity-7">
@@ -43,7 +43,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Slug</label>
+                                <label for="">{{ __('Slug') }}</label>
                                 <input type="text" class="form-control border px-2" name="slug" value="{{ old('slug') }}" >
                                 @if ($errors->has('slug'))
                                     <span class="help-block opacity-7">
@@ -54,7 +54,7 @@
                                 @endif
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="">Description</label>
+                                <label for="">{{ __('Description') }}</label>
                                 <textarea name="description" cols="30" rows="5" class="form-control border px-2 " >{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block opacity-7">
@@ -67,7 +67,7 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="status" >
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Status') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -81,7 +81,7 @@
                                 <input type="file" name="image" class="form-control border">
                             </div>
                             <div class="col-md-12 mb-3" >
-                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> Save</button>
+                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> {{ __('Save') }}</button>
                             </div>
                         </div>
                     </form>

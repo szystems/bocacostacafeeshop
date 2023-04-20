@@ -27,7 +27,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
+                    <span class="nav-link-text ms-1">{{ __('Dashboard') }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -35,7 +35,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
-                    <span class="nav-link-text ms-1">Categories</span>
+                    <span class="nav-link-text ms-1">{{ __('Categories') }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -43,7 +43,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">sell</i>
                     </div>
-                    <span class="nav-link-text ms-1">Products</span>
+                    <span class="nav-link-text ms-1">{{ __('Products') }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -51,7 +51,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">local_shipping</i>
                     </div>
-                    <span class="nav-link-text ms-1">Orders</span>
+                    <span class="nav-link-text ms-1">{{ __('Orders') }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -59,7 +59,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">people_alt</i>
                     </div>
-                    <span class="nav-link-text ms-1">Users</span>
+                    <span class="nav-link-text ms-1">{{ __('Users') }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -67,18 +67,18 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">settings</i>
                     </div>
-                    <span class="nav-link-text ms-1">Settings</span>
+                    <span class="nav-link-text ms-1">{{ __('Settings') }}</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">{{ __('Account') }}</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ Request::is('show-user/'.Auth::id(),'edit-user/'.Auth::id()) ? 'active bg-gradient-info':''  }}" href="{{ url('show-user/'.Auth::id()) }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
-                    <span class="nav-link-text ms-1">Profile</span>
+                    <span class="nav-link-text ms-1">{{ __('My Profile') }}</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -104,7 +104,7 @@
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
         <div class="mx-3">
-          <a class="btn bg-gradient-primary mt-4 w-100" href="{{ url('/') }}" type="button"><i class="material-icons opacity-10">storefront</i> Go to E-Shop</a>
+          <a class="btn bg-gradient-primary mt-4 w-100" href="{{ url('/') }}" type="button"><i class="material-icons opacity-10">storefront</i> {{ __('Go To E-Shop') }}</a>
         </div>
     </div>
 </aside>

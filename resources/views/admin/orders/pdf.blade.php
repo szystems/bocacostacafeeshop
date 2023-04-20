@@ -11,7 +11,7 @@
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
 
-    <title>Orders</title>
+    <title>{{ __('Orders List') }}</title>
 
 </head>
 
@@ -19,9 +19,9 @@
     <center>
         <img align="center" src="{{ $imagen }}" alt="" height="100">
     </center>
-    <h3 align="center"><u>Orders List</u></h3>
+    <h3 align="center"><u>{{ __('Orders List') }}</u></h3>
     <label>
-        <font size="1">Report Date:</font>
+        <font size="1">{{ __('Report Date') }}:</font>
         <font color="blue" size="1">
             @php
                 $horafecha = new DateTime("now", new DateTimeZone(Auth::user()->timezone));
@@ -32,15 +32,15 @@
     </label>
     <br>
     <label for="">
-        <font size="1"><strong><u>Filter by:</u></strong></font>
+        <font size="1"><strong><u>{{ __('Filter by') }}:</u></strong></font>
     </label>
     <br>
     <label for="">
-        <font size="1">From: </font>
+        <font size="1">{{ __('From') }}: </font>
         <font size="1" color="blue">{{ date('d-m-Y', strtotime($desde)) }}</font>
     </label>
     <label for="">
-        <font size="1">to: </font>
+        <font size="1">{{ __('To') }}: </font>
         <font size="1" color="blue">{{ date('d-m-Y', strtotime($hasta)) }}</font>
     </label>
     <label for="">
@@ -48,47 +48,51 @@
         <font size="1" color="blue">
             @if ($queryStatus != null)
                 @if ($queryStatus == '0')
-                    Pending
+                {{ __('Pending') }}
                 @elseif ($queryStatus == '1')
-                    Completed
+                {{ __('Completed') }}
                 @elseif ($queryStatus == '2')
-                    Cancelled
+                {{ __('Cancelled') }}
                 @endif
             @else
-                All
+            {{ __('All') }}
             @endif
         </font>
     </label>
     <label for="">
-        <font size="1">Payment: </font>
+        <font size="1">{{ __('Payment Mode') }}: </font>
         <font size="1" color="blue">
-            @if ($queryPayment != null) {{ $queryPayment }} @if ($queryPayment != null)
+            @if ($queryPayment != null)
+                @if ($queryPayment == 'Paid by PayPal')
+                {{ __('Paid by Paypal') }}
+                @elseif ($queryPayment == 'POD or DBT')
+                {{ __('POD or DBT') }}
                 @endif
             @else
-                All @endif
+            {{ __('All') }} @endif
         </font>
     </label>
-    <h5><u>Resume:</u></h5>
+    <h5><u>{{ __('Resume') }}:</u></h5>
     <table class="pure-table pure-table-bordered" Width=100%>
         <thead>
             <tr>
                 <th>
-                    <font size="1">Date</font>
+                    <font size="1">{{ __('Date') }}</font>
                 </th>
                 <th>
-                    <font size="1">Completed</font>
+                    <font size="1">{{ __('Orders Completed') }}</font>
                 </th>
                 <th>
                     <font size="1">SubTotal</font>
                 </th>
                 <th>
-                    <font size="1">Total Tax</font>
+                    <font size="1">{{ __('Total Tax') }}</font>
                 </th>
                 <th>
                     <font size="1">Total</font>
                 </th>
                 <th>
-                    <font size="1">Cancelled Orders</font>
+                    <font size="1">{{ __('Total Cancelled') }}</font>
                 </th>
             </tr>
         </thead>
@@ -116,7 +120,7 @@
             @endforeach
                 <tr>
                     <td align="center">
-                        <font size="1">From: <strong>{{ date('d-m-Y', strtotime($desde)) }}</strong> To: <strong>{{ date('d-m-Y', strtotime($hasta)) }}</strong></font>
+                        <font size="1">{{ __('From') }}: <strong>{{ date('d-m-Y', strtotime($desde)) }}</strong> {{ __('To') }}: <strong>{{ date('d-m-Y', strtotime($hasta)) }}</strong></font>
                     </td>
                     <td align="center">
                         <font size="1">({{ $completeorders }}/{{ $totalorders }})</font>
@@ -142,19 +146,19 @@
             <tr>
                 <th>
 
-                    <font size="1">Order Date</font>
+                    <font size="1">{{ __('Order Date') }}</font>
                 </th>
                 <th>
-                    <font size="1">Tracking Number</font>
+                    <font size="1">{{ __('Tracking Number') }}</font>
                 </th>
                 <th>
                     <font size="1">Total</font>
                 </th>
                 <th>
-                    <font size="1">Status</font>
+                    <font size="1">{{ __('Status') }}</font>
                 </th>
                 <th>
-                    <font size="1">Payment </font>
+                    <font size="1">{{ __('Payment Mode') }} </font>
                 </th>
             </tr>
         </thead>
@@ -179,18 +183,23 @@
                         <font size="1">
 
                             @if ($order->status == '0')
-                                <font color="orange">Pending</font>
+                                <font color="orange">{{ __('Pending') }}</font>
                             @elseif ($order->status == '1')
-                                <font color="limegreen">Completed</font>
+                                <font color="limegreen">{{ __('Completed') }}</font>
                             @elseif ($order->status == '2')
-                                <font color="red">Cancelled</font>
+                                <font color="red">{{ __('Cancelled') }}</font>
                             @endif
                         </font>
                     </td>
                     <td align="center">
-                        <font size="1">{{ $order->payment_mode }} @if ($order->payment_id != null)
-                                ({{ $order->payment_id }})
-                            @endif
+                        <font size="1">
+                            @if ($order->payment_mode != null)
+                                    @if ($order->payment_mode == 'POD or DBT')
+                                        {{ __('POD or DBT') }}
+                                    @else
+                                        {{ __('Paid by PayPal') }}
+                                    @endif
+                                @endif
                         </font>
                     </td>
                 </tr>

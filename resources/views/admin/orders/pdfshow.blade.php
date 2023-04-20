@@ -11,7 +11,7 @@
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
 
-    <title>Order Details</title>
+    <title>{{ __('Order Details') }}</title>
 
 </head>
 
@@ -19,9 +19,9 @@
     <center>
         <img align="center" src="{{ $imagen }}" alt="" height="100">
     </center>
-    <h3 align="center"><u>Order Details</u></h3>
+<h3 align="center"><u>{{ __('Order Details') }}</u></h3>
     <label>
-        <font size="1">Report Date:</font>
+<font size="1">{{ __('Report Date') }}:</font>
         <font color="blue" size="1">
             @php
                 $horafecha = new DateTime("now", new DateTimeZone(Auth::user()->timezone));
@@ -36,13 +36,13 @@
         <thead>
             <tr>
                 <th align="right">
-                    <font size="1">First Name:</font>
+                    <font size="1">{{ __('First Name') }}:</font>
                 </th>
                 <td align="left">
                     <font size="1">{{ $order->fname }}</font>
                 </td>
                 <th align="right">
-                    <font size="1">Last Name:</font>
+                    <font size="1">{{ __('Last Name') }}:</font>
                 </th>
                 <td>
                     <font size="1">{{ $order->lname }}</font>
@@ -56,7 +56,7 @@
                     <font size="1">{{ $order->email }}</font>
                 </td>
                 <th align="right">
-                    <font size="1">Phone:</font>
+            <font size="1">{{ __('Phone') }}:</font>
                 </th>
                 <td>
                     <font size="1">{{ $order->phone }}</font>
@@ -64,7 +64,7 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Shipping Address 1:</font>
+                    <font size="1">{{ __('Shipping Address') }} 1:</font>
                 </th>
                 <td colspan="3">
                     <font size="1">{{ $order->address1 }}</font>
@@ -72,7 +72,7 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Shipping Address 2:</font>
+                    <font size="1">{{ __('Shipping Address') }} 2:</font>
                 </th>
                 <td colspan="3">
                     <font size="1">{{ $order->address2 }}</font>
@@ -80,13 +80,13 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Zipcode:</font>
+                    <font size="1">{{ __('Zip / Postal Code') }}:</font>
                 </th>
                 <td>
                     <font size="1">{{ $order->zipcode }}</font>
                 </td>
                 <th align="right">
-                    <font size="1">Tracking No:</font>
+                    <font size="1">{{ __('Tracking Number') }}:</font>
                 </th>
                 <td>
                     <font size="1">{{ $order->tracking_no }}</font>
@@ -94,7 +94,7 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Order Date:</font>
+                    <font size="1">{{ __('Order Date') }}:</font>
                 </th>
                 <td>
                     @php
@@ -104,23 +104,37 @@
                     <font size="1">{{ $date->format('d-m-Y')}}</font>
                 </td>
                 <th align="right">
-                    <font size="1">Order Status:</font>
+                    <font size="1">{{ __('Order Status') }}:</font>
                 </th>
                 <td>
-                    <font size="1">{{ $order->status }}</font>
+                    <font size="1">
+                        {{ $order->status }}
+                        @if ($order->status == 0)
+                        {{ __('Pending') }}
+                        @elseif ($order->status == 1)
+                        {{ __('Completed') }}
+                        @elseif ($order->status == 2)
+                        {{ __('Cancelled') }}
+                        @endif
+                    </font>
                 </td>
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Payment Mode:</font>
+                    <font size="1">{{ __('Payment Mode') }}:</font>
                 </th>
                 <td colspan="3">
-                    <font size="1">{{ $order->payment_mode }} @if ($order->payment_mode == "Paid by PayPal") ({{ $order->payment_id }})  @endif</font>
+                    <font size="1">
+                        @if ($order->payment_mode == "Paid by PayPal")
+                            {{ __('Paid by PayPal') }} ({{ $order->payment_id }})
+                        @elseif ($order->payment_mode == "POD or DBT")
+                            {{ __('POD or DBT') }}
+                        @endif</font>
                 </td>
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Note:</font>
+                    <font size="1">{{ __('Note') }}:</font>
                 </th>
                 <td colspan="3">
                     <font size="1">{{ $order->note }}</font>
@@ -143,7 +157,7 @@
 
     </table>
 
-    <h5><u>Product Details:</u></h5>
+    <h5><u>{{ __('Product Details') }}:</u></h5>
 
     <table class="pure-table pure-table-bordered" Width=100%>
         @php
@@ -152,13 +166,13 @@
         <thead>
             <tr>
                 <th>
-                    <font size="1">Product</font>
+                    <font size="1">{{ __('Product') }}</font>
                 </th>
                 <th>
-                    <font size="1">Price</font>
+                    <font size="1">{{ __('Price') }}</font>
                 </th>
                 <th>
-                    <font size="1">Quantity</font>
+                    <font size="1">{{ __('Quantity') }}</font>
                 </th>
                 <th>
                     <font size="1">SubTotal</font>
@@ -213,7 +227,7 @@
                         $total = $total + $tax_total;
                     @endphp
                     <td colspan="3" align="right">
-                        Tax:
+                        {{ __('Total Tax') }}:
                     </td>
                     <td align="right">
                         {{ $config->currency_simbol }}{{ number_format($tax_total,2, '.', ',') }}</>

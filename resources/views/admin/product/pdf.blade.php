@@ -11,7 +11,7 @@
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
 
-    <title>Products List</title>
+    <title>{{  __('Product List') }}</title>
 
 </head>
 
@@ -19,9 +19,9 @@
     <center>
         <img align="center" src="{{ $imagen }}" alt="" height="100">
     </center>
-    <h3 align="center"><u>Product List</u></h3>
+    <h3 align="center"><u>{{ __('Product List') }}</u></h3>
     <label>
-        <font size="1">Report Date:</font>
+        <font size="1">{{ __('Report Date') }}</font>
         <font color="blue" size="1">
             @php
                 $horafecha = new DateTime("now", new DateTimeZone(Auth::user()->timezone));
@@ -32,66 +32,70 @@
     </label>
     <br>
     <label for="">
-        <font size="1"><strong><u>Filter by:</u></strong></font>
+        <font size="1"><strong><u>{{ __('Filter by') }}:</u></strong></font>
     </label>
     <br>
     <label for="">
-        <font size="1">Product: </font>
+        <font size="1">{{ __('Product') }}: </font>
         <font size="1" color="blue">
             @if ($queryProduct != null) {{ $queryProduct }} @if ($queryProduct != null)
                 @endif
             @else
-                All @endif
+            {{ __('All') }} @endif
         </font>
     </label>
     <label for="">
-        <font size="1">Category: </font>
+        <font size="1">{{ __('Category') }}: </font>
         <font size="1" color="blue">
             @if ($queryCategory != null) {{ $queryCategory }} @if ($queryCategory != null)
                 @endif
             @else
-                All @endif
+            {{ __('All') }} @endif
         </font>
     </label>
     <label for="">
         <font size="1">Stock: </font>
         <font size="1" color="blue">
             @if ($queryStock == ">=")
-                All
+                {{ __('All') }}
             @elseif ($queryStock == "<=")
-                Out of Stock
+                {{ __('Out of Stock') }}
             @elseif ($queryStock == ">")
-                With Stock
+                {{ __('With Stock') }}
             @endif
         </font>
     </label>
     <label for="">
-        <font size="1">Status: </font>
+        <font size="1">{{ __('State') }}: </font>
         <font size="1" color="blue">
             @if ($queryStatus != null)
-                {{ $queryStatus == '0' ? 'Disabled' : 'Enabled' }}
+                @if ($queryStatus == 0)
+                {{ __('Disabled') }}
+                @elseif ($queryStatus == 1)
+                {{ __('Enabled') }}
+                @endif
             @else
-                All
+            {{ __('All') }}
             @endif
         </font>
     </label>
     <label for="">
-        <font size="1">Trending: </font>
+        <font size="1">{{ __('Trending') }}: </font>
         <font size="1" color="blue">
             @if ($queryTrending != null)
                 {{ $queryTrending == '0' ? 'Disabled' : 'Enabled' }}
             @else
-                All
+            {{ __('All') }}
             @endif
         </font>
     </label>
     <label for="">
-        <font size="1">Discount: </font>
+        <font size="1">{{ __('Discount') }}: </font>
         <font size="1" color="blue">
             @if ($queryDiscount != null)
                 {{ $queryDiscount == '0' ? 'Disabled' : 'Enabled' }}
             @else
-                All
+            {{ __('All') }}
             @endif
         </font>
     </label>
@@ -100,19 +104,19 @@
         <thead>
             <tr>
                 <th>
-                    <font size="1">Category</font>
+                    <font size="1">{{ __('Category') }}</font>
                 </th>
                 <th>
-                    <font size="1">Name</font>
+                    <font size="1">{{ __('Name') }}</font>
                 </th>
                 <th>
-                    <font size="1">Price</font>
+                    <font size="1">{{ __('Price') }}</font>
                 </th>
                 <th>
                     <font size="1">Stock</font>
                 </th>
                 <th>
-                    <font size="1">Image</font>
+                    <font size="1">{{ __('Image') }}</font>
                 </th>
             </tr>
         </thead>

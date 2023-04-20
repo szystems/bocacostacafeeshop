@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Products</h4>
+                        <h4 class="mb-0">{{ __('Products') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>Add Product</u></h4>
+                    <h4><u>{{ __('Add') }} {{ __('Product') }}</u></h4>
                     @if (count($errors)>0)
                         <div class="alert alert-danger text-white" role="alert">
                             <ul>
@@ -32,23 +32,23 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="">Category</label>
+                                <label for="">{{ __('Categoria') }}</label>
                                 <select class="form-select px-2" aria-label="Default select example" name="cate_id">
-                                    <option value="">Select Category</option>
+                                    <option value="">{{ __('Select a Category') }}</option>
                                     @foreach ($categories as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('name'))
+                                @if ($errors->has('cate_id'))
                                     <span class="help-block opacity-7">
                                             <strong>
-                                                <font color="red">{{ $errors->first('name') }}</font>
+                                                <font color="red">{{ $errors->first('cate_id') }}</font>
                                             </strong>
                                     </span>
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Code</label>
+                                <label for="">{{ __('Code') }}</label>
                                 <input type="text" class="form-control border px-2 " name="code" value="{{ old('code') }}" >
                                 @if ($errors->has('code'))
                                     <span class="help-block opacity-7">
@@ -59,7 +59,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Name</label>
+                                <label for="">{{ __('Name') }}</label>
                                 <input type="text" class="form-control border px-2 " name="name" value="{{ old('name') }}" >
                                 @if ($errors->has('name'))
                                     <span class="help-block opacity-7">
@@ -71,7 +71,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="">Small Description</label>
+                                <label for="">{{ __('Small Description') }}</label>
                                 <textarea name="small_description" cols="30" rows="5" class="form-control border px-2 " >{{ old('small_description') }}</textarea>
                                 @if ($errors->has('small_description'))
                                     <span class="help-block opacity-7">
@@ -82,7 +82,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Description</label>
+                                <label for="">{{ __('Description') }}</label>
                                 <textarea name="description" cols="30" rows="5" class="form-control border px-2 " >{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block opacity-7">
@@ -93,7 +93,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Price</label>
+                                <label for="">{{ __('Price') }}</label>
                                 <div class="input-group input-group-dynamic mb-4">
                                     <span class="input-group-text">{{ $config->currency_simbol }}</span>
                                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" name="original_price" value="{{ old('original_price') }}">
@@ -107,7 +107,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Discount Price</label>
+                                <label for="">{{ __('Discount Price') }}</label>
                                 <div class="input-group input-group-dynamic mb-4">
                                     <span class="input-group-text">{{ $config->currency_simbol }}</span>
                                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" name="selling_price" value="{{ old('selling_price') }}">
@@ -134,30 +134,30 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="status" >
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Status') }}</label>
                                 </div>
-                                <label><font color="orange">Enable in store</font></label>
+                                <label><font color="orange">{{ __('Enable in store') }}</font></label>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="trending" >
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Trending</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Trending') }}</label>
                                 </div>
-                                <label><font color="orange">Enable to trending</font></label>
+                                <label><font color="orange">{{ __('Enable') }} {{ __('Trending') }}</font></label>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="discount" >
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Discount</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Discount') }}</label>
                                 </div>
-                                <label><font color="orange">Enable discount</font></label>
+                                <label><font color="orange">{{ __('Enable') }} {{ __('Discount') }}</font></label>
                             </div>
                             <div class="col-md-12 mb-3">
-                                <label for="">Imagen</label>
+                                <label for="">{{ __('Image') }}</label>
                                 <input type="file" name="image" class="form-control border">
                             </div>
                             <div class="col-md-12 mb-3" >
-                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> Save</button>
+                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> {{ __('Save') }}</button>
                             </div>
                         </div>
                     </form>

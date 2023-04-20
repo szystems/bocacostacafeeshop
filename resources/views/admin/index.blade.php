@@ -31,7 +31,7 @@
                                             {{-- <h6 class="text-center mb-0">Salary</h6>
                                             <span class="text-xs">Belong Interactive</span> --}}
                                             <hr class="horizontal dark my-3">
-                                            <h5 class="mb-0">My Profile</h5>
+                                            <h5 class="mb-0">{{ __('My Profile') }}</h5>
                                         </div>
                                     </a>
                                 </div>
@@ -49,7 +49,7 @@
                                             {{-- <h6 class="text-center mb-0">Paypal</h6>
                                             <span class="text-xs">Freelance Payment</span> --}}
                                             <hr class="horizontal dark my-3">
-                                            <h5 class="mb-0">Categories</h5>
+                                            <h5 class="mb-0">{{ __('Categories') }}</h5>
                                         </div>
                                     </a>
                                 </div>
@@ -67,7 +67,7 @@
                                             {{-- <h6 class="text-center mb-0">Paypal</h6>
                                             <span class="text-xs">Freelance Payment</span> --}}
                                             <hr class="horizontal dark my-3">
-                                            <h5 class="mb-0">Products</h5>
+                                            <h5 class="mb-0">{{ __('Products') }}</h5>
                                         </div>
                                     </a>
                                 </div>
@@ -85,7 +85,7 @@
                                             {{-- <h6 class="text-center mb-0">Paypal</h6>
                                             <span class="text-xs">Freelance Payment</span> --}}
                                             <hr class="horizontal dark my-3">
-                                            <h5 class="mb-0">Orders</h5>
+                                            <h5 class="mb-0">{{ __('Orders') }}</h5>
                                         </div>
                                     </a>
                                 </div>
@@ -103,7 +103,7 @@
                                             {{-- <h6 class="text-center mb-0">Paypal</h6>
                                             <span class="text-xs">Freelance Payment</span> --}}
                                             <hr class="horizontal dark my-3">
-                                            <h5 class="mb-0">Users</h5>
+                                            <h5 class="mb-0">{{ __('Users') }}</h5>
                                         </div>
                                     </a>
                                 </div>
@@ -121,7 +121,7 @@
                                             {{-- <h6 class="text-center mb-0">Paypal</h6>
                                             <span class="text-xs">Freelance Payment</span> --}}
                                             <hr class="horizontal dark my-3">
-                                            <h5 class="mb-0">Settings</h5>
+                                            <h5 class="mb-0">{{ __('Settings') }}</h5>
                                         </div>
                                     </a>
                                 </div>
@@ -137,18 +137,22 @@
                             <div class="card-header pb-0">
                                 <div class="row">
                                     <div class="col-lg-6 col-7">
-                                        <h6>Last Orders</h6>
+                                        <h6>{{ __('Last Orders') }}</h6>
                                         <p class="text-sm mb-0">
                                             <i class="fa fa-check text-success" aria-hidden="true"></i>
-                                            <span class="font-weight-bold ms-1">{{ $completeOrders->count() }}</span> Complete
+                                            <span class="font-weight-bold ms-1">{{ $completeOrders->count() }}</span> {{ __('Complete') }}
                                         </p>
                                         <p class="text-sm mb-0">
-                                            <i class="far fa-clock text-danger" aria-hidden="true"></i>
-                                            <span class="font-weight-bold ms-1">{{ $pendingOrders->count() }}</span> Pending
+                                            <i class="far fa-clock text-warning" aria-hidden="true"></i>
+                                            <span class="font-weight-bold ms-1">{{ $pendingOrders->count() }}</span> {{ __('Pending') }}
+                                        </p>
+                                        <p class="text-sm mb-0">
+                                            <i class="fa fa-ban text-danger" aria-hidden="true"></i>
+                                            <span class="font-weight-bold ms-1">{{ $cancelledOrders->count() }}</span> {{ __('Cancelled') }}
                                         </p>
                                     </div>
                                     <div class="col-lg-6 col-5 my-auto text-end">
-                                        <a href="{{ url('orders') }}" class="btn btn-outline-info">View all orders<span>({{ $allOrders->count() }})</span></a>
+                                        <a href="{{ url('orders') }}" class="btn btn-outline-info">{{ __('View All') }} <span>({{ $allOrders->count() }})</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -159,10 +163,10 @@
                                             <tr>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    Date ({{ Auth::user()->timezone }})</th>
+                                                    {{ __('Date') }} ({{ Auth::user()->timezone }})</th>
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                    Status</th>
+                                                    {{ __('Status') }}</th>
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Total</th>
@@ -186,7 +190,15 @@
                                                     <td>
                                                         <div class="d-flex px-2 py-1">
                                                             <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm"><a href="{{ url('admin/show-order/'.$order->id) }}">{{ $order->status == '0' ?'Pending' : 'Completed' }}</a></h6>
+                                                                <h6 class="mb-0 text-sm"><a href="{{ url('admin/show-order/'.$order->id) }}">
+                                                                    @if ($order->status == 0)
+                                                                        <font color="orange">{{ __('Pending') }}</font>
+                                                                    @elseif ($order->status == 1)
+                                                                        <font color="limegreen">{{ __('Completed') }}</font>
+                                                                    @elseif ($order->status == 2)
+                                                                        <font color="red">{{ __('Cancelled') }}</font>
+                                                                    @endif
+                                                                </a></h6>
                                                             </div>
                                                         </div>
 
@@ -212,7 +224,7 @@
                             <div class="card-header pb-0">
                                 <div class="row">
                                     <div class="col-lg-6 col-7">
-                                        <h6>Top Popular Products</h6>
+                                        <h6>{{ __('Top Popular Products') }}</h6>
                                         {{-- <p class="text-sm mb-0">
                                             <i class="fa fa-check text-success" aria-hidden="true"></i>
                                             <span class="font-weight-bold ms-1">{{ $popularProducts->count(); }}</span> Complete
@@ -223,7 +235,7 @@
                                         </p> --}}
                                     </div>
                                     <div class="col-lg-6 col-5 my-auto text-end">
-                                        <a href="{{ url('orders') }}" class="btn btn-outline-info">View all products<span>({{ $allProducts->count() }})</span></a>
+                                        <a href="{{ url('orders') }}" class="btn btn-outline-info">{{ __('View All') }} <span>({{ $allProducts->count() }})</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -234,13 +246,13 @@
                                             <tr>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    Product</th>
+                                                    {{ __('Product') }}</th>
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Stock</th>
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    Orders</th>
+                                                    {{ __('Orders') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -277,7 +289,7 @@
                             <div class="card-header pb-0">
                                 <div class="row">
                                     <div class="col-lg-6 col-7">
-                                        <h6>Stock Alert</h6>
+                                        <h6>{{ __('Stock Alert') }}</h6>
                                         {{-- <p class="text-sm mb-0">
                                             <i class="fa fa-check text-success" aria-hidden="true"></i>
                                             <span class="font-weight-bold ms-1">{{ $popularProducts->count(); }}</span> Complete
@@ -288,7 +300,7 @@
                                         </p> --}}
                                     </div>
                                     <div class="col-lg-6 col-5 my-auto text-end">
-                                        <a href="{{ url('orders') }}" class="btn btn-outline-info">View all products<span>({{ $allProducts->count() }})</span></a>
+                                        <a href="{{ url('orders') }}" class="btn btn-outline-info">{{ __('View All') }} <span>({{ $allProducts->count() }})</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +311,7 @@
                                             <tr>
                                                 <th
                                                     class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                    Product</th>
+                                                    {{ __('Product') }}</th>
                                                 <th
                                                     class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                     Stock</th>

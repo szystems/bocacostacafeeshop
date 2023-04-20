@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Products</h4>
+                        <h4 class="mb-0">{{ __('Products') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>Edit Product</u></h4>
+                    <h4><u>{{ __('Edit') }} {{ __('Product') }}</u></h4>
                     @if (count($errors)>0)
                         <div class="alert alert-danger text-white" role="alert">
                             <ul>
@@ -33,7 +33,7 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <label for="">Category</label>
+                                <label for="">{{ __('Category') }}</label>
                                 <select class="form-select px-2" aria-label="Default select example" name="cate_id">
                                     <option selected value="{{ $product->category->id }}">{{ $product->category->name }}</option>
                                     @foreach ($categories as $item)
@@ -49,7 +49,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Code</label>
+                                <label for="">{{ __('Code') }}</label>
                                 <input type="text" class="form-control border px-2 " name="code" value="{{ $product->code }}" >
                                 @if ($errors->has('code'))
                                     <span class="help-block opacity-7">
@@ -60,7 +60,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Name</label>
+                                <label for="">{{ __('Name') }}</label>
                                 <input type="text" class="form-control border px-2 " name="name" value="{{ $product->name }}" >
                                 @if ($errors->has('name'))
                                     <span class="help-block opacity-7">
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="">Small Description</label>
+                                <label for="">{{ __('Small Description') }}</label>
                                 <textarea name="small_description" cols="30" rows="5" class="form-control border px-2 " >{{ $product->small_description }}</textarea>
                                 @if ($errors->has('small_description'))
                                     <span class="help-block opacity-7">
@@ -83,7 +83,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Description</label>
+                                <label for="">{{ __('Description') }}</label>
                                 <textarea name="description" cols="30" rows="5" class="form-control border px-2 " >{{ $product->description }}</textarea>
                                 @if ($errors->has('description'))
                                     <span class="help-block opacity-7">
@@ -94,7 +94,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Price</label>
+                                <label for="">{{ __('Price') }}</label>
                                 <div class="input-group input-group-dynamic mb-4">
                                     <span class="input-group-text">{{ $config->currency_simbol }}</span>
                                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" name="original_price" value="{{ $product->original_price }}">
@@ -108,7 +108,7 @@
                                 @endif
                             </div>
                             <div class="col-md-4 mb-3">
-                                <label for="">Discount Price</label>
+                                <label for="">{{ __('Discount Price') }}</label>
                                 <div class="input-group input-group-dynamic mb-4">
                                     <span class="input-group-text">{{ $config->currency_simbol }}</span>
                                     <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" name="selling_price" value="{{ $product->selling_price }}">
@@ -135,23 +135,23 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="status" {{ $product->status == 1 ? 'checked':'' }}>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Status</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Status') }}</label>
                                 </div>
-                                <label><font color="orange">Enable in store</font></label>
+                                <label><font color="orange">{{ __('Enable in store') }}</font></label>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="trending" {{ $product->trending == 1 ? 'checked':'' }}>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Trending</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Trending') }}</label>
                                 </div>
-                                <label><font color="orange">Enable to trending</font></label>
+                                <label><font color="orange">{{ __('Enable') }} {{ __('Trending') }}</font></label>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="discount" {{ $product->discount == 1 ? 'checked':'' }}>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">Discount</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Discount') }}</label>
                                 </div>
-                                <label><font color="orange">Enable discount</font></label>
+                                <label><font color="orange">{{ __('Enable') }} {{ __('Discount') }}</font></label>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">Meta Title</label>
@@ -170,11 +170,11 @@
                             </div>
                             @endif
                             <div class="col-md-12 mb-3">
-                                <label for="">Cambiar Imagen</label>
+                                <label for=""{{ __('Change Image') }}</label>
                                 <input type="file" name="image" class="form-control border">
                             </div>
                             <div class="col-md-12 mb-3" >
-                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> Save</button>
+                                <button type="submit" class="btn btn-success"><i class="material-icons">save</i> {{ __('Save') }}</button>
                             </div>
                         </div>
                     </form>

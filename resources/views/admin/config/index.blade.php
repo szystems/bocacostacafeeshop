@@ -12,12 +12,12 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Settings</h4>
+                        <h4 class="mb-0">{{ __('Settings') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
                 <div class="card-body p-3 pt-2">
-                    <h4><u>E-Shop Settings</u></h4>
+                    <h4><u>{{ __('E-Shop Settings') }}</u></h4>
                     <!-- .flash-message -->
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                         @if(Session::has('alert-' . $msg))
@@ -40,20 +40,20 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-md-3 mb-3">
-                                <label for="">Currency</label>
+                                <label for="">{{ __('Currency') }}</label>
                                 <select class="form-select px-2" aria-label="Default select example" name="currency">
                                     <option selected value="{{ $config->currency }}">{{ $config->currency }}</option>
                                     <option value="USD $">USD ($)</option>
                                     <option value="GTQ Q">GTQ (Q)</option>
                                 </select>
-                                <label><font color="orange">Choose the currency that will be displayed on the e-shop.</font></label>
+                                <label><font color="orange">{{ __('Choose the currency that will be displayed on the e-shop') }}</font></label>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="">Email</label>
                                 <div class="input-group input-group-dynamic mb-4">
                                     <input type="email" name="email" class="form-control" placeholder="emails@bocacostacafe.com" aria-describedby="basic-addon1" value="{{ $config->email }}" required>
                                 </div>
-                                <label><font color="orange">Write the email where you will receive all notifications</font></label>
+                                <label><font color="orange">{{ __('Write the email where you will receive all notifications') }}</font></label>
                                 @if ($errors->has('email'))
                                     <span class="help-block opacity-7">
                                             <strong>
@@ -67,7 +67,7 @@
                                 <label for="">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" name="tax_status" {{ $config->tax_status == 1 ? 'checked':'' }}>
-                                        <label class="form-check-label" for="flexSwitchCheckDefault">Tax Status</label>
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Tax Status') }}</label>
                                     </div>
                                 </label>
 
@@ -75,7 +75,7 @@
                                     <span class="input-group-text" id="basic-addon1">%</span>
                                     <input type="number" name="tax" class="form-control" placeholder="Example:12%" aria-describedby="basic-addon1" value="{{ $config->tax }}" required>
                                 </div>
-                                <label><font color="orange">Enable tax and percentage in order</font></label>
+                                <label><font color="orange">{{ __('Enable tax and percentage in order') }}</font></label>
                                 @if ($errors->has('tax'))
                                     <span class="help-block opacity-7">
                                             <strong>
@@ -87,20 +87,20 @@
                             <div class="col-md-3 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="paypal" {{ $config->paypal == 1 ? 'checked':'' }}>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">PayPal Status</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('PayPal Status') }}</label>
                                 </div>
-                                <label><font color="orange">Enable PayPal payment.</font></label>
+                                <label><font color="orange">{{ __('Enable PayPal payment') }}</font></label>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="dbt" {{ $config->dbt == 1 ? 'checked':'' }}>
-                                    <label class="form-check-label" for="flexSwitchCheckDefault">POD/DBT Status</label>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('POD/DBT Status') }}</label>
                                 </div>
-                                <label><font color="orange">Enable Payment per Direct Bank Transfer</font></label>
+                                <label><font color="orange">{{ __('Enable Payment per Direct Bank Transfer') }}r</font></label>
                             </div>
 
                             <div class="col-md-12 mb-3">
-                                <label for="">Shipping Description</label>
+                                <label for="">{{ __('Shipping Description') }}</label>
                                 <textarea name="shipping_description" cols="30" rows="5" class="form-control border px-2 ">{{ $config->shipping_description }}</textarea>
                                 @if ($errors->has('shipping_description'))
                                     <span class="help-block opacity-7">
@@ -117,11 +117,11 @@
                             </div>
                             @endif
                             <div class="col-md-12 mb-3">
-                                <label for="">Change image</label>
+                                <label for="">{{ __('Change Image') }}</label>
                                 <input type="file" name="logo" class="form-control border">
                             </div>
                             <div class="col-md-12 mb-3" >
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary"><i class="material-icons">save</i> {{ __('Save') }}</button>
                             </div>
                         </div>
                     </form>

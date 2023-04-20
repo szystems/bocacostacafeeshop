@@ -31,6 +31,10 @@ class FrontendController extends Controller
         ->where('status', '=', '0')
         ->get();
 
+        $cancelledOrders = DB::table('orders')
+        ->where('status', '=', '2')
+        ->get();
+
         $config = Config::first();
 
         //popular products
@@ -48,6 +52,6 @@ class FrontendController extends Controller
         ->orderByRaw('CONVERT(p.qty, SIGNED) asc')
         ->paginate(10);
 
-        return view('admin.index', compact('config','orders','completeOrders','pendingOrders','allOrders','popularProducts','allProducts','stockAlerts'));
+        return view('admin.index', compact('config','orders','completeOrders','pendingOrders','cancelledOrders','allOrders','popularProducts','allProducts','stockAlerts'));
     }
 }

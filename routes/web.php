@@ -51,6 +51,9 @@ Route::get('social-impact', [FrontendController::class, 'socialImpact']);
 
 Auth::routes();
 
+//language
+Route::get('/set_language/{lang}', [App\Http\Controllers\Controller::class, 'set_language'])->name('set_language');
+
 Route::get('load-cart-data', [CartController::class, 'cartcount']);
 Route::get('load-wish-data', [WishlistController::class, 'wishcount']);
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

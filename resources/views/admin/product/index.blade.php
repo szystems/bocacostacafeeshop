@@ -12,7 +12,7 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Products</h4>
+                        <h4 class="mb-0">{{ __('Products') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
@@ -22,7 +22,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <a href="{{ url('add-product') }}" class="btn btn-success">
-                                    <i class="material-icons opacity-10">add</i> Add Product
+                                    <i class="material-icons opacity-10">add</i> {{ __('Add') }} {{ __('Product') }}
                                 </a>
                                 <form action="{{ url('pdf-product') }}" method="GET" target="_blank">
                                     <input type="hidden" name="rproduct" value="{{ $queryProduct }}">
@@ -44,12 +44,12 @@
                                         <tr>
 
                                             {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th> --}}
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('Product') }}</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{ __('Category') }}</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{{ __('Price') }}</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock</th>
                                             {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Image</th> --}}
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"><i class="material-icons">format_list_bulleted</i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -73,15 +73,15 @@
                                                         <strong><a href="{{ url('show-product/'.$product->id) }}">{{ $product->name }}</a></strong>
                                                         <p class="text-xs text-secondary mb-0">
                                                             @if ($product->status == 0)
-                                                                <span class="badge bg-gradient-danger">Disabled</span>
+                                                                <span class="badge bg-gradient-danger">{{ __('Disabled') }}</span>
                                                             @else
-                                                                <span class="badge bg-gradient-success">Enabled</span>
+                                                                <span class="badge bg-gradient-success">{{ __('Enabled') }}</span>
                                                             @endif
                                                             @if ($product->trending == 1)
-                                                                <span class="badge bg-gradient-primary">Trending</span>
+                                                                <span class="badge bg-gradient-primary">{{ __('Trending') }}</span>
                                                             @endif
                                                             @if ($product->discount == 1)
-                                                                <span class="badge bg-gradient-warning">discount</span>
+                                                                <span class="badge bg-gradient-warning">{{ __('Discount') }}</span>
                                                             @endif
                                                         </p>
                                                     </div>

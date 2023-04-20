@@ -7,23 +7,22 @@
                     <script>
                         document.write(new Date().getFullYear())
                     </script>,
-                    made with <i class="fa fa-heart"></i> by
-                    <a href="https://www.szystems.com" class="font-weight-bold" target="_blank">Szystems</a>
-                    for a better web.
+                    {{ __('made by') }}
+                    <a href="https://www.szystems.com" class="font-weight-bold" target="_blank">Szystems</a>.
                 </div>
             </div>
             <div class="col-lg-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                     <li class="nav-item">
-                        <a href="https://www.szystems.com" class="nav-link text-muted" target="_blank">szystems</a>
+                        <a href="https://www.szystems.com" class="nav-link text-muted" target="_blank">Szystems</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://szystems.com/portafolio.html" class="nav-link text-muted"
-                            target="_blank">Portfolio</a>
+                            target="_blank">{{ __('Portfolio') }}</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://szystems.com/contacto.html" class="nav-link pe-0 text-muted"
-                            target="_blank">Contact</a>
+                            target="_blank">{{ __('Contact') }}</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://www.facebook.com/szystems" class="nav-link pe-0 text-muted"

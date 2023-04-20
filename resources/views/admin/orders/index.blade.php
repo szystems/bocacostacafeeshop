@@ -11,7 +11,7 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Orders</h4>
+                        <h4 class="mb-0">{{ __('Orders') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
@@ -44,22 +44,22 @@
                                         <tr>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Order Date ({{ Auth::user()->timezone }})</th>
+                                                {{ __('Order Date') }} ({{ Auth::user()->timezone }})</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Tracking Number</th>
+                                                {{ __('Tracking Number') }}</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                                 Total</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Status</th>
+                                                {{ __('Status') }}</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Payment Mode</th>
+                                                {{ __('Payment Mode') }}</th>
                                             <th
                                                 class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                                Action</th>
+                                                <i class="material-icons">format_list_bulleted</i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -80,11 +80,11 @@
                                                 </td>
                                                 <td class="align-middle text-center text-sm">
                                                     @if ($order->status == '0')
-                                                        <span class="badge bg-gradient-warning">Pending</span>
+                                                        <span class="badge bg-gradient-warning">{{ __('Pending') }}</span>
                                                     @elseif ($order->status == '1')
-                                                        <span class="badge bg-gradient-success">Completed</span>
+                                                        <span class="badge bg-gradient-success">{{ __('Completed') }}</span>
                                                     @elseif ($order->status == '2')
-                                                        <span class="badge bg-gradient-danger">Cancelled</span>
+                                                        <span class="badge bg-gradient-danger">{{ __('Cancelled') }}</span>
                                                     @endif
                                                 </td>
                                                 <td class="align-middle text-center text-sm">{{ $order->payment_mode }}
@@ -122,7 +122,7 @@
                             <div class="card my-4">
                                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                     <div class="bg-gradient-secondary shadow-secondary border-radius-lg pt-4 pb-3">
-                                        <h6 class="text-white text-capitalize ps-3">Resume</h6>
+                                        <h6 class="text-white text-capitalize ps-3">{{ __('Resume') }}</h6>
                                     </div>
                                 </div>
 
@@ -153,12 +153,12 @@
                                         <table class="table align-items-center justify-content-center mb-0">
                                             <thead>
                                                 <tr>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Date:</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completed Orders ({{ $completeorders }}/{{ $totalorders }})</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{ __('Date') }}:</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{ __('Completed Orders') }} ({{ $completeorders }}/{{ $totalorders }})</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">SubTotal</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total Tax</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{ __('Total Tax') }}</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Total Cancelled</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">{{ __('Total Cancelled') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -167,7 +167,7 @@
                                                     <td>
                                                         <div class="align-middle text-center">
                                                             <div class="my-auto">
-                                                                <h6 class="mb-0 text-sm"><small> From: </small><u>{{ $desde }}</u> <small>To: </small><u>{{ $hasta }}</u></h6>
+                                                                <h6 class="mb-0 text-sm"><small> {{ __('From') }}: </small><u>{{ $desde }}</u> <small>To: </small><u>{{ __('To') }}</u></h6>
                                                             </div>
                                                         </div>
                                                     </td>

@@ -12,7 +12,7 @@
                     </div>
                     <div class="text-center pt-1">
                         {{-- <p class="text-sm mb-0 text-capitalize">Today's Money</p> --}}
-                        <h4 class="mb-0">Categories</h4>
+                        <h4 class="mb-0">{{ __('Categories') }}</h4>
                     </div>
                     <hr class="dark horizontal my-0">
                 </div>
@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <a href="{{ url('add-category') }}" class="btn btn-success">
-                                <i class="material-icons opacity-10">add</i> Add Category
+                                <i class="material-icons opacity-10">add</i> {{ __('Add') }} {{ __('Category') }}
                             </a>
 
                         </div>
@@ -31,10 +31,10 @@
                                     <thead>
                                         <tr>
 
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Category</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Description</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">Image</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">Action</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">{{ __('Category') }}</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0">{{ __('Description') }}</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">{{ __('Image') }}</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-0"><i class="material-icons">format_list_bulleted</i></th>
                                         </tr>
                                     </thead>
                                     <tbody>

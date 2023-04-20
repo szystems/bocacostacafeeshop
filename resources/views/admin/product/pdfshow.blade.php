@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -11,7 +12,7 @@
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 
 
-    <title>Product Details</title>
+    <title>{{ __('Product Details') }}</title>
 
 </head>
 
@@ -21,7 +22,7 @@
     </center>
     <h3 align="center"><u>{{ $product->name }}</u></h3>
     <label>
-        <font size="1">Report Date:</font>
+        <font size="1">{{ __('Report Date') }}:</font>
         <font color="blue" size="1">
             @php
                 $horafecha = new DateTime("now", new DateTimeZone(Auth::user()->timezone));
@@ -36,13 +37,13 @@
         <thead>
             <tr>
                 <th align="right">
-                    <font size="1">Category:</font>
+                    <font size="1">{{ __('Category') }}:</font>
                 </th>
                 <td align="left">
                     <font size="1">{{ $product->category->name }}</font>
                 </td>
                 <th align="right">
-                    <font size="1">Name:</font>
+                    <font size="1">{{ __('Name') }}:</font>
                 </th>
                 <td>
                     <font size="1">{{ $product->name }}</font>
@@ -50,13 +51,13 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Code:</font>
+                    <font size="1">{{ __('Codigo') }}:</font>
                 </th>
                 <td>
                     <font size="1">{{ $product->code }}</font>
                 </td>
                 <th align="right">
-                    <font size="1">Slug:</font>
+                    <font size="1">{{ __('Slug') }}:</font>
                 </th>
                 <td>
                     <font size="1">{{ $product->slug }}</font>
@@ -64,7 +65,7 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Small Description:</font>
+                    <font size="1">{{ __('Small Description') }}:</font>
                 </th>
                 <td colspan="3">
                     <font size="1">{{ $product->small_description }}</font>
@@ -72,7 +73,7 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Description:</font>
+                    <font size="1">{{ __('Description') }}:</font>
                 </th>
                 <td colspan="3">
                     <font size="1">{{ $product->description }}</font>
@@ -80,7 +81,7 @@
             </tr>
             <tr>
                 <th align="right">
-                    <font size="1">Price:</font>
+                    <font size="1">{{ __('Price') }}:</font>
                 </th>
                 <td>
                     <font size="1">
@@ -101,10 +102,10 @@
             @if ($product->image != null)
             <tr>
                 <th align="right">
-                    <font size="1">Image:</font>
+                    <font size="1">{{ __('Imagen') }}:</font>
                 </th>
                 <td align="center" colspan="3">
-                    <img src="{{ $path . '/product/' . $product->image }}" alt="" height="400">
+                    <img src="{{ $path . '/product/' . $product->image }}" alt="" height="200">
                 </td>
             </tr>
             @endif
