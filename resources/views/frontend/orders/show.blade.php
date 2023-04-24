@@ -14,14 +14,10 @@
                 <div class="col-md-3 sidebar ftco-animate">
                     <div class="sidebar-box ftco-animate">
                         <div class="categories">
-                            <h3>{{ ucwords($nombre[0]) }}'s <a href="{{ url('my-account') }}">Dashboard</a></h3>
-                            <li><a href="{{ url('my-orders') }}"><font color="c70017">-> Orders</font>
-                                    <!--<span>(12)</span>-->
-                                </a></li>
-                            <li>
-                                <a href="{{ url('user-details/' . Auth::id()) }}">- Account Details<!--<span>(12)</span>--> </a>
-                            </li>
-                            <li><a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- LOGOUT</font>  </a>
+                            <h3>{{ ucwords($nombre[0]) }}'s <a href="{{ url('my-account') }}">{{ __('Dashboard') }}</a></h3>
+                            <li><a href="{{ url('my-orders') }}"><font color="c70017">-> {{ __('Orders') }}<strong></strong></font><!--<span>(12)</span>--></a></li>
+                            <li><a href="{{ url('user-details/'.Auth::id()) }}">- {{ __('Account Details') }} <!--<span>(12)</span>--></a></li>
+                            <li><a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- {{ __('Logout') }}</font>  </a>
                                 <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -35,11 +31,11 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>Order Details</h3>
+                                <h3>{{ __('Order Details') }}</h3>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="">Order Date <small>({{ Auth::user()->timezone }})</small></label>
+                                    <label for="">{{ __('Order Date') }} <small>({{ Auth::user()->timezone }})</small></label>
                                     @php
                                         $date = new DateTime($orders->created_at, new DateTimeZone(date_default_timezone_get()));
                                         $date->setTimezone(new DateTimeZone(Auth::user()->timezone));
@@ -49,20 +45,30 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="">Status</label>
-                                    <p><font color="white">{{ $orders->status == '0' ?'Pending' : 'Completed' }}</font></p>
+                                    <label for="">{{ __('Status') }}</label>
+                                    <p>
+                                        <font color="white">
+                                            @if ($orders->status == '0')
+                                                {{ __('Pending') }}
+                                            @elseif ($orders->status == '1')
+                                                {{ __('Completed') }}
+                                            @elseif ($orders->status == '2')
+                                                {{ __('Cancelled') }}
+                                            @endif
+                                        </font>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="">Traking No</label>
+                                    <label for="">{{ __('Tracking Number') }}</label>
                                     <p><font color="white">{{ $orders->tracking_no }}</font></p>
                                 </div>
                             </div>
                             @if ($orders->payment_mode != null)
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="">Pyment Mode</label>
+                                    <label for="">{{ __('Payment Mode') }}</label>
                                     <p><font color="white">
                                         {{ $orders->payment_mode }}
                                         @if ($orders->payment_id != null)
@@ -74,19 +80,19 @@
                             @endif
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="">Name</label>
+                                    <label for="">{{ __('Name') }}</label>
                                     <p><font color="white">{{ $orders->fname }} {{ $orders->lname }}</font></p>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="">Phone</label>
+                                    <label for="">{{ __('Phone') }}</label>
                                     <p><font color="white">{{ $orders->phone }}</font></p>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="">Zipcode</label>
+                                    <label for="">{{ __('Zipcode') }}</label>
                                     <p><font color="white">{{ $orders->zipcode }}</font></p>
                                 </div>
                             </div>
@@ -98,7 +104,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">Shipping Address</label>
+                                    <label for="">{{ __('Shipping Address') }}</label>
                                     <p><font color="white">
                                         {{ $orders->address1 }},
                                         @if($orders->address2 != null)
@@ -113,7 +119,7 @@
                             @if ($orders->note != null)
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="">Order Note</label>
+                                        <label for="">{{ __('Order Note') }}</label>
                                         <p><font color="white">{{ $orders->note }}</font></p>
                                     </div>
                                 </div>
@@ -128,9 +134,9 @@
                                     @endphp
                                     <thead class="thead-primary">
                                         <tr class="text-center">
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
+                                            <th>{{ __('Product') }}</th>
+                                            <th>{{ __('Price') }}</th>
+                                            <th>{{ __('Quantity') }}</th>
                                             <th>SubTotal</th>
                                             <th></th>
                                         </tr>

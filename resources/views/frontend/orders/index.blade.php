@@ -14,10 +14,10 @@
                 <div class="col-md-3 sidebar ftco-animate">
                     <div class="sidebar-box ftco-animate">
                         <div class="categories">
-                            <h3>{{ ucwords($nombre[0]) }}'s <a href="{{ url('my-account') }}">Dashboard</a></h3>
-                            <li><a href="{{ url('my-orders') }}"><font color="c70017">-> Orders<strong></strong></font><!--<span>(12)</span>--></a></li>
-                            <li><a href="{{ url('user-details/'.Auth::id()) }}">- Account Details <!--<span>(12)</span>--></a></li>
-                            <li><a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- LOGOUT</font>  </a>
+                            <h3>{{ ucwords($nombre[0]) }}'s <a href="{{ url('my-account') }}">{{ __('Dashboard') }}</a></h3>
+                            <li><a href="{{ url('my-orders') }}"><font color="c70017">-> {{ __('Orders') }}<strong></strong></font><!--<span>(12)</span>--></a></li>
+                            <li><a href="{{ url('user-details/'.Auth::id()) }}">- {{ __('Account Details') }} <!--<span>(12)</span>--></a></li>
+                            <li><a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- {{ __('Logout') }}</font>  </a>
                                 <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -35,11 +35,11 @@
                             @if ($orders->count() > 0)
                                 <thead class="thead-primary">
                                     <tr class="text-center">
-                                        <th>Order Date <small>({{ Auth::user()->timezone }})</small></th>
-                                        <th>Tracking Number</th>
+                                        <th>{{ __('Order Date') }} <small>({{ Auth::user()->timezone }})</small></th>
+                                        <th>{{ __('Tracking Number') }}</th>
                                         <th>Total</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>{{ __('Status') }}</th>
+                                        <th><span class="material-symbols-outlined">format_list_bulleted</span></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,7 +57,13 @@
                                             <td class="price">{{ $config->currency_simbol }}{{ number_format($item->total_price,2, '.', ',') }}</td>
 
                                             <td class="price">
-                                                {{ $item->status == '0' ?'Pending' : 'Completed' }}
+                                                @if ($item->status == '0')
+                                                    {{ __('Pending') }}
+                                                @elseif ($item->status == '1')
+                                                    {{ __('Completed') }}
+                                                @elseif ($item->status == '2')
+                                                    {{ __('Cancelled') }}
+                                                @endif
                                             </td>
 
                                             <td class="total">

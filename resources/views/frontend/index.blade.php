@@ -136,7 +136,7 @@
                             <span class="flaticon-choices"></span>
                         </div>
                         <div class="media-body">
-                            <h3 class="heading">Easy to Order</h3>
+                            <h3 class="heading">{{ __('Easy to Order') }}</h3>
                             <!-- <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p> -->
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                             <span class="flaticon-delivery-truck"></span>
                         </div>
                         <div class="media-body">
-                            <h3 class="heading">Fastest Delivery</h3>
+                            <h3 class="heading">{{ __('Fastest Delivery') }}</h3>
                             <!-- <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p> -->
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                             <span class="flaticon-coffee-bean"></span>
                         </div>
                         <div class="media-body">
-                            <h3 class="heading">Quality Coffee</h3>
+                            <h3 class="heading">{{ __('Quality Coffee') }}</h3>
                             <!-- <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p> -->
                         </div>
                     </div>
@@ -173,21 +173,14 @@
             <div class="overlap">
                 <div class="heading-section ftco-animate ">
                     <!-- <span class="subheading">Discover</span> -->
-                    <h2 class="mb-4">Why Bocacosta Coffee?</h2>
+                    <h2 class="mb-4">{{ __('Why Bocacosta Coffee?') }}</h2>
                 </div>
                 <div>
-                    <p>Bocacosta Coffee is not just a premium coffee brand. We have the best coffee, working with
-                        professionals with years of experience. Our competition coffee, you can't find it anywhere. That is
-                        why Bocacosta has no comparison. From the first sip of coffee, you can feel the special notes.</p>
-                    <p>The coffee is unique from its collection. Therefore, we ensure the care required to guarantee its
-                        flavor and quality.</p>
+                    <p>{{ __("Bocacosta Coffee is not just a premium coffee brand. We have the best coffee, working with professionals with years of experience. Our competition coffee, you can't find it anywhere. That is why Bocacosta has no comparison. From the first sip of coffee, you can feel the special notes.") }}</p>
+                    <p>{{ __('The coffee is unique from its collection. Therefore, we ensure the care required to guarantee its flavor and quality.') }}</p>
                     <!-- <span class="subheading">Place and date of foundation:</span> -->
                     <!-- <p>
-                        Portland, Oregon, 2019.
-                        The founders have more than 30 years of experience in coffee. We are working so that each cup of
-                        Bocacosta coffee is a unique experience and you can enjoy a coffee with the highest quality
-                        standards.
-                    </p> -->
+                       Portland, Oregon, 2019. The founders have more than 30 years of experience in coffee. We are working so that each cup of Bocacosta coffee is a unique experience and you can enjoy a coffee with the highest quality standards.</p> -->
                     <!-- <p>When our founder arrived at a coffee shop in Portland, he ordered a cup of coffee, and when he tasted it, he could see that the coffee was not of good quality. He knows he was left with doubt because there was no good quality. Seeing that there was no such good quality coffee in the coffee market, our founder began with the idea of offering high-quality coffee. Our name is inspired by a region where the rain comes to refresh after the high temperatures. So we choose the best coffee in the country and region.</p>
                     <p> Have more than 30 years of experience in coffee. We are working so that each cup of Bocacosta coffee is a unique experience, and you can enjoy coffee with the highest quality standards.</p> -->
                 </div>
@@ -201,16 +194,11 @@
                 <div class="col-md-6 pr-md-5">
                     <div class="heading-section text-md-right ftco-animate">
                         <!-- <span class="subheading">Discover</span> -->
-                        <h2 class="mb-4">Our Coffee</h2>
-                        <p class="mb-4">Our coffee comes from Guatemala, a country recognized for having one of the
-                            world's best and most unique coffees. High-altitude coffee is coffee in which you can feel the
-                            high quality and the best flavor you could imagine in each cup.</p>
-                        <h4><strong>Cup of Coffee</strong></h4>
-                        <p class="mb-4">It is not just a premium coffee. It is with which you accompany. Early in
-                            the morning to achieve those goals, going out with those special
-                            people, in work meetings, at the end of a long work day. For every
-                            moment, there is Bocacosta Coffee.</p>
-                        <p><a href="{{ url('category') }}" class="btn btn-primary btn-outline-primary px-4 py-3">Our coffee</a>
+                        <h2 class="mb-4">{{ __('Our Coffee') }}</h2>
+                        <p class="mb-4">{{ __("Our coffee comes from Guatemala, a country recognized for having one of the world's best and most unique coffees. High-altitude coffee is coffee in which you can feel the high quality and the best flavor you could imagine in each cup.") }}</p>
+                        <h4><strong>{{ __('Cup of Coffee') }}</strong></h4>
+                        <p class="mb-4">{{ __('It is not just a premium coffee. It is with which you accompany. Early in the morning to achieve those goals, going out with those special people, in work meetings, at the end of a long work day. For every moment, there is Bocacosta Coffee.') }}</p>
+                        <p><a href="{{ url('category') }}" class="btn btn-primary btn-outline-primary px-4 py-3">{{ __('Our Coffee') }}</a>
                         </p>
                     </div>
                 </div>
@@ -251,8 +239,8 @@
     		<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
           	{{-- <span class="subheading">Discover</span> --}}
-            <h2 class="mb-4">Categories</h2>
-            <p>Choose one of our categories and buy the best coffee</p>
+            <h2 class="mb-4">{{ __('Categories') }}</h2>
+            <p>{{ __('Choose one of our categories and buy the best coffee') }}</p>
           </div>
         </div>
         <div class="row">
@@ -294,7 +282,7 @@
                                 <div class="text">
                                     <div class="icon"><span class="flaticon-coffee-bean"></span></div>
                                     <strong class="number" data-number="6">0</strong>
-                                    <span>Coffee Branches</span>
+                                    <span>{{ __('Coffee Branches') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -303,7 +291,7 @@
                                 <div class="text">
                                     <div class="icon"><span class="icon-globe"></span></div>
                                     <strong class="number">+</strong><strong class="number" data-number="6">0</strong>
-                                    <span>Countries around the world</span>
+                                    <span>{{ __('Countries around the world') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -312,7 +300,7 @@
                                 <div class="text">
                                     <div class="icon"><span class="icon-users"></span></div>
                                     <strong class="number" data-number="10567">0</strong>
-                                    <span>Happy Customer</span>
+                                    <span>{{ __('Happy Customer') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -382,8 +370,8 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-md-7 heading-section text-center ftco-animate">
                     <!-- <span class="subheading">Testimony</span> -->
-                    <h2 class="mb-4">Customers Says</h2>
-                    <p>Your opinion is important to us.</p>
+                    <h2 class="mb-4">{{ __('Customers Says') }}</h2>
+                    <p>{{ __('Your opinion is important to us.') }}</p>
                 </div>
             </div>
         </div>
@@ -392,8 +380,7 @@
                 <div class="col-lg align-self-sm-end ftco-animate">
                     <div class="testimony">
                         <blockquote>
-                            <p>&ldquo;I was looking for coffee from this region, and thanks to the internet, I found
-                                Bocacosta, and now I am buying here for my business.&rdquo;</p>
+                            <p>&ldquo;{{ __('I was looking for coffee from this region, and thanks to the internet, I found Bocacosta, and now I am buying here for my business.') }}&rdquo;</p>
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">
@@ -408,28 +395,11 @@
                 <div class="col-lg align-self-sm-end">
                     <div class="testimony overlay">
                         <blockquote>
-                            <p>&ldquo;The smell when the coffee maker makes the coffee is simply spectacular, and when
-                                visitors come to my house, I recommend Bocacosta.&rdquo;</p>
+                            <p>&ldquo;{{ __('The smell when the coffee maker makes the coffee is simply spectacular, and when visitors come to my house, I recommend Bocacosta.') }}&rdquo;</p>
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">
                                 <img src="{{ asset('bocacostacafeweb/images/person_2.jpg')}}" alt="">
-                            </div>
-                            <div class="name align-self-center">Louise Kelly
-                                <span class="position">Illustrator Designer</span>
-                                </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg align-self-sm-end ftco-animate">
-                    <div class="testimony">
-                        <blockquote>
-                            <p>&ldquo;The smell when the coffee maker makes the coffee is simply spectacular, and when
-                                visitors come to my house, I recommend Bocacosta.&rdquo;</p>
-                        </blockquote>
-                        <!-- <div class="author d-flex mt-4">
-                            <div class="image mr-3 align-self-center">
-                                <img src="{{ asset('bocacostacafeweb/images/person_3.jpg')}}" alt="">
                             </div>
                             <div class="name align-self-center">Louise Kelly
                                 <span class="position">Illustrator Designer</span>
@@ -440,8 +410,7 @@
                 <div class="col-lg align-self-sm-end">
                     <div class="testimony overlay">
                         <blockquote>
-                            <p>&ldquo;My friend recommended this coffee to me, and I bought a bag. Then I started buying
-                                wholesale for my cafeterias, which is selling spectacularly.&rdquo;</p>
+                            <p>&ldquo;{{ __('My friend recommended this coffee to me, and I bought a bag. Then I started buying wholesale for my cafeterias, which is selling spectacularly.') }}&rdquo;</p>
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">
@@ -456,8 +425,7 @@
                 <div class="col-lg align-self-sm-end ftco-animate">
                     <div class="testimony">
                         <blockquote>
-                            <p>&ldquo;I thought I had tasted good coffee, and when I tried it, I knew it was good. I'm happy
-                                because I have already found my coffee supplier.&rdquo;</p>
+                            <p>&ldquo;{{ __("I thought I had tasted good coffee, and when I tried it, I knew it was good. I'm happy because I have already found my coffee supplier.") }}&rdquo;</p>
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">

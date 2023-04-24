@@ -102,7 +102,7 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="{{ asset('assets/imgs/english.jpg') }}"
+                                        <img src="{{ asset('assets/imgs/english.png') }}"
                                             class="avatar avatar-sm  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
@@ -117,7 +117,7 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="{{ asset('assets/imgs/spanish.jpg') }}"
+                                        <img src="{{ asset('assets/imgs/spanish.png') }}"
                                             class="avatar avatar-sm  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">

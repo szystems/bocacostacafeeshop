@@ -76,20 +76,20 @@
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item {{ Request::is('/') ? 'active bg-gradient-info':''  }}"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
+                    <li class="nav-item {{ Request::is('/') ? 'active bg-gradient-info':''  }}"><a href="{{ url('/') }}" class="nav-link">{{ __('Home') }}</a></li>
 
                     <li class="nav-item dropdown {{ Request::is('history') ? 'active bg-gradient-info':''  }}">
                         <a class="nav-link dropdown-toggle" href="" id="dropdown04" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">About</a>
+                            aria-haspopup="true" aria-expanded="false">{{ __('About') }}</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="{{ url('history') }}">History</a>
+                            <a class="dropdown-item" href="{{ url('history') }}">{{ __('History') }}</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown {{ Request::is('category','ourcoffee') ? 'active bg-gradient-info':''  }}">
                         <a class="nav-link dropdown-toggle" href="{{ url('category') }}" id="dropdown03" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Our Coffee</a>
+                            aria-haspopup="true" aria-expanded="false">{{ __('Shop') }}</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown03">
-                            <a class="dropdown-item" href="{{ url('category') }}">Choose your type of flavor</a>
+                            <a class="dropdown-item" href="{{ url('category') }}">{{ __('Choose your type of flavor') }}</a>
                             @php
                                 $categories=DB::table('categories')
                                 ->where('status','=','1')
@@ -106,8 +106,8 @@
                             @endforeach
                         </div>
                     </li>
-                    <li class="nav-item {{ Request::is('contact') ? 'active bg-gradient-info':''  }}"><a href="{{ url('contact') }}" class="nav-link">Contact</a></li>
-                    <li class="nav-item {{ Request::is('wholesale') ? 'active bg-gradient-info':''  }}"><a href="{{ url('wholesale') }}" class="nav-link">Wholesale</a></li>
+                    <li class="nav-item {{ Request::is('contact') ? 'active bg-gradient-info':''  }}"><a href="{{ url('contact') }}" class="nav-link">{{ __('Contact') }}</a></li>
+                    <li class="nav-item {{ Request::is('wholesale') ? 'active bg-gradient-info':''  }}"><a href="{{ url('wholesale') }}" class="nav-link">{{ __('Wholesale') }}</a></li>
                     <!-- <li class="nav-item"><a href="socialimpact.html" class="nav-link">Social Impact</a></li>
                     <li class="nav-item"><a href="coffeebenefits.html" class="nav-link">Coffee Benefits</a></li> -->
                     <!-- <li class="nav-item"><a href="" class="nav-link">Coffee Quiz</a></li> -->
@@ -118,12 +118,12 @@
                     @if (Auth::guest())
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                My Account
+                                {{ __('Account') }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="{{ route('login') }}">Sign In</a>
-                                <a class="dropdown-item" href="{{ route('register') }}">Register</a>
-                                <a class="dropdown-item" href="{{ route('password.request') }}">Forgot Your Password?</a>
+                                <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="dropdown-item" href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
                             </div>
                         </li>
                     @else
@@ -135,14 +135,14 @@
                                 {{ ucwords($nombre[0]) }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown02">
-                                <a class="dropdown-item" href="{{ url('my-account') }}">- My Account</a>
-                                <a class="dropdown-item" href="{{ url('whislist') }}">- Wishlist</a>
-                                <a class="dropdown-item" href="{{ url('cart') }}">- Cart</a>
-                                <a class="dropdown-item" href="{{ url('my-orders') }}">- Orders</a>
+                                <a class="dropdown-item" href="{{ url('my-account') }}">- {{ __('Account') }}</a>
+                                <a class="dropdown-item" href="{{ url('whislist') }}">- {{ __('Whishlist') }}</a>
+                                <a class="dropdown-item" href="{{ url('cart') }}">- {{ __('Cart') }}</a>
+                                <a class="dropdown-item" href="{{ url('my-orders') }}">- {{ __('Orders') }}</a>
                                 @if (Auth::user()->role_as == "1")
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">- Admin Dashboard</a>
+                                <a class="dropdown-item" href="{{ url('dashboard') }}">- {{ __('Dashboard') }}</a>
                                 @endif
-                                <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- LOGOUT</font>  </a>
+                                <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- {{ __('Logout') }}</font>  </a>
                                 <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
@@ -175,6 +175,15 @@
                         </a>
                         @endif
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="material-symbols-outlined">language</span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown01">
+                            <a class="dropdown-item" href="{{ route('set_language', ['en']) }}"> <img src="{{ asset('assets/imgs/english.png') }}" width="30"> {{ __('English') }}</a>
+                            <a class="dropdown-item" href="{{ route('set_language', ['es']) }}"> <img src="{{ asset('assets/imgs/spanish.png') }}" width="30"> {{ __('Spanish') }}</a>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -189,10 +198,10 @@
             <div class="row mb-5">
                 <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">About Us</h2>
-                        <p>The flavors of our coffee are spectacular. But, unfortunately, they are nowhere to be found.
+                        <h2 class="ftco-heading-2">{{ __('About Us') }}</h2>
+                        <p>{{ __('The flavors of our coffee are spectacular. But, unfortunately, they are nowhere to be found.') }}
                         </p>
-                        <p><strong>ONLY IN BOCACOSTA COFFEE</strong></p>
+                        <p><strong>{{ __('ONLY IN BOCACOSTA COFFEE') }}</strong></p>
                         <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                             <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li> -->
@@ -232,14 +241,14 @@
                 </div> -->
                 <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Links</h2>
+                        <h2 class="ftco-heading-2">{{ __('Links') }}</h2>
                         <ul class="list-unstyled">
-                            <li><a href="{{ url('/') }}" class="py-2 d-block">Home</a></li>
-                            <li><a href="ourcoffee.html" class="py-2 d-block">Our Coffee</a></li>
+                            <li><a href="{{ url('/') }}" class="py-2 d-block">{{ __('Home') }}</a></li>
+                            <li><a href="ourcoffee.html" class="py-2 d-block">{{ __('Our Coffee') }}</a></li>
                             <!-- <li><a href="wholesale.html" class="py-2 d-block">Wholesale</a></li> -->
-                            <li><a href="{{ url('social-impact') }}" class="py-2 d-block">Social Impact</a></li>
+                            <li><a href="{{ url('social-impact') }}" class="py-2 d-block">{{ __('Social Impact') }}</a></li>
                             <!-- <li><a href="coffeebenefits.html" class="py-2 d-block">Coffee Benefits</a></li> -->
-                            <li><a href="{{ url('contact') }}" class="py-2 d-block">Contact</a></li>
+                            <li><a href="{{ url('contact') }}" class="py-2 d-block">{{ __('Contact') }}</a></li>
                             <!-- <li><a href="faq.html" class="py-2 d-block">FAQ</a></li> -->
                         </ul>
                     </div>
@@ -255,7 +264,7 @@
                         <script>
                             document.write(new Date().getFullYear());
                         </script>
-                        All rights reserved
+                        {{ __('All rights reserved') }}
                         | <a href="https://szystems.com" target="_blank">Szystems</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>

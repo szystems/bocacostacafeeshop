@@ -13,7 +13,7 @@
                     <form method="POST" action="{{ route('password.update') }}" class="billing-form ftco-bg-dark p-3 p-md-5">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
-                        <h3 class="mb-4 billing-heading">Reset Password</h3>
+                        <h3 class="mb-4 billing-heading">{{ __('Reset Password') }}</h3>
                         <div class="row align-items-end">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -42,6 +42,7 @@
                                     <label for="lastname">{{  __('Confirm Password') }}</label>
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
+                                <input type="checkbox" onclick="showpassword(); showpasswordconfirm()">{{ __('Show Password') }}
                             </div>
 
                             <div class="w-100"></div>
@@ -50,7 +51,7 @@
                                 <div class="form-group">
 
                                     <p><button type="submit" class="btn btn-primary py-3 px-4 w-100">
-                                            <font color="white"><strong>Reset Password</strong></font>
+                                            <font color="white"><strong>{{ __('Reset Password') }}</strong></font>
                                         </button></p>
                                 </div>
 
@@ -72,3 +73,23 @@
         </div>
     </section> <!-- .section -->
 @endsection
+
+<Script>
+    function showpassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      function showpasswordconfirm() {
+        var x = document.getElementById("password-confirm");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+</Script>

@@ -12,7 +12,7 @@
                 <div class="col-xl-6 ftco-animate">
                     <form  method="POST" action="{{ route('password.confirm') }}" class="billing-form ftco-bg-dark p-3 p-md-5">
                         @csrf
-                        <h3 class="mb-4 billing-heading"> Forgot Your Password?</h3>
+                        <h3 class="mb-4 billing-heading"> {{ __('Forgot Your Password?') }}</h3>
 
                         <div class="row align-items-end">
                             {{ __('Please confirm your password before continuing.') }}
@@ -33,7 +33,7 @@
 
                                 <div class="form-group">
                                     <p><button type="submit" class="btn btn-primary py-3 px-4 w-100">
-                                            <font color="white"><strong>Confirm Password</strong></font>
+                                            <font color="white"><strong>{{ __('Confirm Password') }}</strong></font>
                                         </button></p>
                                 </div>
                                 @if (Route::has('password.request'))

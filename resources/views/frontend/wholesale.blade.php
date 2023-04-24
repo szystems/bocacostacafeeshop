@@ -11,8 +11,8 @@
                 <div class="row slider-text justify-content-center align-items-center">
 
                     <div class="col-md-7 col-sm-12 text-center ftco-animate">
-                        <h1 class="mb-3 mt-5 bread">Wholesale</h1>
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Wholesale</span>
+                        <h1 class="mb-3 mt-5 bread">{{ __('Wholesale') }}</h1>
+                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">{{ __('Home') }}</a></span> <span>{{ __('Wholesale') }}</span>
                         </p>
                     </div>
 
@@ -28,11 +28,11 @@
                 <div class="col-md-4 contact-info ftco-animate">
                     <div class="row">
                         <div class="col-md-12 mb-4">
-                            <h2 class="h4">Wholesale</h2>
+                            <h2 class="h4">{{ __('Wholesale') }}</h2>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <p>Our coffee is perfect for your business, and we constantly work hard to ensure that you always get the highest quality.
-                            <br><span>THERE IS NO OTHER LIKE OURS</span></p>
+                            <p>{{ __('Our coffee is perfect for your business, and we constantly work hard to ensure that you always get the highest quality.') }}
+                            <br><span>{{ __('THERE IS NO OTHER LIKE OURS') }}</span></p>
                         </div>
                         <!-- <div class="col-md-12 mb-3">
                             <p><span>Address:</span> Portland Oregon, USA</p>
@@ -54,79 +54,79 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Full Name" name="name">
+                                    <input type="text" class="form-control" placeholder="{{ __('Your Full Name') }}" name="name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Job Title" name="job">
+                                    <input type="text" class="form-control" placeholder="{{ __('Job Title') }}" name="job">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Email" name="email">
+                                    <input type="text" class="form-control" placeholder="{{ __('Your Email') }}" name="email">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Name of Business" name="business">
+                                    <input type="text" class="form-control" placeholder="{{ __('Name of Business') }}" name="business">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Years in Business?</label>
+                                    <label for="">{{ __('Years in Business?') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control" placeholder="Years" name="years">
+                                    <input type="number" class="form-control" placeholder="{{ __('Years') }}" name="years">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Number of Locations?</label>
+                                    <label for="">{{ __('Number of Locations?') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control number" placeholder="Locations" name="locations">
+                                    <input type="number" class="form-control number" placeholder="{{ __('Locations') }}" name="locations">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">What is your level of experience working with coffee?</label>
+                                    <label for="">{{ __('What is your level of experience working with coffee?') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <select class=" form-control custom-select" placeholder="What is your level of experience working with coffee?" name="level">
-                                        <option selected>Choose...</option>
-                                        <option value="Non experience">Non experience</option>
-                                        <option value="Experienced">Experienced</option>
-                                        <option value="A lot experienced">A lot experienced</option>
+                                    <select class=" form-control custom-select" placeholder="{{ __('What is your level of experience working with coffee?') }}" name="level">
+                                        <option selected>{{ __('Choose...') }}</option>
+                                        <option value="Non experience">{{ __('Non experience') }}</option>
+                                        <option value="Experienced">{{ __('Experienced') }}</option>
+                                        <option value="A lot experienced">{{ __('A lot experienced') }}</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Volume of pounds of coffee needed per week?</label>
+                                    <label for="">{{ __('Volume of pounds of coffee needed per week?') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control number" placeholder="Volume of pounds" name="volume">
+                                    <input type="number" class="form-control number" placeholder="{{ __('Volume of pounds') }}" name="volume">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="">How did you hear about us?</label>
+                            <label for="">{{ __('How did you hear about us?') }}</label>
                         </div>
                         <div class="form-group">
-                            <textarea name="about" id="" cols="30" rows="7" class="form-control" placeholder="Tell us how you heard about us..."></textarea>
+                            <textarea name="about" id="" cols="30" rows="7" class="form-control" placeholder="{{ __('Tell us how you heard about us...') }}"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            <input type="submit" value="{{ __('Send Message') }}" class="btn btn-primary py-3 px-5">
                         </div>
                     </form>
                 </div>

@@ -12,7 +12,7 @@
                 <div class="col-xl-6 ftco-animate">
                     <form method="POST" action="{{ route('login') }}" class="billing-form ftco-bg-dark p-3 p-md-5">
                         @csrf
-                        <h3 class="mb-4 billing-heading"> Sign In</h3>
+                        <h3 class="mb-4 billing-heading"> {{ __('Login') }}</h3>
                         <div class="row align-items-end">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -35,9 +35,11 @@
                                         </span>
                                     @enderror
                                 </div>
+                                <input type="checkbox" onclick="showpassword()">{{ __('Show Password') }}
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-12">
+                                <br>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -46,10 +48,10 @@
                                     </label>
                                 </div>
                                 <div class="form-group">
-                                    <p><button type="submit" class="btn btn-primary py-3 px-4 w-100"><font color="white"><strong>Login</strong></font></button></p>
+                                    <p><button type="submit" class="btn btn-primary py-3 px-4 w-100"><font color="white"><strong>{{ __('Login') }}</strong></font></button></p>
                                 </div>
                                 <a class="btn btn-link" href="{{ route('register') }}">
-                                    Haven't registered yet? Register
+                                    {{ __('Create an account') }}
                                 </a>
                                 <br>
                                 @if (Route::has('password.request'))
@@ -77,3 +79,14 @@
         </div>
     </section> <!-- .section -->
 @endsection
+
+<Script>
+    function showpassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+</Script>

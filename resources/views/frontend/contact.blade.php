@@ -11,8 +11,8 @@
                 <div class="row slider-text justify-content-center align-items-center">
 
                     <div class="col-md-7 col-sm-12 text-center ftco-animate">
-                        <h1 class="mb-3 mt-5 bread">contact</h1>
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span>
+                        <h1 class="mb-3 mt-5 bread">{{ __('Contact') }}</h1>
+                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">{{ __('Home') }}</a></span> <span>{{ __('Contact') }}</span>
                         </p>
                     </div>
 
@@ -27,13 +27,13 @@
                 <div class="col-md-4 contact-info ftco-animate">
                     <div class="row">
                         <div class="col-md-12 mb-4">
-                            <h2 class="h4">Contact Information</h2>
+                            <h2 class="h4">{{ __('Contact Information') }}</h2>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <p><span>Address:</span><strong> Portland, Oregon, USA</strong></p>
+                            <p><span>{{ __('Address') }}:</span><strong> Portland, Oregon, USA</strong></p>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <p><span>Phone:</span> <a href="tel://15037440078">+1 503 744 0078</a></p>
+                            <p><span>{{ __('Phone') }}:</span> <a href="tel://15037440078">+1 503 744 0078</a></p>
                         </div>
                         <!-- <div class="col-md-12 mb-3">
                             <p><span>Email:</span> <a href="mailto:info@yoursite.com">	info@bocacostacafe.com</a></p>
@@ -49,23 +49,23 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name" name="name">
+                                    <input type="text" class="form-control" placeholder="{{ __('Name') }}" name="name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Email" name="email">
+                                    <input type="text" class="form-control" placeholder="Email" name="email">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject" name="subject">
+                            <input type="text" class="form-control" placeholder="{{ __('Subject') }}" name="subject">
                         </div>
                         <div class="form-group">
-                            <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                            <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="{{ __('Message') }}"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            <input type="submit" value="{{ __('Send Message') }}" class="btn btn-primary py-3 px-5">
                         </div>
                     </form>
                 </div>

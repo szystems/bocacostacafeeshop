@@ -12,7 +12,7 @@
                 <div class="col-xl-6 ftco-animate">
                     <form method="POST" action="{{ route('register') }}" class="billing-form ftco-bg-dark p-3 p-md-5">
                         @csrf
-                        <h3 class="mb-4 billing-heading"> Create an account</h3>
+                        <h3 class="mb-4 billing-heading"> {{ __('Create an account') }}</h3>
                         <div class="row align-items-end">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -52,6 +52,7 @@
                                     <label for="lastname">{{  __('Confirm Password') }}</label>
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
+                                <input type="checkbox" onclick="showpassword(); showpasswordconfirm()">{{ __('Show Password') }}
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -72,14 +73,14 @@
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="register-policy-2" required>
-                                        <label class="custom-control-label" for="register-policy-2">I agree to the <a href="#">privacy policy</a> *</label>
+                                        <label class="custom-control-label" for="register-policy-2">{{ __('I agree to the') }} <a href="#">{{ __('privacy policy') }}</a> *</label>
                                     </div><!-- End .custom-checkbox -->
                                     <p><button type="submit" class="btn btn-primary py-3 px-4 w-100">
-                                            <font color="white"><strong>Register</strong></font>
+                                            <font color="white"><strong>{{ __('Register') }}</strong></font>
                                         </button></p>
                                 </div>
                                 <a class="btn btn-link" href="{{ route('login') }}">
-                                    already have an account?
+                                    {{ __('Already have an account? Log in') }}
                                 </a>
 
                             </div>
@@ -100,3 +101,23 @@
         </div>
     </section> <!-- .section -->
 @endsection
+
+<Script>
+    function showpassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      function showpasswordconfirm() {
+        var x = document.getElementById("password-confirm");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+</Script>
