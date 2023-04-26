@@ -52,9 +52,9 @@
                                     <label for="lastname">{{  __('Confirm Password') }}</label>
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
-                                <input type="checkbox" onclick="showpassword(); showpasswordconfirm()">{{ __('Show Password') }}
+                                <input type="checkbox" onclick="showpassword(); showpasswordconfirm()"> {{ __('Show Password') }}
                             </div>
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="firstname">{{ __('Timezone') }}</label>
                                     <select class="form-control" name="timezone" id="timezone">
@@ -66,7 +66,8 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
+                            <input type="hidden" name="timezone" id="timezone" value="UTC">
                             <div class="w-100"></div>
                             <div class="col-md-12">
 

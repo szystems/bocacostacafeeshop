@@ -102,7 +102,7 @@ class ProductController extends Controller
 
         $config = Config::first();
 
-        return redirect('products')->with('status', "Product Added Successfully");
+        return redirect('products')->with('status', __('Product Added Successfully'));
     }
 
     public function edit($id)
@@ -160,7 +160,7 @@ class ProductController extends Controller
         $product->discount = $request->input('discount') == TRUE ? '1':'0';
         $product->update();
 
-        return redirect('/products')->with('status',"Product Updated Successfully");
+        return redirect('/products')->with('status', __('Product Updated Successfully'));
     }
 
     public function destroy($id)
@@ -176,7 +176,7 @@ class ProductController extends Controller
             }
         }
         $product->delete();
-        return redirect('products')->with('status',"Product Deleted Successfully");
+        return redirect('products')->with('status', __('Product Deleted Successfully'));
     }
 
     public function pdf(Request $request)

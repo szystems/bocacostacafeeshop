@@ -39,19 +39,22 @@ class UserController extends Controller
 
     public function indexuser()
     {
-        return view('frontend.user.index');
+        $config = Config::first();
+        return view('frontend.user.index', compact('config'));
     }
 
     public function showuser($id)
     {
+        $config = Config::first();
         $user = User::where('id', $id)->first();
-        return view('frontend.user.show', compact('user'));
+        return view('frontend.user.show', compact('user','config'));
     }
 
     public function edituser($id)
     {
+        $config = Config::first();
         $user = User::where('id', $id)->first();
-        return view('frontend.user.edit', compact('user'));
+        return view('frontend.user.edit', compact('user','config'));
     }
 
     public function updateuser(UserFormRequest $request, $id)
@@ -81,6 +84,6 @@ class UserController extends Controller
         $user->timezone = $request->input('timezone');
         $user->update();
 
-        return redirect('my-account')->with('status',"User Updated Successfully");
+        return redirect('my-account')->with('status',__('User Updated Successfully'));
     }
 }

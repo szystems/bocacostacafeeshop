@@ -35,22 +35,22 @@ class WishlistController extends Controller
             {
                 if(Wishlist::where('prod_id',$prod_id)->where('user_id',Auth::id())->exists())
                 {
-                    return response()->json(['status' => $prod->name." Already Added to wishlist"]);
+                    return response()->json(['status' => $prod->name.__(' Already Added to wishlist')]);
                 }else
                 {
                     $wish = new Wishlist();
                     $wish->prod_id = $prod_id;
                     $wish->user_id = Auth::id();
                     $wish->save();
-                    return response()->json(['status' => $prod->name." Added to Wishlist"]);
+                    return response()->json(['status' => $prod->name.__(' Added to Wishlist')]);
                 }
             }else
             {
-                return response()->json(['status' => "Product doesnot exist"]);
+                return response()->json(['status' => __('Product doesnot exist') ]);
             }
         }else
         {
-            return response()->json(['status' => "Login to Continue"]);
+            return response()->json(['status' => __('Login or create your account to continue')]);
         }
     }
 
@@ -64,13 +64,13 @@ class WishlistController extends Controller
 
                 $wishItem = Wishlist::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $wishItem->delete();
-                return response()->json(['status' => "Item Removed from Wishlist"]);
+                return response()->json(['status' => __('Item Removed from Wishlist')]);
 
             }
 
         }else
         {
-            return response()->json(['status' => "Login to continue"]);
+            return response()->json(['status' => __('Login or create your account to continue')]);
         }
     }
 

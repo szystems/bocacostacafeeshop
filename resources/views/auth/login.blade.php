@@ -51,7 +51,7 @@
                                     <p><button type="submit" class="btn btn-primary py-3 px-4 w-100"><font color="white"><strong>{{ __('Login') }}</strong></font></button></p>
                                 </div>
                                 <a class="btn btn-link" href="{{ route('register') }}">
-                                    {{ __('Create an account') }}
+                                    {{ __('Create your account') }}
                                 </a>
                                 <br>
                                 @if (Route::has('password.request'))

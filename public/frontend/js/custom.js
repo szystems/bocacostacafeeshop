@@ -57,7 +57,7 @@ $(document).ready(function () {
                 loadwish();
                 swal(response.status)
                 .then((value) => {
-                    // window.location.reload();
+                    window.location.reload();
                   });
 
 

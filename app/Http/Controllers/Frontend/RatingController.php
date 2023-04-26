@@ -40,11 +40,11 @@ class RatingController extends Controller
                     ]);
                 }
             }else{
-                return redirect()->back()->with('status', "You cannot rate a product whitout purchase");
+                return redirect()->back()->with('status',  __('You cannot rate a product whitout purchase'));
             }
-            return redirect()->back()->with('status', "Thank you for Rating this product");
+            return redirect()->back()->with('status',  __('Thank you for Rating this product'));
         }else {
-            return redirect()->back()->with('status', "The link followed was broken");
+            return redirect()->back()->with('status',  __('The link followed was broken'));
         }
     }
 }

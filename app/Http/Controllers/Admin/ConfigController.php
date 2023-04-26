@@ -46,7 +46,7 @@ class ConfigController extends Controller
         $config->email = $request->input('email');
         $config->update();
 
-        $request->session()->flash('alert-success', 'Settings updated correctly.');
+        $request->session()->flash('alert-success', __('Settings updated correctly'));
 
         return view('admin.config.index', \compact('config'));
     }

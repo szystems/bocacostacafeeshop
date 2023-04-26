@@ -31,7 +31,7 @@
                             <div class="text text-center pt-4">
                                 <h3><a href="{{ url('category/'.$category->slug.'/'.$prod->slug) }}">{{ substr($prod->name, 0, 30) }}...</a></h3>
                                     @if ($prod->trending == "1")
-                                        <span class="badge badge-info">{{ $prod->trending == '1'? 'Trending':''}}</span>
+                                        <span class="badge badge-info">{{ __('Trending') }}</span>
                                     @endif
 
                                 <p>{{ $prod->small_description }}</p>
@@ -43,7 +43,7 @@
                                         <span>{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</span>
                                     @endif
                                     @if ($prod->discount == "1")
-                                        <span class="badge badge-warning">{{ $prod->discount == '1'? '% Off':''}}</span>
+                                        <span class="badge badge-warning">{{ __('% Off') }}</span>
                                     @endif
                                 </p>
                                 <p>
@@ -71,9 +71,9 @@
                                     @endif
                                     <br>
                                     @if($prod->qty > 0)
-                                        <span class="badge badge-success">In stock</span>
+                                        <span class="badge badge-success">{{ __('In stock') }}</span>
                                     @else
-                                        <span class="badge badge-danger">out of stock</span>
+                                        <span class="badge badge-danger">{{ __('Out of stock') }}</span>
                                     @endif
                                 </p>
                             </div>

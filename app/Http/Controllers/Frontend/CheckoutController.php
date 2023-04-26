@@ -109,10 +109,10 @@ class CheckoutController extends Controller
 
         if ($request->input('payment_mode') == "Paid by Razorpay" || $request->input('payment_mode')== "Paid by Paypal" ) {
             $this->sendOrderConfirmation($order,$config,$user);
-            return response()->json(['status'=> "Order placed Sussesfully"]);
+            return response()->json(['status'=> "Order placed Successfully"]);
         }
         $this->sendOrderConfirmation($order,$config,$user);
-        return redirect('/my-orders')->with('status', "Order placed Sussesfully");
+        return redirect('/my-orders')->with('status', __('Order placed Successfully'));
     }
 
     public function sendOrderConfirmation($order,$config,$user)

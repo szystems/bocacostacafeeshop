@@ -8,8 +8,10 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Rating;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Config;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class FrontendController extends Controller
 {
@@ -25,9 +27,9 @@ class FrontendController extends Controller
     public function category()
     {
         $categories = Category::where('status','1')->orderby('name','asc')->get();
-
+        $popularProducts = OrderItem::select('prod_id', DB::raw('COUNT(*) as `count`'))->groupBy('prod_id')->orderBy('count', 'DESC')->limit(4)->get();
         $config = Config::first();
-        return view('frontend.category', compact('categories','config'));
+        return view('frontend.category', compact('categories','config','popularProducts'));
     }
 
     public function viewcategory($slug)
@@ -41,7 +43,7 @@ class FrontendController extends Controller
         }
         else
         {
-            return redirect('/')->with('status',"Slug doesnot exists");
+            return redirect('/')->with('status', __('Slug doesnot exists'));
         }
 
     }
@@ -77,12 +79,12 @@ class FrontendController extends Controller
             }
             else
             {
-                return redirect('/')->with('status',"The link was broken");
+                return redirect('/')->with('status', __('The link was broken'));
             }
         }
         else
         {
-            return redirect('/')->with('status',"No such category found");
+            return redirect('/')->with('status', __('No such category found'));
         }
     }
 
@@ -107,7 +109,7 @@ class FrontendController extends Controller
             if ($product) {
                 return redirect('category/'.$product->category->slug.'/'.$product->slug);
             }else {
-                return redirect()->back()->with('status', "No products matched your search");
+                return redirect()->back()->with('status', __('No products matched your search'));
             }
         }else {
             return redirect()->back();
@@ -118,21 +120,25 @@ class FrontendController extends Controller
     // Views
     public function history()
     {
-        return view('frontend.history');
+        $config = Config::first();
+        return view('frontend.history', compact('config'));
     }
 
     public function contact()
     {
-        return view('frontend.contact');
+        $config = Config::first();
+        return view('frontend.contact', compact('config'));
     }
 
     public function wholesale()
     {
-        return view('frontend.wholesale');
+        $config = Config::first();
+        return view('frontend.wholesale', compact('config'));
     }
 
     public function socialImpact()
     {
-        return view('frontend.social-impact');
+        $config = Config::first();
+        return view('frontend.social-impact', compact('config'));
     }
 }

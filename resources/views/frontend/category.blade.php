@@ -8,13 +8,11 @@
                     <div class="row">
                         <div class="heading-section ftco-animate">
                             <!-- <span class="subheading" align="center">Discover</span> -->
-                            <h2 class="mb-4" align="center">Our Coffee</h2>
-                            <p class="mb-4">Our coffee comes from countries recognized for having one of the world's best
-                                and most unique coffees high altitude coffee, which you can feel the high quality and the
-                                best flavor in each cup.</p>
+                            <h2 class="mb-4" align="center">{{ __('Our Coffee') }}</h2>
+                            <p class="mb-4">{{ __("Our coffee comes from countries recognized for having one of the world's best and most unique coffees high altitude coffee, which you can feel the high quality and the best flavor in each cup.") }}</p>
                         </div>
                         <div>
-                            <h3>Choose your type of flavor:</h3>
+                            <h3>{{ __('Choose your type of flavor:') }}</h3>
                         </div>
                         <div class="col-md-12 nav-link-wrap mb-5">
                             <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
@@ -61,9 +59,7 @@
                                                         <h3><a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}">
                                                             {{ $prod->name }}
                                                         </a></h3>
-                                                            @if ($prod->trending == "1")
-                                                                <span class="badge badge-info">{{ $prod->trending == '1'? 'Trending':''}}</span>
-                                                            @endif
+
                                                     </div>
                                                     <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="img" style="background-image: url({{ asset('assets/uploads/product/'.$prod->image) }});"></a>
                                                     <div class="text text-center pt-4">
@@ -81,7 +77,7 @@
                                                                 <p class="price">
                                                                     <span>{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</span>
                                                                     @if ($prod->discount == "1")
-                                                                        <span class="badge badge-warning">{{ $prod->discount == '1'? '% Off':''}}</span>
+                                                                        <span class="badge badge-warning">{{ __('% Off') }}</span>
                                                                     @endif
                                                                 </p>
                                                             @endif
@@ -112,9 +108,12 @@
                                                             @endif
                                                             <br>
                                                             @if($prod->qty > 0)
-                                                                <span class="badge badge-success">In stock</span>
+                                                                <span class="badge badge-success">{{ __('In stock') }}</span>
                                                             @else
-                                                                <span class="badge badge-danger">out of stock</span>
+                                                                <span class="badge badge-danger">{{ __('Out of stock') }}</span>
+                                                            @endif
+                                                            @if ($prod->trending == "1")
+                                                                <span class="badge badge-info">{{ __('Trending') }}</span>
                                                             @endif
                                                         </p>
                                                     </div>
@@ -130,6 +129,94 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Best Sellers --}}
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5 pb-3">
+                <div class="col-md-7 heading-section ftco-animate text-center">
+                    {{-- <span class="subheading">Discover</span> --}}
+                    <h2 class="mb-4">{{ __('Best Sellers') }}</h2>
+                    {{-- <p>{{$category->description}}</p> --}}
+                </div>
+            </div>
+            <div class="row">
+                @php
+                    $numProds = $popularProducts->count();
+                    if ($numProds > 4) {
+                        $numProds = 3;
+                    }else {
+                        $numProds = 12/$numProds;
+                    }
+                @endphp
+                @foreach ($popularProducts as $prod)
+
+                    <div class="col-md-{{ $numProds }} product_data">
+
+                        <input type="hidden" value="{{ $prod->product->id }}" class="prod_id">
+                        <input type="hidden" value="1" class="qty-input">
+
+                        <div class="menu-entry">
+                            <a href="{{ url('category/'.$prod->product->category->slug.'/'.$prod->product->slug) }}" class="img" style="background-image: url({{ asset('assets/uploads/product/'.$prod->product->image) }});"></a>
+                            <div class="text text-center pt-4">
+                                <h3><a href="{{ url('category/'.$prod->product->category->slug.'/'.$prod->product->slug) }}">{{ substr($prod->product->name, 0, 20) }}...</a></h3>
+                                <p>
+                                    @if (Auth::guest())
+                                        <div class="product-action-vertical">
+                                            <a href="{{ route('login') }}" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
+                                        </div><!-- End .product-action-vertical -->
+                                    @else
+                                        <div class="product-action-vertical">
+                                            <a href="#" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
+                                        </div><!-- End .product-action-vertical -->
+                                    @endif
+
+                                    @if ($prod->product->qty > 0)
+                                        @if (Auth::guest())
+                                            <a href="{{ url('login') }}" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                        @else
+                                            <a href="#" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                        @endif
+                                    @else
+                                        <div class="product-action">
+                                            <a href="{{ url('category/'.$prod->product->category->slug.'/'.$prod->product->slug) }}" class="btn-product"><i class="icon-search"></i><span> View Details...</span></a>
+                                        </div><!-- End .product-action -->
+                                        <a href="{{ url('category/'.$prod->product->category->slug.'/'.$prod->product->slug) }}" class="btn btn-primary btn-outline-primary">View Product...</a>
+                                    @endif
+                                    <br>
+                                    @if($prod->product->qty > 0)
+                                        <span class="badge badge-success">{{ __('In stock') }}</span>
+                                    @else
+                                        <span class="badge badge-danger">{{ __('Out of stock') }}</span>
+                                    @endif
+                                </p>
+                                <p class="price">
+                                    @if ($prod->product->discount == "1")
+                                        <span>{{ $config->currency_simbol }}{{ number_format($prod->product->selling_price,2, '.', ',') }}</span>
+                                        <span><strike><font color="c70017">{{ $config->currency_simbol }}{{ number_format($prod->product->original_price,2, '.', ',') }}</font></strike></span>
+                                    @else
+                                        <span>{{ $config->currency_simbol }}{{ number_format($prod->product->original_price,2, '.', ',') }}</span>
+                                    @endif
+                                    @if ($prod->product->discount == "1")
+                                        <span class="badge badge-warning">{{ __('% Off') }}</span>
+                                    @endif
+                                </p>
+
+                                    @if ($prod->product->trending == "1")
+                                        <span class="badge badge-info">{{ __('Trending') }}</span>
+                                    @endif
+
+                                <p>{{ $prod->product->small_description }}</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
             </div>
         </div>
     </section>

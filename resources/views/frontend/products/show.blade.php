@@ -12,15 +12,15 @@
                         {{ $product->name }}
                     </h3>
                     @if($product->qty > 0)
-                        <span class="badge badge-success">In stock</span>
+                        <span class="badge badge-success">{{ __('In stock') }}</span>
                     @else
-                        <span class="badge badge-danger">out of stock</span>
+                        <span class="badge badge-danger">{{ __('Out of stock') }}</span>
                     @endif
                     @if ($product->trending == "1")
-                        <span class="badge badge-info">{{ $product->trending == '1'? 'Trending':''}}</span>
+                        <span class="badge badge-info">{{ __('Trending') }}</span>
                     @endif
                     @if ($product->discount == "1")
-                        <span class="badge badge-warning">{{ $product->discount == '1'? '% Off':''}}</span>
+                        <span class="badge badge-warning">{{ __('% Off') }}</span>
                     @endif
                     <p>{{ $product->description }}</p>
                     <p class="price">

@@ -54,13 +54,20 @@
     {{-- material icons --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-    {{-- whatsapp --}}
+
     <style>
-        .whatsapp-chat{
+
+        /* {{-- whatsapp --}} */
+        /* .whatsapp-chat{
             bottom: 10px;
             left: 50px;
             position: fixed;
+        } */
+
+        option {
+            color: black;
         }
+
     </style>
 </head>
 
@@ -70,10 +77,12 @@
             <a class="navbar-brand" href="{{ url('/') }}">
                 <img src="{{ asset('bocacostacafeweb/images/logos/logorojo.png') }}" alt="">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+
+            <button class="navbar-toggler float-end" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
+
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item {{ Request::is('/') ? 'active bg-gradient-info':''  }}"><a href="{{ url('/') }}" class="nav-link">{{ __('Home') }}</a></li>
@@ -136,7 +145,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdown02">
                                 <a class="dropdown-item" href="{{ url('my-account') }}">- {{ __('Account') }}</a>
-                                <a class="dropdown-item" href="{{ url('whislist') }}">- {{ __('Whishlist') }}</a>
+                                <a class="dropdown-item" href="{{ url('wishlist') }}">- {{ __('Whishlist') }}</a>
                                 <a class="dropdown-item" href="{{ url('cart') }}">- {{ __('Cart') }}</a>
                                 <a class="dropdown-item" href="{{ url('my-orders') }}">- {{ __('Orders') }}</a>
                                 @if (Auth::user()->role_as == "1")
@@ -149,7 +158,126 @@
                             </div>
                         </li>
                     @endif
-                    <li class="nav-item cart">
+                    <li class="nav-item dropdown cart">
+                        @if (Auth::guest())
+                            <a class="nav-link " href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon icon-shopping_cart"></span>
+                                <span class="bag d-flex justify-content-center align-items-center font-weight-bold text-white"><small>0</small></span>
+                            </a>
+                        @else
+                            <a class="nav-link " href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon icon-shopping_cart"></span>
+                                <span class="bag d-flex justify-content-center align-items-center cart-count-pill font-weight-bold text-white"><small>0</small></span>
+                            </a>
+                        @endif
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            @if (Auth::guest())
+                                <div class="m-2">
+                                    <font color="white"><p>Cart is empty.</p></font>
+                                    <a href="{{ route('login') }}" class="btn btn-primary">{{ __('Login') }}</a>
+                                    <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Register') }}</a>
+                                </div>
+                            @else
+                                @php
+                                    $totalCart = 0;
+                                    $cartitems = DB::table('carts as c')
+                                    ->join('products as p','c.prod_id','=','p.id')
+                                    ->join('categories as cat','p.cate_id','cat.id')
+                                    ->where('c.user_id',Auth::id())
+                                    ->select('c.id','c.user_id','c.prod_id as ProdID','c.prod_qty','p.name as Product','p.slug as ProdSlug','p.small_description','p.description','p.original_price','p.selling_price','p.image','p.qty','p.tax','p.status','p.trending','p.discount','p.cate_id','cat.name as Category','cat.slug as CatSlug')
+                                    ->orderBy('p.name','asc')
+                                    ->get();
+                                @endphp
+                                <div class="m-2">
+                                    @if ($cartitems->count() > 0)
+                                        @foreach ($cartitems as $prod)
+                                            @php
+                                                if ($prod->discount == "1") {
+                                                    $price = $prod->selling_price;
+                                                }else {
+                                                    $price = $prod->original_price;
+                                                }
+                                            @endphp
+                                            <div class="product_data">
+                                                <input type="hidden" class="prod_id" value="{{ $prod->ProdID }}">
+                                                <table>
+                                                    <tr>
+                                                        <th><button class="btn-remove delete-cart-item"><i class="icon-close"></i></button> <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">{{ $prod->Product }}</a></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <font color="white">
+                                                                {{-- <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">
+                                                                    <img src="{{ asset('assets/uploads/product/'.$prod->image) }}" alt="{{ $prod->Product }}" width="50">
+                                                                </a>
+                                                                <br> --}}
+                                                                {{ $prod->prod_qty }}
+                                                                X
+                                                                @if ($prod->discount == "1")
+                                                                {{ $config->currency_simbol }}{{ number_format($prod->selling_price,2, '.', ',') }} <strike>{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</strike>
+                                                                @else
+                                                                {{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}
+                                                                @endif
+                                                                =
+                                                                @if (($prod->discount == "1"))
+                                                                    @php
+                                                                        $subtotal = $prod->prod_qty * $prod->selling_price;
+                                                                    @endphp
+                                                                    {{ $config->currency_simbol }}{{ number_format($subtotal,2, '.', ',') }}
+                                                                @else
+                                                                    @php
+                                                                        $subtotal = $prod->prod_qty * $prod->original_price;
+                                                                    @endphp
+                                                                    {{ $config->currency_simbol }}{{ number_format($subtotal,2, '.', ',') }}
+                                                                @endif
+                                                            </font>
+
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <br>
+                                            @php
+                                                $totalCart +=  $price * $prod->prod_qty;
+                                            @endphp
+                                        @endforeach
+                                        <div align="right">
+                                            <h3><font color="white">Total: {{ $config->currency_simbol }}{{ number_format($totalCart,2, '.', ',') }}</font></h3>
+                                        </div>
+
+                                    @else
+                                        <p><font color="white">Cart is empty.</font></p>
+                                    @endif
+                                    <br>
+                                    <div align="center">
+                                        <a href="{{ url('cart') }}" class="btn btn-primary">View Cart <span class="icon icon-shopping_cart"></span></a>
+                                        @php
+                                            $outofstock = 0;
+                                            foreach($cartitems as $item)
+                                            {
+                                                if ($item->qty < $item->prod_qty) {
+                                                    $outofstock++;
+                                                }
+                                            }
+                                        @endphp
+
+                                        @if ($cartitems->count() > 0)
+                                            @if ($outofstock > 0)
+                                                <a href="{{ url('checkout') }}" class="btn btn-primary"><span>Checkout</span> <i class="icon-long-arrow-right"></i></a>
+                                                <br>
+                                            @else
+                                                <a href="{{ url('checkout') }}" class="btn btn-primary"><span>Checkout</span> <i class="icon-long-arrow-right"></i></a>
+                                            @endif
+
+                                        @endif
+                                    </div>
+
+                                </div>
+
+                            @endif
+                        </div>
+                    </li>
+                    {{-- <li class="nav-item cart">
                         @if (Auth::guest())
                             <a href="{{ route('login') }}" class="nav-link">
                                 <span class="icon icon-shopping_cart"></span>
@@ -161,7 +289,7 @@
                                 <span class="bag d-flex justify-content-center align-items-center cart-count-pill font-weight-bold text-white"><small>0</small></span>
                             </a>
                         @endif
-                    </li>
+                    </li> --}}
                     <li class="nav-item cart">
                         @if (Auth::guest())
                             <a href="{{ route('login') }}" class="nav-link">
@@ -314,7 +442,7 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -324,7 +452,7 @@
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
         })();
-    </script>
+    </script> --}}
     <!--End of Tawk.to Script-->
     <script>
 

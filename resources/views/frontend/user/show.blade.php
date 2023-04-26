@@ -49,20 +49,12 @@
                             <input readonly name="email" type="text" class="form-control" value="{{ $user->email }}">
                             <small class="form-text">{{ __("You can't change email") }}</small>
                         </div><!-- End .col-sm-6 -->
-                        <div class="col-sm-12">
-                            <label>{{ __('Address') }} 1</label>
-                            <input readonly name="address1" type="text" class="form-control" value="{{ $user->address1 }}">
-                        </div><!-- End .col-sm-6 -->
-                        <div class="col-sm-12">
-                            <label>{{ __('Address') }} 2</label>
-                            <input readonly name="address2" type="text" class="form-control" value="{{ $user->address2 }}">
-                        </div><!-- End .col-sm-6 -->
                         <div class="col-sm-3">
                             <label>{{ __('City') }}</label>
                             <input readonly name="city" type="text" class="form-control" value="{{ $user->city }}">
                         </div><!-- End .col-sm-6 -->
                         <div class="col-sm-3">
-                            <label>{{ __('State/Province') }}</label>
+                            <label>{{ __('State') }}</label>
                             <input readonly name="state" type="text" class="form-control" value="{{ $user->state }}">
                         </div><!-- End .col-sm-6 -->
                         <div class="col-sm-3">
@@ -72,6 +64,14 @@
                         <div class="col-sm-3">
                             <label>{{ __('Zipcode') }}</label>
                             <input readonly name="zipcode" type="text" class="form-control" value="{{ $user->zipcode }}">
+                        </div><!-- End .col-sm-6 -->
+                        <div class="col-sm-12">
+                            <label>{{ __('Address') }} 1</label>
+                            <input readonly name="address1" type="text" class="form-control" value="{{ $user->address1 }}">
+                        </div><!-- End .col-sm-6 -->
+                        <div class="col-sm-12">
+                            <label>{{ __('Address') }} 2</label>
+                            <input readonly name="address2" type="text" class="form-control" value="{{ $user->address2 }}">
                         </div><!-- End .col-sm-6 -->
                         <div class="col-sm-6">
                             <label>{{ __('Timezone') }}</label>

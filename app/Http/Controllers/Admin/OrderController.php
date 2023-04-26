@@ -118,7 +118,7 @@ class OrderController extends Controller
         $config = Config::first();
         $user = User::where('id', $order->user_id)->first();
         $this->sendOrderUpdate($order,$config,$user);
-        return redirect('orders')->with('status', "Order Updated Successfully");
+        return redirect('orders')->with('status', __('Order Updated Successfully'));
     }
 
     public function sendOrderUpdate($order,$config,$user)

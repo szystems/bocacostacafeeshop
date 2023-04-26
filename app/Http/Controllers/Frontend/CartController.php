@@ -26,7 +26,7 @@ class CartController extends Controller
             {
                 if(Cart::where('prod_id',$product_id)->where('user_id',Auth::id())->exists())
                 {
-                    return response()->json(['status' => $prod_check->name." Already Added to cart"]);
+                    return response()->json(['status' => $prod_check->name.__(' already Added to cart')]);
                 }else
                 {
                     if ($prod_check->qty >= $product_qty) {
@@ -45,10 +45,10 @@ class CartController extends Controller
 
                         }
 
-                        return response()->json(['status' => $prod_check->name." Added to cart"]);
+                        return response()->json(['status' => $prod_check->name.__(' added to cart')]);
                     }else
                     {
-                        return response()->json(['status' => $prod_check->name." Quantity exceeds stock, availability: ".$prod_check->qty]);
+                        return response()->json(['status' => $prod_check->name.__(' quantity exceeds stock, availability: ').$prod_check->qty]);
                     }
 
 
@@ -58,7 +58,7 @@ class CartController extends Controller
 
         }else
         {
-            return response()->json(['status' => "Login to continue"]);
+            return response()->json(['status' => __('Login or create your account to continue') ]);
         }
 
     }
@@ -87,13 +87,13 @@ class CartController extends Controller
 
                 $cartItem = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $cartItem->delete();
-                return response()->json(['status' => "Product Deleted Successfully"]);
+                return response()->json(['status' => __('Product Deleted Successfully')]);
 
             }
 
         }else
         {
-            return response()->json(['status' => "Login to continue"]);
+            return response()->json(['status' => __('Login or create your account to continue')]);
         }
     }
 
@@ -110,9 +110,9 @@ class CartController extends Controller
                     $cart = Cart::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                     $cart->prod_qty = $product_qty;
                     $cart->update();
-                    return response()->json(['status' => "Quantity updated"]);
+                    return response()->json(['status' => __('Quantity updated')]);
                 } else {
-                    return response()->json(['status' => "Quantity must be greater than '0'"]);
+                    return response()->json(['status' => __('Quantity must be greater than 0')]);
                 }
 
 

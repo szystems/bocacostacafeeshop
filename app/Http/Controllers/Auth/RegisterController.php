@@ -34,11 +34,11 @@ class RegisterController extends Controller
     {
         if(Auth::user()->role_as == '1') //1 = Admin Login
         {
-            return redirect('dashboard')->with('status','Welcome to your dashboard');
+            return redirect('dashboard')->with('status',__('Welcome to your dashboard'));
         }
         elseif(Auth::user()->role_as == '0') // Normal or Default User Login
         {
-            return redirect('/')->with('status','Logged in successfully');
+            return redirect('/')->with('status',__('Logged in successfully'));
         }
     }
 
@@ -81,6 +81,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'timezone' => $data['timezone'],
+            'country' => "United States",
         ]);
     }
 }
