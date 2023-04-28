@@ -102,8 +102,7 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="{{ asset('assets/imgs/english.png') }}"
-                                            class="avatar avatar-sm  me-3 ">
+                                        <a href="{{ route('set_language', ['en']) }}"><img src="{{ asset('assets/imgs/english.png') }}" class="avatar avatar-sm  me-3 "></a>
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
@@ -117,8 +116,7 @@
                             <a class="dropdown-item border-radius-md" href="javascript:;">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <img src="{{ asset('assets/imgs/spanish.png') }}"
-                                            class="avatar avatar-sm  me-3 ">
+                                        <a href="{{ route('set_language', ['es']) }}"><img src="{{ asset('assets/imgs/spanish.png') }}" class="avatar avatar-sm  me-3 "></a>
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">

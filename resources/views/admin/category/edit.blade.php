@@ -42,17 +42,6 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="">{{ __('Slug') }}</label>
-                                <input type="text" class="form-control border px-2" name="slug" value="{{ $category->slug }}">
-                                @if ($errors->has('slug'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="red">{{ $errors->first('slug') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">{{ __('Description') }}</label>
                                 <textarea name="description" cols="30" rows="5" class="form-control border px-2 ">{{ $category->description }}</textarea>

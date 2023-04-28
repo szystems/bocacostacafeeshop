@@ -51,7 +51,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="">Email</label>
                                 <div class="input-group input-group-dynamic mb-4">
-                                    <input type="email" name="email" class="form-control" placeholder="emails@bocacostacafe.com" aria-describedby="basic-addon1" value="{{ $config->email }}" required>
+                                    <input type="email" name="email" class="form-control" placeholder="emails@bocacostacoffee.com" aria-describedby="basic-addon1" value="{{ $config->email }}" required>
                                 </div>
                                 <label><font color="orange">{{ __('Write the email where you will receive all notifications') }}</font></label>
                                 @if ($errors->has('email'))
@@ -98,7 +98,33 @@
                                 </div>
                                 <label><font color="orange">{{ __('Enable Payment per Direct Bank Transfer') }}r</font></label>
                             </div>
-
+                            <div class="col-md-3 mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="store" {{ $config->store == 1 ? 'checked':'' }}>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Store Status') }}</label>
+                                </div>
+                                <label><font color="orange">{{ __('Enable Store') }}</font></label>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="shopify" {{ $config->shopify == 1 ? 'checked':'' }}>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Shopify Link') }}</label>
+                                </div>
+                                <div class="input-group input-group-dynamic mb-4">
+                                    <input type="text" name="shopify_link" class="form-control" placeholder="URL" aria-describedby="basic-addon1" value="{{ $config->shopify_link }}" required>
+                                </div>
+                                <label><font color="orange">{{ __('Enable Shopify Link') }}</font></label>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="amazon" {{ $config->amazon == 1 ? 'checked':'' }}>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Amazon Link') }}</label>
+                                </div>
+                                <div class="input-group input-group-dynamic mb-4">
+                                    <input type="text" name="amazon_link" class="form-control" placeholder="URL" aria-describedby="basic-addon1" value="{{ $config->amazon_link }}" required>
+                                </div>
+                                <label><font color="orange">{{ __('Enable Amazon Link') }}</font></label>
+                            </div>
                             <div class="col-md-12 mb-3">
                                 <label for="">{{ __('Shipping Description') }}</label>
                                 <textarea name="shipping_description" cols="30" rows="5" class="form-control border px-2 ">{{ $config->shipping_description }}</textarea>

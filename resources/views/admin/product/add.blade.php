@@ -132,6 +132,28 @@
                                 @endif
                             </div>
                             <div class="col-md-6 mb-3">
+                                <label for="">{{ __('Shopify Link') }}</label>
+                                <input type="text" class="form-control border px-2 " name="shopify_link" value="{{ old('shopify_link') }}" >
+                                @if ($errors->has('shopify_link'))
+                                    <span class="help-block opacity-7">
+                                            <strong>
+                                                <font color="red">{{ $errors->first('shopify_link') }}</font>
+                                            </strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="">{{ __('Amazon Link') }}</label>
+                                <input type="text" class="form-control border px-2 " name="amazon_link" value="{{ old('amazon_link') }}" >
+                                @if ($errors->has('amazon_link'))
+                                    <span class="help-block opacity-7">
+                                            <strong>
+                                                <font color="red">{{ $errors->first('amazon_link') }}</font>
+                                            </strong>
+                                    </span>
+                                @endif
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <div class="form-check form-switch">
                                     <input class="form-check-input" type="checkbox" name="status" >
                                     <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Status') }}</label>

@@ -3,7 +3,7 @@
 @section('content')
     <section class="home-slider owl-carousel" align="center">
 
-        <div class="slider-item" style="background-image: url({{ asset('bocacostacafeweb/images/varias/2.jpg') }});">
+        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/2.jpg') }});">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -11,7 +11,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <!-- <span class="subheading">Welcome</span> -->
                         <!-- <h1 class="mb-4">The Best Coffee Testing Experience</h1> -->
-                        <img src="{{ asset('bocacostacafeweb/images/logos/logoorojo.png') }}" class="img-fluid" height="325px" width="200px"
+                        <img src="{{ asset('bocacostacoffeeweb/images/logos/logoorojo.png') }}" class="img-fluid" height="325px" width="200px"
                             alt="">
                         <!-- <p class="mb-4 mb-md-5">Our coffee comes from Guatemala, a country recognized for having one of the best and unique coffees in the world.</p> -->
                         <!-- <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p> -->
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="slider-item" style="background-image: url({{ asset('bocacostacafeweb/images/varias/7.jpg') }});">
+        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/7.jpg') }});">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -29,7 +29,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <!-- <span class="subheading">Welcome</span> -->
                         <!-- <h1 class="mb-4">The Best Coffee Testing Experience</h1> -->
-                        <img src="{{ asset('bocacostacafeweb/images/logos/logoorojo.png') }}" alt="">
+                        <img src="{{ asset('bocacostacoffeeweb/images/logos/logoorojo.png') }}" alt="">
                         <!-- <p class="mb-4 mb-md-5">High-altitude coffee, a coffee that in each cup you can feel the high quality and the best flavor you could imagine.</p> -->
                         <!-- <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p> -->
                     </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="slider-item" style="background-image: url({{ asset('bocacostacafeweb/images/varias/16.jpg') }});">
+        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/16.jpg') }});">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -46,7 +46,7 @@
                     <div class="col-md-8 col-sm-12 text-center ftco-animate">
                         <!-- <span class="subheading">Welcome</span> -->
                         <!-- <h1 class="mb-4">The Best Coffee Testing Experience</h1> -->
-                        <img src="{{ asset('bocacostacafeweb/images/logos/logoorojo.png') }}" alt="">
+                        <img src="{{ asset('bocacostacoffeeweb/images/logos/logoorojo.png') }}" alt="">
                         <!-- <p class="mb-4 mb-md-5">High-altitude coffee, a coffee that in each cup you can feel the high quality and the best flavor you could imagine.</p> -->
                         <!-- <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p> -->
                     </div>
@@ -79,7 +79,7 @@
                         <!-- <div class="col-md-4 d-flex ftco-animate">
                             <div class="icon"><span class="icon icon-envelope"></span></div>
                             <div class="text">
-                                <h3>info@bocacostacafe.com</h3>
+                                <h3>info@bocacostacoffee.com</h3>
                                 <p>We'd love to hear</p>
                             </div>
                         </div> -->
@@ -168,7 +168,7 @@
     </section>
 
     <section class="ftco-about d-md-flex">
-        <div class="one-half img" style="background-image: url({{ asset('bocacostacafeweb/images/pics2/OUR-HISTORY_HW.jpg') }});"></div>
+        <div class="one-half img" style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/OUR-HISTORY_HW.jpg') }});"></div>
         <div class="one-half ftco-animate">
             <div class="overlap">
                 <div class="heading-section ftco-animate ">
@@ -207,25 +207,25 @@
                         <div class="col-md-6">
                             <div class="menu-entry">
                                 <a href="ourcoffee.html" class="img"
-                                    style="background-image: url({{ asset('bocacostacafeweb/images/menu-14.jpg') }});"></a>
+                                    style="background-image: url({{ asset('bocacostacoffeeweb/images/menu-14.jpg') }});"></a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="menu-entry mt-lg-4">
                                 <a href="ourcoffee.html" class="img"
-                                    style="background-image: url({{ asset('bocacostacafeweb/images/menu-3.jpg') }});"></a>
+                                    style="background-image: url({{ asset('bocacostacoffeeweb/images/menu-3.jpg') }});"></a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="menu-entry">
                                 <a href="ourcoffee.html" class="img"
-                                    style="background-image: url({{ asset('bocacostacafeweb/images/menu-4.jpg') }});"></a>
+                                    style="background-image: url({{ asset('bocacostacoffeeweb/images/menu-4.jpg') }});"></a>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="menu-entry mt-lg-4">
                                 <a href="ourcoffee.html" class="img"
-                                    style="background-image: url({{ asset('bocacostacafeweb/images/menu-5.jpg') }});"></a>
+                                    style="background-image: url({{ asset('bocacostacoffeeweb/images/menu-5.jpg') }});"></a>
                             </div>
                         </div>
                     </div>
@@ -271,7 +271,7 @@
     </section>
 
     <section class="ftco-counter ftco-bg-dark img" id="section-counter"
-        style="background-image: url({{ asset('bocacostacafeweb/images/varias/12.jpg') }});" data-stellar-background-ratio="0.5">
+        style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/12.jpg') }});" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row justify-content-center">
@@ -325,7 +325,7 @@
 
                 <div class="col-md-3 ftco-animate">
                     <a href="#" class="gallery img d-flex align-items-center"
-                        style="background-image: url({{ asset('bocacostacafeweb/images/pics2/1.jpg') }});">
+                        style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/1.jpg') }});">
                         <div class="icon mb-4 d-flex align-items-center justify-content-center">
                             <span class="icon-search"></span>
                         </div>
@@ -334,7 +334,7 @@
 
                 <div class="col-md-3 ftco-animate">
                     <a href="#" class="gallery img d-flex align-items-center"
-                        style="background-image: url({{ asset('bocacostacafeweb/images/pics2/2.jpg') }});">
+                        style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/2.jpg') }});">
                         <div class="icon mb-4 d-flex align-items-center justify-content-center">
                             <span class="icon-search"></span>
                         </div>
@@ -343,7 +343,7 @@
 
                 <div class="col-md-3 ftco-animate">
                     <a href="#" class="gallery img d-flex align-items-center"
-                        style="background-image: url({{ asset('bocacostacafeweb/images/pics2/3.jpg') }});">
+                        style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/3.jpg') }});">
                         <div class="icon mb-4 d-flex align-items-center justify-content-center">
                             <span class="icon-search"></span>
                         </div>
@@ -352,7 +352,7 @@
 
                 <div class="col-md-3 ftco-animate">
                     <a href="#" class="gallery img d-flex align-items-center"
-                        style="background-image: url({{ asset('bocacostacafeweb/images/pics2/4.jpg') }});">
+                        style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/4.jpg') }});">
                         <div class="icon mb-4 d-flex align-items-center justify-content-center">
                             <span class="icon-search"></span>
                         </div>
@@ -363,7 +363,7 @@
         </div>
     </section>
 
-    <section class="ftco-section img" id="ftco-testimony" style="background-image: url({{ asset('bocacostacafeweb/images/varias/17.jpg') }});"
+    <section class="ftco-section img" id="ftco-testimony" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/17.jpg') }});"
         data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
@@ -384,7 +384,7 @@
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">
-                                <img src="{{ asset('bocacostacafeweb/images/person_1.jpg')}}" alt="">
+                                <img src="{{ asset('bocacostacoffeeweb/images/person_1.jpg')}}" alt="">
                             </div>
                             <div class="name align-self-center">Louise Kelly
                                 <span class="position">Illustrator Designer</span>
@@ -399,7 +399,7 @@
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">
-                                <img src="{{ asset('bocacostacafeweb/images/person_2.jpg')}}" alt="">
+                                <img src="{{ asset('bocacostacoffeeweb/images/person_2.jpg')}}" alt="">
                             </div>
                             <div class="name align-self-center">Louise Kelly
                                 <span class="position">Illustrator Designer</span>
@@ -414,7 +414,7 @@
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">
-                                <img src="{{ asset('bocacostacafeweb/images/person_2.jpg')}}" alt="">
+                                <img src="{{ asset('bocacostacoffeeweb/images/person_2.jpg')}}" alt="">
                             </div>
                             <div class="name align-self-center">Louise Kelly
                                 <span class="position">Illustrator Designer</span>
@@ -429,7 +429,7 @@
                         </blockquote>
                         <!-- <div class="author d-flex mt-4">
                             <div class="image mr-3 align-self-center">
-                                <img src="{{ asset('bocacostacafeweb/images/person_3.jpg')}}" alt="">
+                                <img src="{{ asset('bocacostacoffeeweb/images/person_3.jpg')}}" alt="">
                             </div>
                             <div class="name align-self-center">Louise Kelly
                                 <span class="position">Illustrator Designer</span>

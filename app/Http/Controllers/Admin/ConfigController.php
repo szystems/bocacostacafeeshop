@@ -44,6 +44,11 @@ class ConfigController extends Controller
         $config->dbt = $request->input('dbt') == TRUE ? '1':'0';
         $config->shipping_description = $request->input('shipping_description');
         $config->email = $request->input('email');
+        $config->store = $request->input('store') == TRUE ? '1':'0';
+        $config->shopify = $request->input('shopify') == TRUE ? '1':'0';
+        $config->shopify_link = $request->input('shopify_link');
+        $config->amazon = $request->input('amazon') == TRUE ? '1':'0';
+        $config->amazon_link = $request->input('amazon_link');
         $config->update();
 
         $request->session()->flash('alert-success', __('Settings updated correctly'));

@@ -32,7 +32,9 @@ class ProductFormRequest extends FormRequest
             'original_price'=>'required|max:191',
             'selling_price'=>'required|max:191',
             'qty'=>'required',
-            'image'=>'mimes:jpg,jpeg,bmp,png|max:10000'
+            'image'=>'mimes:jpg,jpeg,bmp,png|max:10000',
+            'shopify_link'=>'max:500',
+            'amazon_link'=>'max:500'
         ];
     }
 }

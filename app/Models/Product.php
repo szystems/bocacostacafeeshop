@@ -22,7 +22,9 @@ class Product extends Model
         'tax',
         'status',
         'trending',
-        'discount'
+        'discount',
+        'shopify_link',
+        'amazon_link'
     ];
 
     public function category()

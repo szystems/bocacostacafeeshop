@@ -31,24 +31,13 @@
                     <form action="{{ url('insert-category') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label for="">{{ __('Name') }}</label>
                                 <input type="text" class="form-control border px-2 " name="name" value="{{ old('name') }}" >
                                 @if ($errors->has('name'))
                                     <span class="help-block opacity-7">
                                             <strong>
                                                 <font color="red">{{ $errors->first('name') }}</font>
-                                            </strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label for="">{{ __('Slug') }}</label>
-                                <input type="text" class="form-control border px-2" name="slug" value="{{ old('slug') }}" >
-                                @if ($errors->has('slug'))
-                                    <span class="help-block opacity-7">
-                                            <strong>
-                                                <font color="Red">{{ $errors->first('slug') }}</font>
                                             </strong>
                                     </span>
                                 @endif

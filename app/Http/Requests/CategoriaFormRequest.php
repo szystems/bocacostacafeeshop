@@ -25,7 +25,6 @@ class CategoriaFormRequest extends FormRequest
     {
         return [
             'name'=>'required|max:191',
-            'slug'=>'required|max:191',
             'description'=>'required|max:191',
             'image'=>'mimes:jpg,jpeg,bmp,png|max:10000'
         ];

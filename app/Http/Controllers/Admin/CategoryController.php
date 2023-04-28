@@ -50,8 +50,21 @@ class CategoryController extends Controller
             $category->image = $filename;
         }
 
+        $name_category = $request->input('name');
+        $palabras = explode(' ', trim($name_category));
+        $num_palabras = str_word_count($name_category);
+        $slug = $palabras[0];
+        for ($i = 1; $i <= $num_palabras-1; $i++) {
+            $slug = $slug."-".ucwords($palabras[$i]);
+            error_log("slug: ".$slug);
+        }
+        if(Category::where('slug',$slug)->exists())
+        {
+            $slug = $slug.$product->id;
+        }
+
         $category->name = $request->input('name');
-        $category->slug = $request->input('slug');
+        $category->slug = $slug;
         $category->description = $request->input('description');
         $category->status = $request->input('status') == TRUE ? '1':'0';
         $category->popular = $request->input('popular') == TRUE ? '1':'0';
@@ -82,8 +95,22 @@ class CategoryController extends Controller
             $file->move('assets/uploads/category',$filename);
             $category->image = $filename;
         }
+
+        $name_category = $request->input('name');
+        $palabras = explode(' ', trim($name_category));
+        $num_palabras = str_word_count($name_category);
+        $slug = $palabras[0];
+        for ($i = 1; $i <= $num_palabras-1; $i++) {
+            $slug = $slug."-".ucwords($palabras[$i]);
+            error_log("slug: ".$slug);
+        }
+        if(Category::where('slug',$slug)->exists())
+        {
+            $slug = $slug.$product->id;
+        }
+
         $category->name = $request->input('name');
-        $category->slug = $request->input('slug');
+        $category->slug = $slug;
         $category->description = $request->input('description');
         $category->status = $request->input('status') == TRUE ? '1':'0';
         $category->popular = $request->input('popular') == TRUE ? '1':'0';

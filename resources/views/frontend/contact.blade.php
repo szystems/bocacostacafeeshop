@@ -4,7 +4,7 @@
 
     <section class="home-slider owl-carousel">
 
-        <div class="slider-item" style="background-image: url({{ asset('bocacostacafeweb/images/varias/11.jpg')}});"
+        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/11.jpg')}});"
             data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
             <div class="container">
@@ -36,10 +36,10 @@
                             <p><span>{{ __('Phone') }}:</span> <a href="tel://15037440078">+1 503 744 0078</a></p>
                         </div>
                         <!-- <div class="col-md-12 mb-3">
-                            <p><span>Email:</span> <a href="mailto:info@yoursite.com">	info@bocacostacafe.com</a></p>
+                            <p><span>Email:</span> <a href="mailto:info@yoursite.com">	info@bocacostacoffee.com</a></p>
                         </div> -->
                         <!-- <div class="col-md-12 mb-3">
-                            <p><span>Website:</span> <a href="#">www.bocacostacafe.com</a></p>
+                            <p><span>Website:</span> <a href="#">www.bocacostacoffee.com</a></p>
                         </div> -->
                     </div>
                 </div>

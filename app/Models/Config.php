@@ -19,6 +19,11 @@ class Config extends Model
         'paypal',
         'dbt',
         'shipping_description',
-        'email'
+        'email',
+        'store',
+        'shopify',
+        'shopify_link',
+        'amazon',
+        'amazon_link'
     ];
 }

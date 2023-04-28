@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="ftco-about d-md-flex">
-        <div class="one-half img" style="background-image: url({{ asset('bocacostacafeweb/images/pics/2.jpg')}});"></div>
+        <div class="one-half img" style="background-image: url({{ asset('bocacostacoffeeweb/images/pics/2.jpg')}});"></div>
         <div class="one-half ftco-animate">
             <div class="overlap">
                 <div class="heading-section ftco-animate ">

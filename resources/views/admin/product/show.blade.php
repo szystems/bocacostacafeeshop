@@ -68,6 +68,14 @@
                             <label for=""><strong>Stock</strong></label>
                             <p>{{ $product->qty }}</p>
                         </div>
+                        <div class="col-md-6 mb-3">
+                            <label for=""><strong>{{ __('Shopify Link') }}</strong></label>
+                            <p><a href="{{ $product->shopify_link }}" target="_blank">{{ $product->shopify_link }}</a></p>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for=""><strong>{{ __('Amazon Link') }}</strong></label>
+                            <p><a href="{{ $product->amazon_link }}" target="_blank">{{ $product->amazon_link }}</a></p>
+                        </div>
                         {{-- <div class="col-md-6 mb-3">
                             <label for=""><strong>Tax</strong></label>
                             <p>{{ $product->tax }}</p>

@@ -30,9 +30,7 @@
                             <a href="{{ url('category/'.$category->slug.'/'.$prod->slug) }}" class="img" style="background-image: url({{ asset('assets/uploads/product/'.$prod->image) }});"></a>
                             <div class="text text-center pt-4">
                                 <h3><a href="{{ url('category/'.$category->slug.'/'.$prod->slug) }}">{{ substr($prod->name, 0, 30) }}...</a></h3>
-                                    @if ($prod->trending == "1")
-                                        <span class="badge badge-info">{{ __('Trending') }}</span>
-                                    @endif
+
 
                                 <p>{{ $prod->small_description }}</p>
                                 <p class="price">
@@ -45,35 +43,71 @@
                                     @if ($prod->discount == "1")
                                         <span class="badge badge-warning">{{ __('% Off') }}</span>
                                     @endif
+
                                 </p>
                                 <p>
-                                    @if (Auth::guest())
-                                        <div class="product-action-vertical">
-                                            <a href="{{ route('login') }}" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
-                                        </div><!-- End .product-action-vertical -->
-                                    @else
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
-                                        </div><!-- End .product-action-vertical -->
+
+                                    @if ($config->store == 1)
+                                        @if (Auth::guest())
+                                            <div class="product-action-vertical">
+                                                <a href="{{ route('login') }}" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        @else
+                                            <div class="product-action-vertical">
+                                                <a href="#" class="btn btn-link addToWishlist btn-outline-white"><span class="material-symbols-outlined">favorite</span></a>
+                                            </div><!-- End .product-action-vertical -->
+                                        @endif
                                     @endif
 
-                                    @if ($prod->qty > 0)
-                                        @if (Auth::guest())
-                                            <a href="{{ url('login') }}" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                    @if ($config->store == 1)
+                                        @if ($prod->qty > 0)
+                                            @if (Auth::guest())
+                                                <a href="{{ url('login') }}" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                            @else
+                                                <a href="#" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                            @endif
                                         @else
-                                            <a href="#" class="btn btn-primary btn-outline-primary addToCartBtn">Add to Cart</a>
+                                            <div class="product-action">
+                                                <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="btn-product"><i class="icon-search"></i><span> View Details...</span></a>
+                                            </div><!-- End .product-action -->
+                                            <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="btn btn-primary btn-outline-primary">View Product...</a>
                                         @endif
-                                    @else
-                                        <div class="product-action">
-                                            <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="btn-product"><i class="icon-search"></i><span> View Details...</span></a>
-                                        </div><!-- End .product-action -->
-                                        <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="btn btn-primary btn-outline-primary">View Product...</a>
+                                        <br>
                                     @endif
-                                    <br>
-                                    @if($prod->qty > 0)
-                                        <span class="badge badge-success">{{ __('In stock') }}</span>
-                                    @else
-                                        <span class="badge badge-danger">{{ __('Out of stock') }}</span>
+
+                                    @if ($config->shopify == 1)
+                                        @if ($prod->shopify_link != null)
+                                            <a href="{{ $prod->shopify_link }}" target="_blank">
+                                                <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt="">
+                                            </a>
+                                        @else
+                                            <a href="{{ $config->shopify_link }}" target="_blank">
+                                                <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt="">
+                                            </a>
+                                        @endif
+
+                                    @endif
+                                    @if ($config->amazon == 1)
+                                        @if ($prod->shopify_link != null)
+                                            <a href="{{ $prod->amazon_link }}" target="_blank">
+                                                <img src="{{ asset('assets/imgs/buynowamazon.png') }}" class="img-fluid"  alt="">
+                                            </a>
+                                        @else
+                                            <a href="{{ $config->amazon_link }}" target="_blank">
+                                                <img src="{{ asset('assets/imgs/buynowamazon.png') }}" class="img-fluid"  alt="">
+                                            </a>
+                                        @endif
+                                    @endif
+                                            <br>
+                                    @if ($config->store == 1)
+                                        @if($prod->qty > 0)
+                                            <span class="badge badge-success">{{ __('In stock') }}</span>
+                                        @else
+                                            <span class="badge badge-danger">{{ __('Out of stock') }}</span>
+                                        @endif
+                                    @endif
+                                    @if ($prod->trending == "1")
+                                        <span class="badge badge-info">{{ __('Trending') }}</span>
                                     @endif
                                 </p>
                             </div>

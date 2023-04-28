@@ -98,6 +98,8 @@ class ProductController extends Controller
         $product->status = $request->input('status') == TRUE ? '1':'0';
         $product->trending = $request->input('trending') == TRUE ? '1':'0';
         $product->discount = $request->input('discount') == TRUE ? '1':'0';
+        $product->shopify_link = $request->input('shopify_link');
+        $product->amazon_link = $request->input('amazon_link');
         $product->save();
 
         $config = Config::first();
@@ -158,6 +160,8 @@ class ProductController extends Controller
         $product->status = $request->input('status') == TRUE ? '1':'0';
         $product->trending = $request->input('trending') == TRUE ? '1':'0';
         $product->discount = $request->input('discount') == TRUE ? '1':'0';
+        $product->shopify_link = $request->input('shopify_link');
+        $product->amazon_link = $request->input('amazon_link');
         $product->update();
 
         return redirect('/products')->with('status', __('Product Updated Successfully'));
@@ -194,7 +198,7 @@ class ProductController extends Controller
             }
             $products=DB::table('products as p')
             ->join('categories as c','p.cate_id','=','c.id')
-            ->select('p.id','p.code','c.id as Idcategory','c.name as Category','p.name','p.description','p.original_price','p.selling_price','p.image','p.qty','p.status','p.discount','p.trending')
+            ->select('p.id','p.code','c.id as Idcategory','c.name as Category','p.name','p.description','p.original_price','p.selling_price','p.image','p.qty','p.status','p.discount','p.trending','p.shopify_link','p.amazon_link')
             ->where('c.name','LIKE','%'.$queryCategory.'%')
             ->where('p.name','LIKE','%'.$queryProduct.'%')
             ->where('p.qty',$queryStock,0)

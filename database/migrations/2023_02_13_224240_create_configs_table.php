@@ -24,6 +24,7 @@ class CreateConfigsTable extends Migration
             $table->tinyInteger('paypal');
             $table->tinyInteger('dbt');
             $table->string('shipping_description');
+            $table->string('store');
             $table->timestamps();
         });
     }

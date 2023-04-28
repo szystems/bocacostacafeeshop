@@ -149,11 +149,13 @@
     "Currency": "Moneda",
     "Tax Status": "Activar Impuesto",
     "PayPal Status": "Activar PayPal",
+    "Store Status": "Activar Tienda",
     "POD/DBT Status": "Activar POD/DBT",
     "Choose the currency that will be displayed on the e-shop": "Elija la moneda que se mostrará en la tienda",
     "Write the email where you will receive all notifications": "Escribe el correo electrónico donde recibirás todas las notificaciones",
     "Enable tax and percentage in order": "Habilitar impuesto y porcentaje en orden",
     "Enable PayPal payment": "Habilitar pago con PayPal",
+    "Enable Store": "Habilitar Tienda",
     "Enable Payment per Direct Bank Transfer": "Habilitar pago por transferencia bancaria directa",
     "Shipping Description": "Descripción de Envio",
     "English": "Ingles",
@@ -270,6 +272,10 @@
     "Product Updated Successfully": "Producto actualizado correctamente",
     "Product Added Successfully": "Producto agregado correctamente",
     "Product Deleted Successfully": "Producto eliminado correctamente",
-    "Add User": "Añadir Usuario"
-
+    "Add User": "Añadir Usuario",
+    "Shopify Link": "Link de Shopify",
+    "Amazon Link": "Link de Amazon",
+    "Enable Shopify Link": "Habilitado link de Shopify",
+    "Enable Amazon Link": "Habilitado link de Amazon",
+    "Buy Now": "Compra Ahora"
 }

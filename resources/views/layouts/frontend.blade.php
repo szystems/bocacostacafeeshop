@@ -26,30 +26,30 @@
     <meta name="keywords" content="coffee, bocacosta, Guatemala, shop">
     <meta name="description" content="Bocacosta Coffee Shop">
     <meta name="author" content="Szystems">
-    <link rel="icon" href="{{ asset('bocacostacafeweb/images/logos/favico.ico') }}">
+    <link rel="icon" href="{{ asset('bocacostacoffeeweb/images/logos/favico.ico') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/open-iconic-bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/animate.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/magnific-popup.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/aos.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/ionicons.min.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/jquery.timepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/jquery.timepicker.css') }}">
 
 
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('bocacostacafeweb/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/icomoon.css') }}">
+    <link rel="stylesheet" href="{{ asset('bocacostacoffeeweb/css/style.css') }}">
 
     {{-- material icons --}}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -75,7 +75,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img src="{{ asset('bocacostacafeweb/images/logos/logorojo.png') }}" alt="">
+                <img src="{{ asset('bocacostacoffeeweb/images/logos/logorojo.png') }}" alt="">
             </a>
 
             <button class="navbar-toggler float-end" type="button" data-toggle="collapse" data-target="#ftco-nav"
@@ -96,7 +96,7 @@
                     </li>
                     <li class="nav-item dropdown {{ Request::is('category','ourcoffee') ? 'active bg-gradient-info':''  }}">
                         <a class="nav-link dropdown-toggle" href="{{ url('category') }}" id="dropdown03" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">{{ __('Shop') }}</a>
+                            aria-haspopup="true" aria-expanded="false">{{ __('Our Coffee') }}</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown03">
                             <a class="dropdown-item" href="{{ url('category') }}">{{ __('Choose your type of flavor') }}</a>
                             @php
@@ -104,6 +104,8 @@
                                 ->where('status','=','1')
                                 ->orderBy('name','asc')
                                 ->get();
+
+                                $config=DB::table('configs')->first();
                             @endphp
                             @foreach ($categories as $cat)
                                 <a class="dropdown-item" href="{{ url('view-category/'.$cat->slug) }}">
@@ -120,163 +122,180 @@
                     <!-- <li class="nav-item"><a href="socialimpact.html" class="nav-link">Social Impact</a></li>
                     <li class="nav-item"><a href="coffeebenefits.html" class="nav-link">Coffee Benefits</a></li> -->
                     <!-- <li class="nav-item"><a href="" class="nav-link">Coffee Quiz</a></li> -->
-
-
-
-
-                    @if (Auth::guest())
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ __('Account') }}
+                    @if ($config->shopify == 1)
+                        <li class="nav-item t-10">
+                            <a href="{{ $config->shopify_link }}" class="nav-link" target="_blank">
+                                <img src="{{ asset('assets/imgs/shopifybtn.png') }}" class="img-fluid"  alt=""">
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                <a class="dropdown-item" href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
-                            </div>
                         </li>
-                    @else
-                        <li class="nav-item dropdown">
-                            @php
-                                $usuario = Auth::user()->name; $nombre = explode(' ',trim($usuario));
-                            @endphp
-                            <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ ucwords($nombre[0]) }}
+                    @endif
+                    @if ($config->amazon == 1)
+                        <li class="nav-item t-10">
+                            <a href="{{ $config->amazon_link }}" class="nav-link" target="_blank">
+                                <img src="{{ asset('assets/imgs/amazonbtn.png') }}" class="img-fluid"  alt="">
                             </a>
+                        </li>
+                    @endif
+
+
+
+                    @if ($config->store == 1)
+                        @if (Auth::guest())
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ __('Account') }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                    <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="dropdown-item" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="dropdown-item" href="{{ route('password.request') }}">{{ __('Forgot your password?') }}</a>
+                                </div>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                @php
+                                    $usuario = Auth::user()->name; $nombre = explode(' ',trim($usuario));
+                                @endphp
+                                <a class="nav-link dropdown-toggle" href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ ucwords($nombre[0]) }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <a class="dropdown-item" href="{{ url('my-account') }}">- {{ __('Account') }}</a>
+                                    <a class="dropdown-item" href="{{ url('wishlist') }}">- {{ __('Whishlist') }}</a>
+                                    <a class="dropdown-item" href="{{ url('cart') }}">- {{ __('Cart') }}</a>
+                                    <a class="dropdown-item" href="{{ url('my-orders') }}">- {{ __('Orders') }}</a>
+                                    @if (Auth::user()->role_as == "1")
+                                    <a class="dropdown-item" href="{{ url('dashboard') }}">- {{ __('Dashboard') }}</a>
+                                    @endif
+                                    <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- {{ __('Logout') }}</font>  </a>
+                                    <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endif
+                    @endif
+                    @if ($config->store == 1)
+                        <li class="nav-item dropdown cart">
+                            @if (Auth::guest())
+                                <a class="nav-link " href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="icon icon-shopping_cart"></span>
+                                    <span class="bag d-flex justify-content-center align-items-center font-weight-bold text-white"><small>0</small></span>
+                                </a>
+                            @else
+                                <a class="nav-link " href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="icon icon-shopping_cart"></span>
+                                    <span class="bag d-flex justify-content-center align-items-center cart-count-pill font-weight-bold text-white"><small>0</small></span>
+                                </a>
+                            @endif
                             <div class="dropdown-menu" aria-labelledby="dropdown02">
-                                <a class="dropdown-item" href="{{ url('my-account') }}">- {{ __('Account') }}</a>
-                                <a class="dropdown-item" href="{{ url('wishlist') }}">- {{ __('Whishlist') }}</a>
-                                <a class="dropdown-item" href="{{ url('cart') }}">- {{ __('Cart') }}</a>
-                                <a class="dropdown-item" href="{{ url('my-orders') }}">- {{ __('Orders') }}</a>
-                                @if (Auth::user()->role_as == "1")
-                                <a class="dropdown-item" href="{{ url('dashboard') }}">- {{ __('Dashboard') }}</a>
+                                @if (Auth::guest())
+                                    <div class="m-2">
+                                        <font color="white"><p>Cart is empty.</p></font>
+                                        <a href="{{ route('login') }}" class="btn btn-primary">{{ __('Login') }}</a>
+                                        <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Register') }}</a>
+                                    </div>
+                                @else
+                                    @php
+                                        $totalCart = 0;
+                                        $cartitems = DB::table('carts as c')
+                                        ->join('products as p','c.prod_id','=','p.id')
+                                        ->join('categories as cat','p.cate_id','cat.id')
+                                        ->where('c.user_id',Auth::id())
+                                        ->select('c.id','c.user_id','c.prod_id as ProdID','c.prod_qty','p.name as Product','p.slug as ProdSlug','p.small_description','p.description','p.original_price','p.selling_price','p.image','p.qty','p.tax','p.status','p.trending','p.discount','p.cate_id','cat.name as Category','cat.slug as CatSlug')
+                                        ->orderBy('p.name','asc')
+                                        ->get();
+                                    @endphp
+                                    <div class="m-2">
+                                        @if ($cartitems->count() > 0)
+                                            @foreach ($cartitems as $prod)
+                                                @php
+                                                    if ($prod->discount == "1") {
+                                                        $price = $prod->selling_price;
+                                                    }else {
+                                                        $price = $prod->original_price;
+                                                    }
+                                                @endphp
+                                                <div class="product_data">
+                                                    <input type="hidden" class="prod_id" value="{{ $prod->ProdID }}">
+                                                    <table>
+                                                        <tr>
+                                                            <th><button class="btn-remove delete-cart-item"><i class="icon-close"></i></button> <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">{{ $prod->Product }}</a></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <font color="white">
+                                                                    {{-- <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">
+                                                                        <img src="{{ asset('assets/uploads/product/'.$prod->image) }}" alt="{{ $prod->Product }}" width="50">
+                                                                    </a>
+                                                                    <br> --}}
+                                                                    {{ $prod->prod_qty }}
+                                                                    X
+                                                                    @if ($prod->discount == "1")
+                                                                    {{ $config->currency_simbol }}{{ number_format($prod->selling_price,2, '.', ',') }} <strike>{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</strike>
+                                                                    @else
+                                                                    {{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}
+                                                                    @endif
+                                                                    =
+                                                                    @if (($prod->discount == "1"))
+                                                                        @php
+                                                                            $subtotal = $prod->prod_qty * $prod->selling_price;
+                                                                        @endphp
+                                                                        {{ $config->currency_simbol }}{{ number_format($subtotal,2, '.', ',') }}
+                                                                    @else
+                                                                        @php
+                                                                            $subtotal = $prod->prod_qty * $prod->original_price;
+                                                                        @endphp
+                                                                        {{ $config->currency_simbol }}{{ number_format($subtotal,2, '.', ',') }}
+                                                                    @endif
+                                                                </font>
+
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <br>
+                                                @php
+                                                    $totalCart +=  $price * $prod->prod_qty;
+                                                @endphp
+                                            @endforeach
+                                            <div align="right">
+                                                <h3><font color="white">Total: {{ $config->currency_simbol }}{{ number_format($totalCart,2, '.', ',') }}</font></h3>
+                                            </div>
+
+                                        @else
+                                            <p><font color="white">Cart is empty.</font></p>
+                                        @endif
+                                        <br>
+                                        <div align="center">
+                                            <a href="{{ url('cart') }}" class="btn btn-primary">View Cart <span class="icon icon-shopping_cart"></span></a>
+                                            @php
+                                                $outofstock = 0;
+                                                foreach($cartitems as $item)
+                                                {
+                                                    if ($item->qty < $item->prod_qty) {
+                                                        $outofstock++;
+                                                    }
+                                                }
+                                            @endphp
+
+                                            @if ($cartitems->count() > 0)
+                                                @if ($outofstock > 0)
+                                                    <a href="{{ url('checkout') }}" class="btn btn-primary"><span>Checkout</span> <i class="icon-long-arrow-right"></i></a>
+                                                    <br>
+                                                @else
+                                                    <a href="{{ url('checkout') }}" class="btn btn-primary"><span>Checkout</span> <i class="icon-long-arrow-right"></i></a>
+                                                @endif
+
+                                            @endif
+                                        </div>
+
+                                    </div>
+
                                 @endif
-                                <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- {{ __('Logout') }}</font>  </a>
-                                <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
                             </div>
                         </li>
                     @endif
-                    <li class="nav-item dropdown cart">
-                        @if (Auth::guest())
-                            <a class="nav-link " href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="icon icon-shopping_cart"></span>
-                                <span class="bag d-flex justify-content-center align-items-center font-weight-bold text-white"><small>0</small></span>
-                            </a>
-                        @else
-                            <a class="nav-link " href="" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="icon icon-shopping_cart"></span>
-                                <span class="bag d-flex justify-content-center align-items-center cart-count-pill font-weight-bold text-white"><small>0</small></span>
-                            </a>
-                        @endif
-                        <div class="dropdown-menu" aria-labelledby="dropdown02">
-                            @if (Auth::guest())
-                                <div class="m-2">
-                                    <font color="white"><p>Cart is empty.</p></font>
-                                    <a href="{{ route('login') }}" class="btn btn-primary">{{ __('Login') }}</a>
-                                    <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Register') }}</a>
-                                </div>
-                            @else
-                                @php
-                                    $totalCart = 0;
-                                    $cartitems = DB::table('carts as c')
-                                    ->join('products as p','c.prod_id','=','p.id')
-                                    ->join('categories as cat','p.cate_id','cat.id')
-                                    ->where('c.user_id',Auth::id())
-                                    ->select('c.id','c.user_id','c.prod_id as ProdID','c.prod_qty','p.name as Product','p.slug as ProdSlug','p.small_description','p.description','p.original_price','p.selling_price','p.image','p.qty','p.tax','p.status','p.trending','p.discount','p.cate_id','cat.name as Category','cat.slug as CatSlug')
-                                    ->orderBy('p.name','asc')
-                                    ->get();
-                                @endphp
-                                <div class="m-2">
-                                    @if ($cartitems->count() > 0)
-                                        @foreach ($cartitems as $prod)
-                                            @php
-                                                if ($prod->discount == "1") {
-                                                    $price = $prod->selling_price;
-                                                }else {
-                                                    $price = $prod->original_price;
-                                                }
-                                            @endphp
-                                            <div class="product_data">
-                                                <input type="hidden" class="prod_id" value="{{ $prod->ProdID }}">
-                                                <table>
-                                                    <tr>
-                                                        <th><button class="btn-remove delete-cart-item"><i class="icon-close"></i></button> <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">{{ $prod->Product }}</a></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <font color="white">
-                                                                {{-- <a href="{{ url('category/'.$prod->CatSlug.'/'.$prod->ProdSlug) }}">
-                                                                    <img src="{{ asset('assets/uploads/product/'.$prod->image) }}" alt="{{ $prod->Product }}" width="50">
-                                                                </a>
-                                                                <br> --}}
-                                                                {{ $prod->prod_qty }}
-                                                                X
-                                                                @if ($prod->discount == "1")
-                                                                {{ $config->currency_simbol }}{{ number_format($prod->selling_price,2, '.', ',') }} <strike>{{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}</strike>
-                                                                @else
-                                                                {{ $config->currency_simbol }}{{ number_format($prod->original_price,2, '.', ',') }}
-                                                                @endif
-                                                                =
-                                                                @if (($prod->discount == "1"))
-                                                                    @php
-                                                                        $subtotal = $prod->prod_qty * $prod->selling_price;
-                                                                    @endphp
-                                                                    {{ $config->currency_simbol }}{{ number_format($subtotal,2, '.', ',') }}
-                                                                @else
-                                                                    @php
-                                                                        $subtotal = $prod->prod_qty * $prod->original_price;
-                                                                    @endphp
-                                                                    {{ $config->currency_simbol }}{{ number_format($subtotal,2, '.', ',') }}
-                                                                @endif
-                                                            </font>
-
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <br>
-                                            @php
-                                                $totalCart +=  $price * $prod->prod_qty;
-                                            @endphp
-                                        @endforeach
-                                        <div align="right">
-                                            <h3><font color="white">Total: {{ $config->currency_simbol }}{{ number_format($totalCart,2, '.', ',') }}</font></h3>
-                                        </div>
-
-                                    @else
-                                        <p><font color="white">Cart is empty.</font></p>
-                                    @endif
-                                    <br>
-                                    <div align="center">
-                                        <a href="{{ url('cart') }}" class="btn btn-primary">View Cart <span class="icon icon-shopping_cart"></span></a>
-                                        @php
-                                            $outofstock = 0;
-                                            foreach($cartitems as $item)
-                                            {
-                                                if ($item->qty < $item->prod_qty) {
-                                                    $outofstock++;
-                                                }
-                                            }
-                                        @endphp
-
-                                        @if ($cartitems->count() > 0)
-                                            @if ($outofstock > 0)
-                                                <a href="{{ url('checkout') }}" class="btn btn-primary"><span>Checkout</span> <i class="icon-long-arrow-right"></i></a>
-                                                <br>
-                                            @else
-                                                <a href="{{ url('checkout') }}" class="btn btn-primary"><span>Checkout</span> <i class="icon-long-arrow-right"></i></a>
-                                            @endif
-
-                                        @endif
-                                    </div>
-
-                                </div>
-
-                            @endif
-                        </div>
-                    </li>
                     {{-- <li class="nav-item cart">
                         @if (Auth::guest())
                             <a href="{{ route('login') }}" class="nav-link">
@@ -290,19 +309,21 @@
                             </a>
                         @endif
                     </li> --}}
-                    <li class="nav-item cart">
-                        @if (Auth::guest())
-                            <a href="{{ route('login') }}" class="nav-link">
+                    @if ($config->store == 1)
+                        <li class="nav-item cart">
+                            @if (Auth::guest())
+                                <a href="{{ route('login') }}" class="nav-link">
+                                    <span class="material-symbols-outlined">favorite</span>
+                                    <span class="bag d-flex justify-content-center align-items-center font-weight-bold text-white"><small>0</small></span>
+                                </a>
+                            @else
+                            <a href="{{ url('wishlist') }}" class="nav-link">
                                 <span class="material-symbols-outlined">favorite</span>
-                                <span class="bag d-flex justify-content-center align-items-center font-weight-bold text-white"><small>0</small></span>
+                                <span class="bag d-flex justify-content-center align-items-center wish-count font-weight-bold text-white"><small>0</small></span>
                             </a>
-                        @else
-                        <a href="{{ url('wishlist') }}" class="nav-link">
-                            <span class="material-symbols-outlined">favorite</span>
-                            <span class="bag d-flex justify-content-center align-items-center wish-count font-weight-bold text-white"><small>0</small></span>
-                        </a>
-                        @endif
-                    </li>
+                            @endif
+                        </li>
+                    @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="material-symbols-outlined">language</span>
@@ -378,6 +399,31 @@
                             <!-- <li><a href="coffeebenefits.html" class="py-2 d-block">Coffee Benefits</a></li> -->
                             <li><a href="{{ url('contact') }}" class="py-2 d-block">{{ __('Contact') }}</a></li>
                             <!-- <li><a href="faq.html" class="py-2 d-block">FAQ</a></li> -->
+                            @if ($config->store == 0)
+                                @if (Auth::guest())
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                @else
+                                    <li>
+                                        @php
+                                            $usuario = Auth::user()->name; $nombre = explode(' ',trim($usuario));
+                                        @endphp
+                                        <h4>{{ ucwords($nombre[0]) }} {{ __('Account') }}</h4>
+                                    </li>
+                                    <li>
+                                        @if (Auth::user()->role_as == "1")
+                                            <a href="{{ url('dashboard') }}">- {{ __('Dashboard') }}</a>
+                                        @endif
+                                    </li>
+                                    <li>
+                                        <a href="javascript:; {{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><font color="red">- {{ __('Logout') }}</font>  </a>
+                                        <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                @endif
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -417,21 +463,21 @@
             <img src="{{ asset('assets/imgs/logow.png') }}" alt="whatsapp-chat" height="75px" width="75px">
         </a>
     </div>
-    <script src="{{ asset('bocacostacafeweb/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/popper.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/aos.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/jquery.animateNumber.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/jquery.timepicker.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/scrollax.min.js') }}"></script>
-    <script src="{{ asset('bocacostacafeweb/js/main.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/popper.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/aos.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery.animateNumber.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/jquery.timepicker.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/scrollax.min.js') }}"></script>
+    <script src="{{ asset('bocacostacoffeeweb/js/main.js') }}"></script>
     {{-- Custom --}}
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     {{-- <script src="{{ asset('frontend/css/custom.css') }}"></script> --}}
