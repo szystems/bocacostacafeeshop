@@ -82,6 +82,13 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
+                @if ($config->shopify == 1)
+                        <a href="{{ $config->shopify_link }}" class="navbar-toggler float-end" target="_blank">
+                            {{-- <img src="{{ asset('assets/imgs/logoshopify.png') }}" class="img-fluid"  alt="""> --}}
+                            <span class="material-symbols-outlined">shopping_bag</span>
+                        </a>
+                @endif
+
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
@@ -125,14 +132,15 @@
                     @if ($config->shopify == 1)
                         <li class="nav-item t-10">
                             <a href="{{ $config->shopify_link }}" class="nav-link" target="_blank">
-                                <img src="{{ asset('assets/imgs/shopifybtn.png') }}" class="img-fluid"  alt=""">
+                                {{-- <img src="{{ asset('assets/imgs/logoshopify.png') }}" class="img-fluid"  alt="""> --}}
+                                <span class="material-symbols-outlined">shopping_bag</span>
                             </a>
                         </li>
                     @endif
                     @if ($config->amazon == 1)
                         <li class="nav-item t-10">
                             <a href="{{ $config->amazon_link }}" class="nav-link" target="_blank">
-                                <img src="{{ asset('assets/imgs/amazonbtn.png') }}" class="img-fluid"  alt="">
+                                <img src="{{ asset('assets/imgs/logoamazon.png') }}" class="img-fluid"  alt="">
                             </a>
                         </li>
                     @endif
@@ -324,7 +332,7 @@
                             @endif
                         </li>
                     @endif
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="material-symbols-outlined">language</span>
                         </a>
@@ -332,7 +340,7 @@
                             <a class="dropdown-item" href="{{ route('set_language', ['en']) }}"> <img src="{{ asset('assets/imgs/english.png') }}" width="30"> {{ __('English') }}</a>
                             <a class="dropdown-item" href="{{ route('set_language', ['es']) }}"> <img src="{{ asset('assets/imgs/spanish.png') }}" width="30"> {{ __('Spanish') }}</a>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -341,17 +349,54 @@
 
     @yield('content')
 
+    {{-- Modal --}}
+    {{-- <div class="modal fade bd-example-modal-lg" id="promoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <button type="button" class="close float-end" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span><h5>Close</h5>
+                  </button>
+                <img src="images/promo/promo.jpg" class="img-fluid" alt="Promocion" height="200">
+                <img src="{{ asset('assets/imgs/buynowamazon.png') }}" class="img-fluid"  alt="">
+
+            </div>
+        </div>
+    </div> --}}
+
+        <!-- Modal -->
+    <div class="modal fade" id="promoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Shop Now</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" align="center">
+                    <a href="{{ $config->shopify_link }}" target="_blank">
+                        <img src="{{ asset('assets/imgs/modal.jpg') }}" class="img-fluid"  alt="">
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                    <a href="{{ $config->shopify_link }}" class="btn btn-primary" target="_blank"><font color="white"><strong>Shop Now</strong></font></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="ftco-footer ftco-section img">
         <div class="overlay"></div>
         <div class="container">
             <div class="row mb-5">
-                <div class="col-lg-6 col-md-6 mb-5 mb-md-5">
+                <div class="col-lg-6 col-md-4 mb-5 mb-md-5">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">{{ __('About Us') }}</h2>
                         <p>{{ __('The flavors of our coffee are spectacular. But, unfortunately, they are nowhere to be found.') }}
                         </p>
                         <p><strong>{{ __('ONLY IN BOCACOSTA COFFEE') }}</strong></p>
-                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                        <ul class="ftco-footer-social list-unstyled float-md-center float-center mt-5">
                             <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li> -->
                             <li class="ftco-animate"><a href="https://www.instagram.com/bocacostacoffeeus/"><span
@@ -388,7 +433,7 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+                <div class="col-lg-3 col-md-4 mb-5 mb-md-5">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
                         <h2 class="ftco-heading-2">{{ __('Links') }}</h2>
                         <ul class="list-unstyled">
@@ -423,6 +468,28 @@
                                         </form>
                                     </li>
                                 @endif
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-4 mb-5 mb-md-5">
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">{{ __('Shop') }}</h2>
+                        <ul class="list-unstyled">
+                            @if ($config->shopify == 1)
+                                <li>
+                                    <a href="{{ $config->shopify_link }}" class="py-2 d-block">
+                                        <img src="{{ asset('assets/imgs/shopifybtn.png') }}" class="img-fluid"  alt="">
+                                    </a>
+                                </li>
+                            @endif
+                            @if ($config->amazon == 1)
+                                <li>
+                                    <a href="{{ $config->amazon }}" class="py-2 d-block">
+                                        <img src="{{ asset('assets/imgs/amazonbtn.png') }}" class="img-fluid"  alt="">
+                                    </a>
+                                </li>
                             @endif
                         </ul>
                     </div>
@@ -521,6 +588,13 @@
 
 
     </script>
+
+    {{-- modal --}}
+    {{-- <script>
+        $(document).ready(function(){
+            $('#promoModal').modal('show')
+        })
+    </script> --}}
 
     @if (session('status'))
     <script>

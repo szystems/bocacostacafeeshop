@@ -76,13 +76,16 @@
                                     @endif
 
                                     @if ($config->shopify == 1)
+
                                         @if ($prod->shopify_link != null)
                                             <a href="{{ $prod->shopify_link }}" target="_blank">
-                                                <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt="">
+                                                {{-- <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt=""> --}}
+                                                <a href="{{ $prod->shopify_link }}" class="btn btn-primary btn-outline-primary">Buy Now</a>
                                             </a>
                                         @else
                                             <a href="{{ $config->shopify_link }}" target="_blank">
-                                                <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt="">
+                                                {{-- <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt=""> --}}
+                                                <a href="{{ $config->shopify_link }}" class="btn btn-primary btn-outline-primary">Buy Now</a>
                                             </a>
                                         @endif
 

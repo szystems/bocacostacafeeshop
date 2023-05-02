@@ -109,24 +109,20 @@
                                                                     </div><!-- End .product-action -->
                                                                     <a href="{{ url('category/'.$cat->slug.'/'.$prod->slug) }}" class="btn btn-primary btn-outline-primary">View Product...</a>
                                                                 @endif
-                                                                <br>
+
                                                             @endif
-                                                            @if ($config->store == 1)
-                                                                @if($prod->qty > 0)
-                                                                    <span class="badge badge-success">{{ __('In stock') }}</span>
-                                                                @else
-                                                                    <span class="badge badge-danger">{{ __('Out of stock') }}</span>
-                                                                @endif
-                                                            @endif
+
                                                             @if ($config->shopify == 1)
 
                                                                 @if ($prod->shopify_link != null)
                                                                     <a href="{{ $prod->shopify_link }}" target="_blank">
-                                                                        <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt="">
+                                                                        {{-- <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt=""> --}}
+                                                                        <a href="{{ $prod->shopify_link }}" class="btn btn-primary btn-outline-primary">Buy Now</a>
                                                                     </a>
                                                                 @else
                                                                     <a href="{{ $config->shopify_link }}" target="_blank">
-                                                                        <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt="">
+                                                                        {{-- <img src="{{ asset('assets/imgs/buynowshopify.png') }}" class="img-fluid"  alt=""> --}}
+                                                                        <a href="{{ $config->shopify_link }}" class="btn btn-primary btn-outline-primary">Buy Now</a>
                                                                     </a>
                                                                 @endif
 
@@ -143,6 +139,13 @@
                                                                 @endif
                                                             @endif
                                                             <br>
+                                                            @if ($config->store == 1)
+                                                                @if($prod->qty > 0)
+                                                                    <span class="badge badge-success">{{ __('In stock') }}</span>
+                                                                @else
+                                                                    <span class="badge badge-danger">{{ __('Out of stock') }}</span>
+                                                                @endif
+                                                            @endif
                                                             @if ($prod->trending == "1")
                                                                 <span class="badge badge-info">{{ __('Trending') }}</span>
                                                             @endif
