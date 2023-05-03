@@ -60,22 +60,22 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="{{ __('Your Full Name') }}" name="name">
+                                    <input type="text" class="form-control" placeholder="{{ __('Your Full Name') }}" name="name" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="{{ __('Job Title') }}" name="job">
+                                    <input type="text" class="form-control" placeholder="{{ __('Job Title') }}" name="job" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="{{ __('Your Email') }}" name="email">
+                                    <input type="text" class="form-control" placeholder="{{ __('Your Email') }}" name="email" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="{{ __('Name of Business') }}" name="business">
+                                    <input type="text" class="form-control" placeholder="{{ __('Name of Business') }}" name="business" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control" placeholder="{{ __('Years') }}" name="years">
+                                    <input type="number" class="form-control" placeholder="{{ __('Years') }}" name="years" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -95,7 +95,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control number" placeholder="{{ __('Locations') }}" name="locations">
+                                    <input type="number" class="form-control number" placeholder="{{ __('Locations') }}" name="locations" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -105,7 +105,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <select class=" form-control custom-select" placeholder="{{ __('What is your level of experience working with coffee?') }}" name="level">
+                                    <select class=" form-control custom-select" placeholder="{{ __('What is your level of experience working with coffee?') }}" name="level" required>
                                         <option selected>{{ __('Choose...') }}</option>
                                         <option value="Non experience">{{ __('Non experience') }}</option>
                                         <option value="Experienced">{{ __('Experienced') }}</option>
@@ -120,7 +120,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="number" class="form-control number" placeholder="{{ __('Volume of pounds') }}" name="volume">
+                                    <input type="number" class="form-control number" placeholder="{{ __('Volume of pounds') }}" name="volume" required>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                             <label for="">{{ __('How did you hear about us?') }}</label>
                         </div>
                         <div class="form-group">
-                            <textarea name="about" id="" cols="30" rows="7" class="form-control" placeholder="{{ __('Tell us how you heard about us...') }}"></textarea>
+                            <textarea name="about" id="" cols="30" rows="7" class="form-control" placeholder="{{ __('Tell us how you heard about us...') }}" required></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="{{ __('Send Message') }}" class="btn btn-primary py-3 px-5">

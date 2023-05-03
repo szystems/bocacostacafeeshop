@@ -55,20 +55,20 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="{{ __('Name') }}" name="name">
+                                    <input type="text" class="form-control" placeholder="{{ __('Name') }}" name="name" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Email" name="email">
+                                    <input type="text" class="form-control" placeholder="Email" name="email" required>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="{{ __('Subject') }}" name="subject">
+                            <input type="text" class="form-control" placeholder="{{ __('Subject') }}" name="subject" required>
                         </div>
                         <div class="form-group">
-                            <textarea name="contact_message" cols="30" rows="7" class="form-control" placeholder="{{ __('Message') }}"></textarea>
+                            <textarea name="contact_message" cols="30" rows="7" class="form-control" placeholder="{{ __('Message') }}" required></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="{{ __('Send Message') }}" class="btn btn-primary py-3 px-5">
