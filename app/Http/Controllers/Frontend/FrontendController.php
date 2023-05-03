@@ -11,6 +11,10 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Config;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Contact;
+use App\Mail\Wholesale;
+use Session;
 use DB;
 
 class FrontendController extends Controller
@@ -140,5 +144,45 @@ class FrontendController extends Controller
     {
         $config = Config::first();
         return view('frontend.social-impact', compact('config'));
+    }
+
+    public function sendcontact(Request $request)
+    {
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $subject = $request->input('subject');
+        $contact_message = $request->input('contact_message');
+        $mail_to = 'info@bocacostacoffee.com';
+        $config = Config::first();
+
+        Mail::to($mail_to)->send(new Contact($name,$email,$subject,$contact_message,$mail_to,$config));
+
+        Session::flash('message', 'Thank you for contacting us. We will be in touch soon.');
+        Session::flash('alert-class', 'alert-success');
+
+        return view('frontend.contact', compact('config'));
+    }
+
+    public function sendwholesale(Request $request)
+    {
+        $name = $request->input('name');
+        $job = $request->input('job');
+        $email = $request->input('email');
+        $business = $request->input('business');
+        $years = $request->input('years');
+        $locations = $request->input('locations');
+        $level = $request->input('level');
+        $volume = $request->input('volume');
+        $about = $request->input('about');
+        $config = Config::first();
+
+        $mail_to = 'wholesale@bocacostacoffee.com';
+
+        Mail::to($mail_to)->send(new Wholesale($name,$job,$email,$business,$years,$locations,$level,$volume,$about,$mail_to,$config));
+
+        Session::flash('message', 'Thank you for contacting us. We will be in touch soon.');
+        Session::flash('alert-class', 'alert-success');
+
+        return view('frontend.wholesale', compact('config'));
     }
 }

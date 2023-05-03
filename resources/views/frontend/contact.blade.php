@@ -45,7 +45,13 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-6 ftco-animate">
-                    <form action="contacto.php" class="contact-form" method="POST">
+                    @if(Session::has('message'))
+                        <div class="alert {{ Session::get('alert-class', 'alert-info') }}" role="alert">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
+                    <form action="{{ url('send-contact') }}" class="contact-form" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -62,7 +68,7 @@
                             <input type="text" class="form-control" placeholder="{{ __('Subject') }}" name="subject">
                         </div>
                         <div class="form-group">
-                            <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="{{ __('Message') }}"></textarea>
+                            <textarea name="contact_message" cols="30" rows="7" class="form-control" placeholder="{{ __('Message') }}"></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="{{ __('Send Message') }}" class="btn btn-primary py-3 px-5">

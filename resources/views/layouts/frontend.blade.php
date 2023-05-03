@@ -82,6 +82,14 @@
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
+                @php
+                    $categories=DB::table('categories')
+                    ->where('status','=','1')
+                    ->orderBy('name','asc')
+                    ->get();
+
+                    $config=DB::table('configs')->first();
+                @endphp
                 @if ($config->shopify == 1)
                         <a href="{{ $config->shopify_link }}" class="navbar-toggler float-end" target="_blank">
                             {{-- <img src="{{ asset('assets/imgs/logoshopify.png') }}" class="img-fluid"  alt="""> --}}
@@ -106,14 +114,7 @@
                             aria-haspopup="true" aria-expanded="false">{{ __('Our Coffee') }}</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown03">
                             <a class="dropdown-item" href="{{ url('category') }}">{{ __('Choose your type of flavor') }}</a>
-                            @php
-                                $categories=DB::table('categories')
-                                ->where('status','=','1')
-                                ->orderBy('name','asc')
-                                ->get();
 
-                                $config=DB::table('configs')->first();
-                            @endphp
                             @foreach ($categories as $cat)
                                 <a class="dropdown-item" href="{{ url('view-category/'.$cat->slug) }}">
                                     {{ $cat->name }}
@@ -399,7 +400,7 @@
                         <ul class="ftco-footer-social list-unstyled float-md-center float-center mt-5">
                             <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li> -->
-                            <li class="ftco-animate"><a href="https://www.instagram.com/bocacostacoffeeus/"><span
+                            <li class="ftco-animate"><a href="https://www.instagram.com/usbocacosta/" target="_blank"><span
                                         class="icon-instagram"></span></a></li>
                         </ul>
                     </div>
@@ -480,14 +481,16 @@
                             @if ($config->shopify == 1)
                                 <li>
                                     <a href="{{ $config->shopify_link }}" class="py-2 d-block">
-                                        <img src="{{ asset('assets/imgs/shopifybtn.png') }}" class="img-fluid"  alt="">
+                                        {{-- <img src="{{ asset('assets/imgs/shopifybtn.png') }}" class="img-fluid"  alt=""> --}}
+                                        Shopify
                                     </a>
                                 </li>
                             @endif
                             @if ($config->amazon == 1)
                                 <li>
                                     <a href="{{ $config->amazon }}" class="py-2 d-block">
-                                        <img src="{{ asset('assets/imgs/amazonbtn.png') }}" class="img-fluid"  alt="">
+                                        {{-- <img src="{{ asset('assets/imgs/amazonbtn.png') }}" class="img-fluid"  alt=""> --}}
+                                        Amazon
                                     </a>
                                 </li>
                             @endif

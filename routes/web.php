@@ -44,7 +44,9 @@ Route::post('buscarproducto', [FrontendController::class, 'buscarProducto']);
 //vistas
 Route::get('history', [FrontendController::class, 'history']);
 Route::get('contact', [FrontendController::class, 'contact']);
+Route::post('send-contact', [FrontendController::class, 'sendcontact']);
 Route::get('wholesale', [FrontendController::class, 'wholesale']);
+Route::post('send-wholesale', [FrontendController::class, 'sendwholesale']);
 Route::get('social-impact', [FrontendController::class, 'socialImpact']);
 
 

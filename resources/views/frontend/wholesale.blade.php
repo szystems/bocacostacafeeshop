@@ -50,7 +50,13 @@
                 </div>
                 <div class="col-md-1"></div>
                 <div class="col-md-6 ftco-animate">
-                    <form action="wholesale.php" class="contact-form" method="POST">
+                    @if(Session::has('message'))
+                        <div class="alert {{ Session::get('alert-class', 'alert-info') }}" role="alert">
+                            {{ Session::get('message') }}
+                        </div>
+                    @endif
+                    <form action="{{ url('send-wholesale') }}" class="contact-form" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

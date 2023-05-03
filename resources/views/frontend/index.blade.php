@@ -57,7 +57,7 @@
 
     </section>
 
-    <section class="ftco-intro">
+    {{-- <section class="ftco-intro">
         <div class="container-wrap">
             <div class="wrap d-md-flex align-items-xl-end">
                 <div class="info">
@@ -125,7 +125,7 @@
                 </div> -->
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="ftco-section ftco-services">
         <div class="container">
