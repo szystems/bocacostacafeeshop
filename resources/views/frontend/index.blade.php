@@ -234,11 +234,10 @@
         </div>
     </section>
 
-    <section class="ftco-section">
+    {{-- <section class="ftco-section">
     	<div class="container">
     		<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
-          	{{-- <span class="subheading">Discover</span> --}}
             <h2 class="mb-4">{{ __('Categories') }}</h2>
             <p>{{ __('Choose one of our categories and buy the best coffee') }}</p>
           </div>
@@ -268,7 +267,7 @@
             @endforeach
         </div>
     	</div>
-    </section>
+    </section> --}}
 
     <section class="ftco-counter ftco-bg-dark img" id="section-counter"
         style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/12.jpg') }});" data-stellar-background-ratio="0.5">

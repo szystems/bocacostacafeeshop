@@ -60,7 +60,7 @@ class CategoryController extends Controller
         }
         if(Category::where('slug',$slug)->exists())
         {
-            $slug = $slug.$product->id;
+            $slug = $slug.$category->id;
         }
 
         $category->name = $request->input('name');
@@ -106,7 +106,7 @@ class CategoryController extends Controller
         }
         if(Category::where('slug',$slug)->exists())
         {
-            $slug = $slug.$product->id;
+            $slug = $slug.$category->id;
         }
 
         $category->name = $request->input('name');
