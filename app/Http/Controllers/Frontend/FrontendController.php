@@ -146,6 +146,12 @@ class FrontendController extends Controller
         return view('frontend.social-impact', compact('config'));
     }
 
+    public function faq()
+    {
+        $config = Config::first();
+        return view('frontend.faq', compact('config'));
+    }
+
     public function sendcontact(Request $request)
     {
         $name = $request->input('name');

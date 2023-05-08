@@ -48,6 +48,7 @@ Route::post('send-contact', [FrontendController::class, 'sendcontact']);
 Route::get('wholesale', [FrontendController::class, 'wholesale']);
 Route::post('send-wholesale', [FrontendController::class, 'sendwholesale']);
 Route::get('social-impact', [FrontendController::class, 'socialImpact']);
+Route::get('faq', [FrontendController::class, 'faq']);
 
 
 

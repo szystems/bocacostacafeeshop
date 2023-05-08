@@ -3,7 +3,7 @@
 @section('content')
     <section class="home-slider owl-carousel" align="center">
 
-        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/2.jpg') }});">
+        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/1.jpg') }});">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/7.jpg') }});">
+        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/2.jpg') }});">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">

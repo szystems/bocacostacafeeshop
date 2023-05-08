@@ -74,6 +74,7 @@
             position: fixed;
         } */
 
+        h4:target { padding-top: 100px; }
         option {
             color: black;
         }
@@ -449,9 +450,10 @@
                         <h2 class="ftco-heading-2">{{ __('Links') }}</h2>
                         <ul class="list-unstyled">
                             <li><a href="{{ url('/') }}" class="py-2 d-block">{{ __('Home') }}</a></li>
-                            <li><a href="ourcoffee.html" class="py-2 d-block">{{ __('Our Coffee') }}</a></li>
+                            <li><a href="{{ url('category') }}" class="py-2 d-block">{{ __('Our Coffee') }}</a></li>
                             <!-- <li><a href="wholesale.html" class="py-2 d-block">Wholesale</a></li> -->
                             <li><a href="{{ url('social-impact') }}" class="py-2 d-block">{{ __('Social Impact') }}</a></li>
+                            <li><a href="{{ url('faq') }}" class="py-2 d-block">{{ __('FAQ') }}</a></li>
                             <!-- <li><a href="coffeebenefits.html" class="py-2 d-block">Coffee Benefits</a></li> -->
                             <li><a href="{{ url('contact') }}" class="py-2 d-block">{{ __('Contact') }}</a></li>
                             <!-- <li><a href="faq.html" class="py-2 d-block">FAQ</a></li> -->
