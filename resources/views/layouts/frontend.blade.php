@@ -453,7 +453,7 @@
                             <li><a href="{{ url('category') }}" class="py-2 d-block">{{ __('Our Coffee') }}</a></li>
                             <!-- <li><a href="wholesale.html" class="py-2 d-block">Wholesale</a></li> -->
                             <li><a href="{{ url('social-impact') }}" class="py-2 d-block">{{ __('Social Impact') }}</a></li>
-                            <li><a href="{{ url('faq') }}" class="py-2 d-block">{{ __('FAQ') }}</a></li>
+                            <li><a href="{{ url('faq') }}" class="py-2 d-block">{{ __("FAQ's") }}</a></li>
                             <!-- <li><a href="coffeebenefits.html" class="py-2 d-block">Coffee Benefits</a></li> -->
                             <li><a href="{{ url('contact') }}" class="py-2 d-block">{{ __('Contact') }}</a></li>
                             <!-- <li><a href="faq.html" class="py-2 d-block">FAQ</a></li> -->
