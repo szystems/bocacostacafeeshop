@@ -36,7 +36,10 @@
     <meta name="keywords" content="coffee, bocacosta, Guatemala, shop">
     <meta name="description" content="Bocacosta Coffee Shop">
     <meta name="author" content="Szystems">
-    <link rel="icon" href="{{ asset('bocacostacoffeeweb/images/logos/favico.ico') }}">
+    {{-- <link rel="icon" href="{{ asset('bocacostacoffeeweb/images/logos/favico.ico') }}"> --}}
+
+    <link rel="shortcut icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" sizes="192x192" href="{{ asset('favicon.png') }}">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,700" rel="stylesheet">
