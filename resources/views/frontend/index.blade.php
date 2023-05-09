@@ -3,6 +3,23 @@
 @section('content')
     <section class="home-slider owl-carousel" align="center">
 
+        <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/2.jpg') }});">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+                    <div class="col-md-8 col-sm-12 text-center ftco-animate">
+                        <!-- <span class="subheading">Welcome</span> -->
+                        <!-- <h1 class="mb-4">The Best Coffee Testing Experience</h1> -->
+                        <img src="{{ asset('bocacostacoffeeweb/images/logos/logoorojo.png') }}" alt="">
+                        <!-- <p class="mb-4 mb-md-5">High-altitude coffee, a coffee that in each cup you can feel the high quality and the best flavor you could imagine.</p> -->
+                        <!-- <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p> -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <div class="slider-item" style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/1.jpg') }});">
             <div class="overlay"></div>
             <div class="container">
@@ -37,6 +54,8 @@
                 </div>
             </div>
         </div>
+
+
 
     </section>
 
@@ -307,7 +326,7 @@
 
                 <div class="col-md-3 ftco-animate">
                     <a href="#" class="gallery img d-flex align-items-center"
-                        style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/1.jpg') }});">
+                        style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/7.jpg') }});">
                         <div class="icon mb-4 d-flex align-items-center justify-content-center">
                             <span class="icon-search"></span>
                         </div>
@@ -316,7 +335,7 @@
 
                 <div class="col-md-3 ftco-animate">
                     <a href="#" class="gallery img d-flex align-items-center"
-                        style="background-image: url({{ asset('bocacostacoffeeweb/images/pics2/2.jpg') }});">
+                        style="background-image: url({{ asset('bocacostacoffeeweb/images/varias/16.jpg') }});">
                         <div class="icon mb-4 d-flex align-items-center justify-content-center">
                             <span class="icon-search"></span>
                         </div>

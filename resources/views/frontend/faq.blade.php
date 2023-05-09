@@ -50,80 +50,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        <h4>2. {{ __('Is coffee good for health?') }}</h4>
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    {{ __("Hu said that moderate coffee intake—about 2–5 cups a day—is linked to a lower likelihood of type 2 diabetes, heart disease, liver and endometrial cancers, Parkinson's disease, and depression. -Harvard University") }}
-                                </div>
-                            </div>
-                        </div>
-                        <div div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                        aria-controls="collapseThree">
-                                        <h4>3. {{ __('Which country drinks the most coffee?') }}</h4>
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <p>{{ __('United States') }} 26,650,000 {{ __('bags') }}</p>
-                                    <p>{{ __('Brazil') }} 26,650,000 {{ __('bags') }}</p>
-                                    <p>{{ __('Germany') }} 26,650,000 {{ __('bags') }}</p>
-                                    <p>{{ __('Japan') }} 26,650,000 {{ __('bags') }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div div class="card">
-                            <div class="card-header" id="headingFour">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
-                                        aria-controls="collapseFour">
-                                        <h4>4. {{ __('Where is the Bocacosta coffee from?') }}</h4>
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    {{ __('Why Guatemalan coffee is one of the best coffees in the world?') }}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div div class="card">
-                            <div class="card-header" id="headingFive">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
-                                        data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
-                                        aria-controls="collapseFour">
-                                        <h4>5. {{ __('Why Guatemalan coffee is one of the best coffees in the world?') }}</h4>
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                                data-parent="#accordionExample">
-                                <div class="card-body">
-                                    {{ __('Nearly every area receives year-round rainfall and has mineral-rich soils from nearby volcanoes and lakes. With high altitudes, ranging humidity levels and moderate temperatures, Guatemala produces a wide variety of delicious, globally appreciated Arabica coffee. Guatemala is one of the most influential coffee growers and exporters in the world.') }}
-                                </div>
-                            </div>
-                        </div>
 
                         <div div class="card">
                             <div class="card-header" id="headingSix">
@@ -131,7 +57,7 @@
                                     <button class="btn btn-link btn-block text-left collapsed" type="button"
                                         data-toggle="collapse" data-target="#collapseSix" aria-expanded="false"
                                         aria-controls="collapseFour">
-                                        <h4>6. {{ __('Where can I buy Bocacosta coffee?') }}</h4>
+                                        <h4>2. {{ __('Where can I buy Bocacosta coffee?') }}</h4>
                                     </button>
                                 </h2>
                             </div>
@@ -149,7 +75,7 @@
                                     <button class="btn btn-link btn-block text-left collapsed" type="button"
                                         data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false"
                                         aria-controls="collapseFour">
-                                        <h4>7. {{ __('Is selling coffee a profitable business?') }}</h4>
+                                        <h4>3. {{ __('Is selling coffee a profitable business?') }}</h4>
                                     </button>
                                 </h2>
                             </div>
@@ -157,6 +83,81 @@
                                 data-parent="#accordionExample">
                                 <div class="card-body">
                                     {{ __('One of the best products to attract customers to your coffee shop or restaurant is coffee. That is why Bocacosta works together with the coffee shop owners to maintain quality and thus provide the customer with the best experience.On average, small coffee shop owners earn between $60,000 and $160,000.') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                        aria-controls="collapseTwo">
+                                        <h4>4. {{ __('Is coffee good for health?') }}</h4>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ __("Hu said that moderate coffee intake—about 2–5 cups a day—is linked to a lower likelihood of type 2 diabetes, heart disease, liver and endometrial cancers, Parkinson's disease, and depression. -Harvard University") }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div div class="card">
+                            <div class="card-header" id="headingFour">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        <h4>5. {{ __('Where is the Bocacosta coffee from?') }}</h4>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ __('Why Guatemalan coffee is one of the best coffees in the world?') }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <h4>6. {{ __('Which country drinks the most coffee?') }}</h4>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <p>{{ __('United States') }} 26,650,000 {{ __('bags') }}</p>
+                                    <p>{{ __('Brazil') }} 26,650,000 {{ __('bags') }}</p>
+                                    <p>{{ __('Germany') }} 26,650,000 {{ __('bags') }}</p>
+                                    <p>{{ __('Japan') }} 26,650,000 {{ __('bags') }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div div class="card">
+                            <div class="card-header" id="headingFive">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                        data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                        aria-controls="collapseFour">
+                                        <h4>7. {{ __('Why Guatemalan coffee is one of the best coffees in the world?') }}</h4>
+                                    </button>
+                                </h2>
+                            </div>
+                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                data-parent="#accordionExample">
+                                <div class="card-body">
+                                    {{ __('Nearly every area receives year-round rainfall and has mineral-rich soils from nearby volcanoes and lakes. With high altitudes, ranging humidity levels and moderate temperatures, Guatemala produces a wide variety of delicious, globally appreciated Arabica coffee. Guatemala is one of the most influential coffee growers and exporters in the world.') }}
                                 </div>
                             </div>
                         </div>
@@ -179,7 +180,7 @@
                             </div>
                         </div>
 
-                        <div div class="card">
+                        {{-- <div div class="card">
                             <div class="card-header" id="headingNine">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left collapsed" type="button"
@@ -240,7 +241,7 @@
                                     ...
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

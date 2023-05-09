@@ -519,12 +519,12 @@
 
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script>
-                        {{ __('All rights reserved') }}
-                        | <a href="https://szystems.com" target="_blank">Szystems</a>
+                        <a href="https://szystems.com" target="_blank">Copyright &copy;
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            {{ __('All rights reserved') }}
+                        </a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
