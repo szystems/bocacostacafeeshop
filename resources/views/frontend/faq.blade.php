@@ -118,7 +118,7 @@
                             <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
                                 data-parent="#accordionExample">
                                 <div class="card-body">
-                                    {{ __('Why Guatemalan coffee is one of the best coffees in the world?') }}
+                                    {{ __('Currently our coffee is from Guatemala') }}
                                 </div>
                             </div>
                         </div>

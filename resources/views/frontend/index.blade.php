@@ -197,9 +197,7 @@
                     <div class="heading-section text-md-right ftco-animate">
                         <!-- <span class="subheading">Discover</span> -->
                         <h2 class="mb-4">{{ __('Our Coffee') }}</h2>
-                        <p class="mb-4">{{ __("Our coffee comes from Guatemala, a country recognized for having one of the world's best and most unique coffees. High-altitude coffee is coffee in which you can feel the high quality and the best flavor you could imagine in each cup.") }}</p>
-                        <h4><strong>{{ __('Cup of Coffee') }}</strong></h4>
-                        <p class="mb-4">{{ __('It is not just a premium coffee. It is with which you accompany. Early in the morning to achieve those goals, going out with those special people, in work meetings, at the end of a long work day. For every moment, there is Bocacosta Coffee.') }}</p>
+                        <p class="mb-4">{{ __("Bocacosta Coffee is an exceptional blend of flavors that will elevate any experience. So whether you want to kickstart your morning routine, enjoy a warm cup with friends and family, impress colleagues at a business meeting, or unwind after a busy day, Bocacosta Coffee is the perfect choice. With each sip, you'll savor the rich aroma and distinctive taste that is the hallmark of this premium coffee brand. No matter the occasion, Bocacosta Coffee is the ideal beverage to enhance your day.") }}</p>
                         <p><a href="{{ url('category') }}" class="btn btn-primary btn-outline-primary px-4 py-3">{{ __('Our Coffee') }}</a>
                         </p>
                     </div>

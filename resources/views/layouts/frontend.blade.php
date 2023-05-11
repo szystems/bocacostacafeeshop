@@ -543,11 +543,11 @@
         </svg></div>
 
     <!-- Plugins JS whatsapp File -->
-    <div class="whatsapp-chat">
+    {{-- <div class="whatsapp-chat">
         <a href="https://wa.me/50242153288?text=I'm%20interested%20in%20your%20car%20for%20sale" target="_blank">
             <img src="{{ asset('assets/imgs/logow.png') }}" alt="whatsapp-chat" height="75px" width="75px">
         </a>
-    </div>
+    </div> --}}
     <script src="{{ asset('bocacostacoffeeweb/js/jquery.min.js') }}"></script>
     <script src="{{ asset('bocacostacoffeeweb/js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ asset('bocacostacoffeeweb/js/popper.min.js') }}"></script>
