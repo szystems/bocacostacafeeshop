@@ -94,33 +94,34 @@
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="material-icons">language</i>
+                        <i class="	fas fa-globe cursor-pointer"></i>
                     </a>
+
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                         aria-labelledby="dropdownMenuButton">
                         <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                            <a class="dropdown-item border-radius-md" href="{{ route('set_language', ['es']) }}">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <a href="{{ route('set_language', ['en']) }}"><img src="{{ asset('assets/imgs/english.png') }}" class="avatar avatar-sm  me-3 "></a>
+                                        <img src="{{ asset('assets/imgs/spanish.png') }}" class="avatar avatar-sm  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
-                                            <a href="{{ route('set_language', ['en']) }}">{{ __('English') }}</a>
+                                            <span class="font-weight-bold">{{ __('Spanish') }}</span>
                                         </h6>
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li class="mb-2">
-                            <a class="dropdown-item border-radius-md" href="javascript:;">
+                            <a class="dropdown-item border-radius-md" href="{{ route('set_language', ['en']) }}">
                                 <div class="d-flex py-1">
                                     <div class="my-auto">
-                                        <a href="{{ route('set_language', ['es']) }}"><img src="{{ asset('assets/imgs/spanish.png') }}" class="avatar avatar-sm  me-3 "></a>
+                                        <img src="{{ asset('assets/imgs/english.png') }}" class="avatar avatar-sm bg-gradient-dark  me-3 ">
                                     </div>
                                     <div class="d-flex flex-column justify-content-center">
                                         <h6 class="text-sm font-weight-normal mb-1">
-                                            <a href="{{ route('set_language', ['es']) }}">{{ __('Spanish') }}</a>
+                                            <span class="font-weight-bold">{{ __('English') }}</span>
                                         </h6>
                                     </div>
                                 </div>

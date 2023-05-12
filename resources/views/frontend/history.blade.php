@@ -25,8 +25,7 @@
                         Bocacosta coffee is a unique experience and you can enjoy a coffee with the highest quality
                         standards.
                     </p> -->
-                    <p>{{ __("When our founder arrived at a coffee shop in Portland, he ordered a cup of coffee, and when he tasted it, he could see that the coffee was not of good quality. He knows he was left with doubt because there was no good quality. Seeing that there was no such good quality coffee in the coffee market, our founder began with the idea of offering high-quality coffee. Our name is inspired by a region where the rain comes to refresh after the high temperatures. So we choose the best coffee in the country and region.") }}</p>
-                    <p>{{ __("Have more than 30 years of experience in coffee. We are working so that each cup of Bocacosta coffee is a unique experience, and you can enjoy coffee with the highest quality standards.") }}</p>
+                    <p>{{ __("Our founder's discovery and passion for high-quality coffee began our brand's origin story in a quaint Portland coffee shop. After tasting a lackluster cup of coffee, it became clear to him that the market needed better options. Our brand name, Bocacosta, is derived from a region known for experiencing rejuvenating rainfall after enduring high temperatures. With over 30 years of experience in the coffee industry, we strive to provide a unique and satisfying experience with every cup of our coffee. Our unwavering commitment to the highest quality standards ensures that every sip of Bocacosta coffee is consistently delightful.") }}</p>
                 </div>
             </div>
         </div>

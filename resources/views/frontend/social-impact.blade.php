@@ -11,9 +11,8 @@
                 <div class="row slider-text justify-content-center align-items-center">
 
                     <div class="col-md-7 col-sm-12 text-center ftco-animate">
-                        <h1 class="mb-3 mt-5 bread">Social Impact</h1>
-                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Social
-                                Impact</span>
+                        <h1 class="mb-3 mt-5 bread">{{ __('Social Impact') }}</h1>
+                        <p class="breadcrumbs"><span class="mr-2"><a href="index.html"{{ __('Home') }}n>{{__('Social Impact')}}</span>
                         </p>
                     </div>
 
@@ -27,13 +26,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 ftco-animate text-center">
-                    <h2 class="mb-3">World</h2>
-                    <p>At Bocacosta, we have the mission of caring for the planet. Our processes are in a traditional way which is a project to avoid contamination. We are convinced that one by one, we will make a difference to improve our planet. Likewise, our products are carried with recyclable material. At Bocascosta, we care not only about our world but also about your health.</p>
+                    <h2 class="mb-3">{{ __('World') }}</h2>
+                    <p>{{ __('At Bocacosta, we are committed to taking care of the planet. Our traditional processes are designed to minimize any potential environmental contamination, and we firmly believe that every small step we take can make a positive impact. For example, we use recyclable materials to package our products as part of our ongoing efforts. However, our dedication to the well-being of our customers extends beyond just the environment, and we strive to provide healthy options at Bocacosta.') }}</p>
                     <p>
                         <img src="{{ asset('bocacostacoffeeweb/images/varias/10.jpg')}}" alt="" class="img-fluid">
                     </p>
-                    <h2 class="mb-3">Social Impact</h2>
-                    <p>We work to maintain the best coffee flavors and quality. To achieve this, we have our partners in the field, who take the coffee from the farm to the comfort of your home—supporting the development of coffee farming from the farmers to the partners. At Bocacosta, the priority is the best work environment, so when negotiating, our most important requirement is that the partners have the necessary resources. In the same way, workers must have the best comforts and social resources that can be provided.</p>
+                    <h2 class="mb-3">{{ __('Social Impact') }}</h2>
+                    <p>{{ __("Our commitment goes beyond just maintaining the best coffee flavors and quality. We understand that our actions can have a social impact, and we strive to make a positive difference in the communities where our coffee is grown. That's why we work closely with our partners in the field to support the development of coffee farming and ensure that workers have access to the best comforts and social resources possible. At Bocacosta, a healthy work environment is essential for producing the best coffee, and we are committed to making a positive social impact through our business practices.") }}</p>
                     <p>
                         <img src="{{ asset('bocacostacoffeeweb/images/varias/21.jpg')}}" alt="" class="img-fluid">
                     </p>

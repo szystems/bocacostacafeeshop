@@ -408,7 +408,7 @@
                 <div class="col-lg-6 col-md-4 mb-5 mb-md-5">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">{{ __('About Us') }}</h2>
-                        <p>{{ __('The flavors of our coffee are spectacular. But, unfortunately, they are nowhere to be found.') }}
+                        <p>{{ __('Our coffee flavors are truly unique, but they are exclusively available at Bocacosta Coffee.') }}
                         </p>
                         <p><strong>{{ __('ONLY IN BOCACOSTA COFFEE') }}</strong></p>
                         <ul class="ftco-footer-social list-unstyled float-md-center float-center mt-5">

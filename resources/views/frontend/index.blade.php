@@ -178,8 +178,8 @@
                     <h2 class="mb-4">{{ __('Why Bocacosta Coffee?') }}</h2>
                 </div>
                 <div>
-                    <p>{{ __("Bocacosta Coffee is not just a premium coffee brand. We have the best coffee, working with professionals with years of experience. Our competition coffee, you can't find it anywhere. That is why Bocacosta has no comparison. From the first sip of coffee, you can feel the special notes.") }}</p>
-                    <p>{{ __('The coffee is unique from its collection. Therefore, we ensure the care required to guarantee its flavor and quality.') }}</p>
+                    <p>{{ __("Bocacosta Coffee stands out as a premium coffee brand thanks to the expertise of our professionals with years of experience. Our competition coffee is unparalleled and cannot be found anywhere else. With Bocacosta, there is simply no comparison. ") }}</p>
+                    <p>{{ __("Each sip of our coffee reveals special notes unique to our collection. We take great care to guarantee the flavor and quality that our customers have come to expect from us. Choose Bocacosta Coffee for an unparalleled coffee experience that you won't find anywhere else.") }}</p>
                     <!-- <span class="subheading">Place and date of foundation:</span> -->
                     <!-- <p>
                        Portland, Oregon, 2019. The founders have more than 30 years of experience in coffee. We are working so that each cup of Bocacosta coffee is a unique experience and you can enjoy a coffee with the highest quality standards.</p> -->

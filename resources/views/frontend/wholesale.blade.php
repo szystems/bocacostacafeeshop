@@ -31,7 +31,7 @@
                             <h2 class="h4">{{ __('Wholesale') }}</h2>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <p>{{ __('Our coffee is perfect for your business, and we constantly work hard to ensure that you always get the highest quality.') }}
+                            <p>{{ __('Are you looking for high-quality coffee for your business? Look no further than us! We take pride in offering top-notch coffee that is perfect for wholesale purchases. We work tirelessly to ensure that every batch of our coffee is of the highest quality, ensuring your customers are always satisfied. So choose us for your wholesale coffee needs and experience the difference in our unique blend.') }}
                             <br><span>{{ __('THERE IS NO OTHER LIKE OURS') }}</span></p>
                         </div>
                         <!-- <div class="col-md-12 mb-3">
