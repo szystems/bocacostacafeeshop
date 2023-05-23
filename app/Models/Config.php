@@ -24,6 +24,9 @@ class Config extends Model
         'shopify',
         'shopify_link',
         'amazon',
-        'amazon_link'
+        'amazon_link',
+        'advertisement',
+        'advertisement_link',
+        'advertisement_image'
     ];
 }

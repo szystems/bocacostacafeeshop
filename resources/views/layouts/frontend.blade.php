@@ -364,38 +364,24 @@
 
     @yield('content')
 
-    {{-- Modal --}}
-    {{-- <div class="modal fade bd-example-modal-lg" id="promoModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <button type="button" class="close float-end" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span><h5>Close</h5>
-                  </button>
-                <img src="images/promo/promo.jpg" class="img-fluid" alt="Promocion" height="200">
-                <img src="{{ asset('assets/imgs/buynowamazon.png') }}" class="img-fluid"  alt="">
-
-            </div>
-        </div>
-    </div> --}}
-
-        <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="promoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Shop Now</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">{{ __('Advertisement') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body" align="center">
-                    <a href="{{ $config->shopify_link }}" target="_blank">
-                        <img src="{{ asset('assets/imgs/modal.jpg') }}" class="img-fluid"  alt="">
+                    <a href="{{ $config->advertisement_link }}" target="_blank">
+                        <img src="{{ asset('assets/uploads/advertisements/'.$config->advertisement_image) }}" class="img-fluid"  alt="">
                     </a>
                 </div>
                 <div class="modal-footer">
                     {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                    <a href="{{ $config->shopify_link }}" class="btn btn-primary" target="_blank"><font color="white"><strong>Shop Now</strong></font></a>
+                    <a href="{{ $config->advertisement_link }}" class="btn btn-primary" target="_blank"><font color="white"><strong>{{ __('Go') }}!</strong></font></a>
                 </div>
             </div>
         </div>
@@ -608,11 +594,13 @@
     </script>
 
     {{-- modal --}}
-    {{-- <script>
+    @if ($config->advertisement == 1 and Request::is('/'))
+    <script>
         $(document).ready(function(){
             $('#promoModal').modal('show')
         })
-    </script> --}}
+    </script>
+    @endif
 
     @if (session('status'))
     <script>

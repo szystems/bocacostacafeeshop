@@ -136,9 +136,31 @@
                                     </span>
                                 @endif
                             </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="advertisement" {{ $config->advertisement == 1 ? 'checked':'' }}>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">{{ __('Advertisement Status') }}</label>
+                                </div>
+                                <div class="input-group input-group-dynamic mb-4">
+                                    <input type="text" name="advertisement_link" class="form-control" placeholder="{{ __('Advertisement URL') }}" aria-describedby="basic-addon1" value="{{ $config->advertisement_link }}" required>
+                                </div>
+                                <label><font color="orange">{{ __('Enable Advertisement') }}</font></label>
+                            </div>
+
+                            @if ($config->advertisement_image)
+                            <div class="col-md-12 mb-3">
+                                <label for="">{{ __('Advertisement Image') }}</label>
+                                <img class="border-radius-md w-25" src="{{ asset('assets/uploads/advertisements/'.$config->advertisement_image) }}" alt="Advertisement Image">
+                            </div>
+                            @endif
+                            <div class="col-md-12 mb-3">
+                                <label for="">{{ __('Change advertisement image') }}</label>
+                                <input type="file" name="advertisement_image" class="form-control border">
+                            </div>
 
                             @if ($config->logo)
                             <div class="col-md-12 mb-3">
+                                <label for="">{{ __('Logo Image') }}</label>
                                 <img class="border-radius-md w-25" src="{{ asset('assets/uploads/logos/'.$config->logo) }}" alt="Logo Image">
                             </div>
                             @endif
