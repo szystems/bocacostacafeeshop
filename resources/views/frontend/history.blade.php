@@ -26,6 +26,8 @@
                         standards.
                     </p> -->
                     <p>{{ __("Our founder's discovery and passion for high-quality coffee began our brand's origin story in a quaint Portland coffee shop. After tasting a lackluster cup of coffee, it became clear to him that the market needed better options. Our brand name, Bocacosta, is derived from a region known for experiencing rejuvenating rainfall after enduring high temperatures. With over 30 years of experience in the coffee industry, we strive to provide a unique and satisfying experience with every cup of our coffee. Our unwavering commitment to the highest quality standards ensures that every sip of Bocacosta coffee is consistently delightful.") }}</p>
+                    <p>{{ __("Bocacosta Coffee stands out as a premium coffee brand thanks to the expertise of our professionals with years of experience. Our competition coffee is unparalleled and cannot be found anywhere else. With Bocacosta, there is simply no comparison.") }}</p>
+                    <p>{{ __("Each sip of our coffee reveals special notes unique to our collection. We take great care to guarantee the flavor and quality that our customers have come to expect from us. Choose Bocacosta Coffee for an unparalleled coffee experience that you won't find anywhere else.") }}</p>
                 </div>
             </div>
         </div>
