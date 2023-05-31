@@ -177,7 +177,7 @@
                         <div class="heading-section ftco-animate">
                             <!-- <span class="subheading" align="center">Discover</span> -->
                             <h2 class="mb-4" align="center">{{ __('Buy Our Coffee') }}</h2>
-                            <p class="mb-4">{{ __("Our coffee beans 100% arabica are carefully selected from the lush region of Guatemala, renowned for its unique and exquisite coffee varieties. The elevated terrain in which our coffee is grown ensures that every cup is infused with unparalleled excellence and taste.") }}</p>
+                            <p class="mb-4">{{ __("We select our coffee beans from the luscious region of Guatemala, known for its exceptional coffee varieties our 100% Arabica beans. We carefully choose the beans to ensure they are of the highest quality and unmatched excellence. And flavor in every cup due to the elevated terrain in which they are grown.") }}</p>
                         </div>
                         <div>
                             <h3>{{ __('Choose your type of flavor:') }}</h3>
